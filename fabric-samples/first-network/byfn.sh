@@ -157,20 +157,20 @@ function networkUp() {
     replacePrivateKey
     generateChannelArtifacts
   fi
-  
+
   COMPOSE_FILE_ADDITIONS=""   # added for BYFN adding 2 x CAs
 
   if [ "${IF_CAS}" == "1" ]; then
       COMPOSE_FILE_ADDITIONS="${COMPOSE_FILE_ADDITIONS} -f $COMPOSE_FILE_CAS "
   fi
-  
+
   if [ "${IF_COUCHDB}" == "couchdb" ]; then
     IMAGE_TAG=$IMAGETAG docker-compose -f ${COMPOSE_FILE}${COMPOSE_FILE_ADDITIONS} -f $COMPOSE_FILE_COUCH up -d 2>&1
   else
     IMAGE_TAG=$IMAGETAG docker-compose -f ${COMPOSE_FILE}${COMPOSE_FILE_ADDITIONS} up -d 2>&1
   fi
-  
-  
+
+
   if [ $? -ne 0 ]; then
     echo "ERROR !!!! Unable to start network"
     exit 1
@@ -260,7 +260,7 @@ function networkDown() {
     #Cleanup images
     removeUnwantedImages
     # remove orderer block and other channel configuration transactions and certs
-    rm -rf channel-artifacts/*.block channel-artifacts/*.tx crypto-config ./org3-artifacts/crypto-config/ channel-artifacts/org3.json
+     rm -rf channel-artifacts/*.block channel-artifacts/*.tx crypto-config ./org3-artifacts/crypto-config/ channel-artifacts/org3.json
     # remove the docker-compose yaml file that was customized to the example
     rm -f docker-compose-e2e.yaml
   fi
@@ -290,12 +290,12 @@ function replacePrivateKey() {
   cd crypto-config/peerOrganizations/jatim.pemilu.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA1_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml docker-compose-cas.yaml 
+  sed $OPTS "s/CA1_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml docker-compose-cas.yaml
   cd crypto-config/peerOrganizations/jabar.pemilu.com/ca/
   PRIV_KEY=$(ls *_sk)
   cd "$CURRENT_DIR"
-  sed $OPTS "s/CA2_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml docker-compose-cas.yaml 
-  
+  sed $OPTS "s/CA2_PRIVATE_KEY/${PRIV_KEY}/g" docker-compose-e2e.yaml docker-compose-cas.yaml
+
   # If MacOSX, remove the temporary backup of the docker-compose file
   if [ "$ARCH" == "Darwin" ]; then
     rm docker-compose-e2e.yamlt docker-compose-cas.yamlt
@@ -449,7 +449,7 @@ function generateChannelArtifacts() {
 function networkStop () {
 
    if [ "${IF_COUCHDB}" == "couchdb" ]; then
-       docker-compose -f $COMPOSE_FILE  -f $COMPOSE_FILE_COUCH stop 
+       docker-compose -f $COMPOSE_FILE  -f $COMPOSE_FILE_COUCH stop
    else
        docker-compose -f $COMPOSE_FILE stop
    fi
@@ -462,7 +462,7 @@ function networkStop () {
 function networkStart () {
 
    if [ "${IF_COUCHDB}" == "couchdb" ]; then
-       docker-compose -f $COMPOSE_FILE  -f $COMPOSE_FILE_COUCH start 
+       docker-compose -f $COMPOSE_FILE  -f $COMPOSE_FILE_COUCH start
    else
        docker-compose -f $COMPOSE_FILE start
    fi
@@ -517,7 +517,7 @@ elif [ "$MODE" == "generate" ]; then
   EXPMODE="Generating certs and genesis block for"
 elif [ "$MODE" == "upgrade" ]; then
   EXPMODE="Upgrading the network"
-elif [ "${MODE}" == "stop" ] ; then # ie docker-compose stop 
+elif [ "${MODE}" == "stop" ] ; then # ie docker-compose stop
   EXPMODE="Stopping but preserving container state"
 elif  [ "${MODE}" == "start" ] ; then # ie docker-compose start
    EXPMODE="Starting from previous stopped container state"
@@ -593,10 +593,10 @@ elif [ "${MODE}" == "restart" ]; then ## Restart the network
   networkUp
 elif [ "${MODE}" == "upgrade" ]; then ## Upgrade the network from version 1.1.x to 1.2.x
   upgradeNetwork
-elif [ "${MODE}" == "stop" ] ; then # do docker-compose stop 
+elif [ "${MODE}" == "stop" ] ; then # do docker-compose stop
   networkStop
 elif  [ "${MODE}" == "start" ] ; then # do docker-compose start
-  networkStart 
+  networkStart
 else
   printHelp
   exit 1
