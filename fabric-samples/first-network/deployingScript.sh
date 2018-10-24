@@ -1,5 +1,10 @@
 composer card delete -c PeerAdmin@byfn-network-jabar
 composer card delete -c PeerAdmin@byfn-network-jatim
+composer card delete -c bob@pemilu-network
+composer card delete -c alice@pemilu-network
+composer card delete -c admin@trade-network
+rm -rv alice
+rm -rv bob
 
 echo "INSERT_ORG1_CA_CERT: "
 awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' crypto-config/peerOrganizations/jatim.pemilu.com/peers/peer0.jatim.pemilu.com/tls/ca.crt > ./tmp/INSERT_ORG1_CA_CERT
@@ -299,5 +304,14 @@ composer network install --card PeerAdmin@byfn-network-jatim --archiveFile pemil
 composer network install --card PeerAdmin@byfn-network-jabar --archiveFile pemilu-network@0.0.1.bna
 
 composer identity request -c PeerAdmin@byfn-network-jatim -u admin -s adminpw -d alice
+composer identity request -c PeerAdmin@byfn-network-jabar -u admin -s adminpw -d bob
 
 composer network start -c PeerAdmin@byfn-network-jatim -n pemilu-network -V 0.0.1 -o endorsementPolicyFile=./endorsement-policy.json -A alice -C alice/admin-pub.pem -A bob -C bob/admin-pub.pem
+
+# create card for alice, as business network admin
+composer card create -p ./byfn-network-jatim.json -u alice -n pemilu-network -c alice/admin-pub.pem -k alice/admin-priv.pem
+composer card import -f alice@pemilu-network.card
+
+# create card for bob, as business network admin
+composer card create -p ./byfn-network-jabar.json -u bob -n pemilu-network -c bob/admin-pub.pem -k bob/admin-priv.pem
+composer card import -f bob@pemilu-network.card
