@@ -18,26 +18,72 @@
  */
 
 /**
- * Sample transaction
- * @param {org.pemilu.pemilihan.SampleTransaction} sampleTransaction
+ * Pemilih menggunakan hak suara
+ * @param {org.pemilu.pemilihan.GunakanSuara} tx
  * @transaction
  */
-async function sampleTransaction(tx) {
-    // Save the old value of the asset.
-    const oldValue = tx.asset.value;
+async function GunakanSuara(tx) {
 
-    // Update the asset with the new value.
-    tx.asset.value = tx.newValue;
-
-    // Get the asset registry for the asset.
-    const assetRegistry = await getAssetRegistry('org.pemilu.pemilihan.SampleAsset');
-    // Update the asset in the asset registry.
-    await assetRegistry.update(tx.asset);
+    tx.pemilih.hakSuara.sudahDigunakan = true;
+    tx.pemilih.hakSuara.owner = tx.kandidat;
 
     // Emit an event for the modified asset.
-    let event = getFactory().newEvent('org.pemilu.pemilihan', 'SampleEvent');
-    event.asset = tx.asset;
-    event.oldValue = oldValue;
-    event.newValue = tx.newValue;
+    let event = getFactory().newEvent('org.pemilu.pemilihan', 'SuaraDigunakan');
+    event.pemilih = tx.pemilih;
     emit(event);
+}
+
+/**
+ * Business admin bisa menghapus semua suara
+ * @param {org.pemilu.pemilihan.HapusSuara} tx
+ * @transaction
+ */
+async function HapusSuara(tx) {
+
+}
+
+/**
+ * Business admin bisa menghapus semua suara
+ * @param {org.pemilu.pemilihan.TambahPemilih} tx
+ * @transaction
+ */
+async function TambahPemilih(tx) {
+
+}
+
+/**
+ * Business admin bisa menghapus semua suara
+ * @param {org.pemilu.pemilihan.TambahPartaiPolitik} tx
+ * @transaction
+ */
+async function TambahPartaiPolitik(tx) {
+
+}
+
+/**
+ * Business admin bisa menghapus semua suara
+ * @param {org.pemilu.pemilihan.TambahKandidat} tx
+ * @transaction
+ */
+async function TambahKandidat(tx) {
+
+}
+
+/**
+ * Business admin bisa menghapus semua suara
+ * @param {org.pemilu.pemilihan.HapusPartaiPolitik} tx
+ * @transaction
+ */
+async function HapusPartaiPolitik(tx) {
+
+}
+
+
+/**
+ * Business admin bisa menghapus semua suara
+ * @param {org.pemilu.pemilihan.HapusKandidat} tx
+ * @transaction
+ */
+async function HapusKandidat(tx) {
+
 }

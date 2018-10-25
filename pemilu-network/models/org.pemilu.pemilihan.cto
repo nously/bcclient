@@ -18,25 +18,131 @@
 
 namespace org.pemilu.pemilihan
 
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
+enum JenisPemilih {
+  o DPPT
+  o DPPH
+  o DPTB
 }
 
-asset SampleAsset identified by assetId {
-  o String assetId
-  --> SampleParticipant owner
-  o String value
+// assets ==================================================================================
+asset TPS identified by tpsId {
+  o String tpsId
+  o String provinsi
+  o String kota
+  o Double lat
+  o Double lang
 }
 
-transaction SampleTransaction {
-  --> SampleAsset asset
-  o String newValue
+asset Suara identified by suaraId {
+  o String suaraId
+  o Boolean sudahDigunakan
+  --> Kandidat owner
 }
 
-event SampleEvent {
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
+// participants ============================================================================
+participant Pemilih identified by nik {
+  o String nik
+  o String nama
+  o String tempatLahir
+  o DateTime tanggalLahir
+  o JenisPemilih jenis
+  o Boolean sudahMemilih
+  --> TPS tpsAsal
+  --> TPS tpsMemilih
+  --> Suara hakSuara optional
+}
+
+participant PartaiPolitik identified by partaiPolitikId {
+  o String partaiPolitikId
+  o String nama
+  o String lambang
+  o String jargon optional
+}
+
+participant Kandidat identified by kandidatId {
+  o String kandidatId
+  o String namaCalon
+  o String namaWakilCalon
+  o String nikCalon
+  o String nikWakilCalon
+  o Integer nomorUrut
+  o String jargon optional
+  --> PartaiPolitik partaiPolitik
+}
+
+participant MonitoringWebServer identified by monitoringWebServerId {
+  o String monitoringWebServerId
+  o String alamat // bisa berupa url
+}
+
+participant BusinessAdmin identified by nik {
+  o String nik
+  o String nama
+}
+
+// transactions ============================================================================
+transaction GunakanSuara {
+  --> Pemilih pemilih
+  --> Kandidat kandidat
+}
+
+event SuaraDigunakan {
+  --> Pemilih pemilih
+}
+
+// delete ALL voting rights
+transaction HapusSuara {
+  
+}
+
+event SuaraTerhapus {
+  o String detail
+}
+
+// assign a right voting to ALL voters
+transaction BuatSuara {
+
+}
+
+@returns(Suara[])
+transaction LihatSuara {
+  
+}
+
+transaction TambahPemilih {
+  o String nik
+  o String nama
+  o String tempatLahir
+  o DateTime tanggalLahir
+  o JenisPemilih jenis
+  o Boolean sudahMemilih
+  --> TPS tpsAsal
+  --> TPS tpsMemilih
+  --> Suara hakSuara optional
+}
+
+transaction TambahPartaiPolitik {
+  o String partaiPolitikId
+  o String nama
+  o String lambang
+  o String jargon optional
+}
+
+transaction TambahKandidat {
+  o String kandidatId
+  o String namaCalon
+  o String namaWakilCalon
+  o String nikCalon
+  o String nikWakilCalon
+  o Integer nomorUrut
+  o String jargon optional
+  --> PartaiPolitik partaiPolitik
+}
+
+transaction HapusPartaiPolitik {
+  --> PartaiPolitik partaiPolitik
+}
+
+transaction HapusKandidat {
+  --> Kandidat kandidat
 }

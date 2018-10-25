@@ -1,43 +1,114 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * Sample access control list.
- */
-rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
-    participant: "org.pemilu.pemilihan.SampleParticipant"
-    operation: READ
-    resource: "org.pemilu.pemilihan.*"
-    action: ALLOW
+rule BusinessAdminToTPS {
+  description: "Allow BusinessAdmin all access to TPS"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: ALL
+  resource: "org.pemilu.pemilihan.TPS"
+  action: ALLOW
 }
 
-rule EverybodyCanSubmitTransactions {
-    description: "Allow all participants to submit transactions"
-    participant: "org.pemilu.pemilihan.SampleParticipant"
-    operation: CREATE
-    resource: "org.pemilu.pemilihan.SampleTransaction"
-    action: ALLOW
+rule BusinessAdminToSuara {
+  description: "Allow BusinessAdmin CREATE and DELETE access to Suara"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE, DELETE
+  resource: "org.pemilu.pemilihan.Suara"
+  action: ALLOW
 }
 
-rule OwnerHasFullAccessToTheirAssets {
-    description: "Allow all participants full access to their assets"
-    participant(p): "org.pemilu.pemilihan.SampleParticipant"
-    operation: ALL
-    resource(r): "org.pemilu.pemilihan.SampleAsset"
-    condition: (r.owner.getIdentifier() === p.getIdentifier())
-    action: ALLOW
+rule BusinessAdminToPartaiPolitik {
+  description: "Allow BusinessAdmin CREATE PartaiPolitik"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.PartaiPolitik"
+  action: ALLOW
+}
+
+rule BusinessAdminToKandidat {
+  description: "Allow BusinessAdmin CREATE Kandidat"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.Kandidat"
+  action: ALLOW
+}
+
+rule BusinessAdminToPemilih {
+  description: "Allow BusinessAdmin CREATE Pemilih"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.Pemilih"
+  action: ALLOW
+}
+
+rule BusinessAdminToTambahKandidat {
+  description: "Allow BusinessAdmin to do TambahKandidat"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahKandidat"
+  action: ALLOW
+}
+
+rule BusinessAdminToTambahPartaiPolitik {
+  description: "Allow BusinessAdmin to do some TambahPartaiPolitik"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahPartaiPolitik"
+  action: ALLOW
+}
+
+rule BusinessAdminToTambahPemilih {
+  description: "Allow BusinessAdmin to do some TambahPemilih"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahPemilih"
+  action: ALLOW
+}
+
+rule BusinessAdminToHapusSuara {
+  description: "Allow BusinessAdmin to delete ALL Suara for sake of resetting the state"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.HapusSuara"
+  action: ALLOW
+}
+
+rule BusinessAdminToBuatSuara {
+  description: "Allow BusinessAdmin to assign a Suara to ALL of Pemilih"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.BuatSuara"
+  action: ALLOW
+}
+
+rule MonitoringWebServerToSuara {
+  description: "Allow MonitoringWebServer to READ Suara"
+  participant: "org.pemilu.pemilihan.MonitoringWebServer"
+  operation: READ
+  resource: "org.pemilu.pemilihan.Suara"
+  action: ALLOW
+}
+
+rule MonitoringWebServerToLihatSuara {
+  description: "Allow MonitoringWebServer to LihatSuara"
+  participant: "org.pemilu.pemilihan.MonitoringWebServer"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.LihatSuara"
+  action: ALLOW
+}
+
+rule PemilihToSuara {
+  description: "Allow Pemilih to UPDATE access"
+  participant(p): "org.pemilu.pemilihan.Pemilih"
+  operation: UPDATE
+  resource(r): "org.pemilu.pemilihan.Suara"
+  condition: (p.hakSuara.getIdentifier() == r.getIdentifier())
+  action: ALLOW
+}
+
+rule PemilihToGunakanSuara {
+  description: "Allow Pemilih to GunakanSuara"
+  participant: "org.pemilu.pemilihan.Pemilih"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.GunakanSuara"
+  action: ALLOW
 }
 
 rule SystemACL {
@@ -48,18 +119,18 @@ rule SystemACL {
   action: ALLOW
 }
 
+rule BusinessAdmin {
+  description:  "BusinessAdmin can access identity command"
+  participant: "org.pemilu.pemilihan.BusinessAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.Identity"
+  action: ALLOW
+}
+
 rule NetworkAdminUser {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: ALL
-    resource: "**"
-    action: ALLOW
-}
-
-rule NetworkAdminSystem {
-    description: "Grant business network administrators full access to system resources"
-    participant: "org.hyperledger.composer.system.NetworkAdmin"
-    operation: ALL
-    resource: "org.hyperledger.composer.system.**"
+    resource: "org.pemilu.pemilihan.BusinessAdmin"
     action: ALLOW
 }

@@ -26,11 +26,11 @@ cat << EOF > ./byfn-network-jatim.json
 		"connection": {
 			"timeout": {
 				"peer": {
-					"endorser": "300",
-					"eventHub": "300",
-					"eventReg": "300"
+					"endorser": "2100",
+					"eventHub": "2100",
+					"eventReg": "2100"
 				},
-				"orderer": "300"
+				"orderer": "2100"
 			}
 		}
 	},
@@ -164,11 +164,11 @@ cat << EOF > ./byfn-network-jabar.json
 		"connection": {
 			"timeout": {
 				"peer": {
-					"endorser": "300",
-					"eventHub": "300",
-					"eventReg": "300"
+					"endorser": "2100",
+					"eventHub": "2100",
+					"eventReg": "2100"
 				},
-				"orderer": "300"
+				"orderer": "2100"
 			}
 		}
 	},
@@ -300,13 +300,13 @@ composer card create -p ./byfn-network-jabar.json -u PeerAdmin -c $JABARADMIN/si
 composer card import -f PeerAdmin@byfn-network-jatim.card --card PeerAdmin@byfn-network-jatim
 composer card import -f PeerAdmin@byfn-network-jabar.card --card PeerAdmin@byfn-network-jabar
 
-composer network install --card PeerAdmin@byfn-network-jatim --archiveFile pemilu-network@0.0.1.bna
-composer network install --card PeerAdmin@byfn-network-jabar --archiveFile pemilu-network@0.0.1.bna
+composer network install --card PeerAdmin@byfn-network-jatim --archiveFile pemilu-network@1.0.0.bna
+composer network install --card PeerAdmin@byfn-network-jabar --archiveFile pemilu-network@1.0.0.bna
 
 composer identity request -c PeerAdmin@byfn-network-jatim -u admin -s adminpw -d alice
 composer identity request -c PeerAdmin@byfn-network-jabar -u admin -s adminpw -d bob
 
-composer network start -c PeerAdmin@byfn-network-jatim -n pemilu-network -V 0.0.1 -o endorsementPolicyFile=./endorsement-policy.json -A alice -C alice/admin-pub.pem -A bob -C bob/admin-pub.pem
+composer network start -c PeerAdmin@byfn-network-jatim -n pemilu-network -V 1.0.0 -o endorsementPolicyFile=./endorsement-policy.json -A alice -C alice/admin-pub.pem -A bob -C bob/admin-pub.pem
 
 # create card for alice, as business network admin
 composer card create -p ./byfn-network-jatim.json -u alice -n pemilu-network -c alice/admin-pub.pem -k alice/admin-priv.pem
