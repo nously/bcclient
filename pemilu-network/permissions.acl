@@ -1,83 +1,3 @@
-rule BusinessAdminToTPS {
-  description: "Allow BusinessAdmin all access to TPS"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: ALL
-  resource: "org.pemilu.pemilihan.TPS"
-  action: ALLOW
-}
-
-rule BusinessAdminToSuara {
-  description: "Allow BusinessAdmin CREATE and DELETE access to Suara"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE, DELETE
-  resource: "org.pemilu.pemilihan.Suara"
-  action: ALLOW
-}
-
-rule BusinessAdminToPartaiPolitik {
-  description: "Allow BusinessAdmin CREATE PartaiPolitik"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.PartaiPolitik"
-  action: ALLOW
-}
-
-rule BusinessAdminToKandidat {
-  description: "Allow BusinessAdmin CREATE Kandidat"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.Kandidat"
-  action: ALLOW
-}
-
-rule BusinessAdminToPemilih {
-  description: "Allow BusinessAdmin CREATE Pemilih"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.Pemilih"
-  action: ALLOW
-}
-
-rule BusinessAdminToTambahKandidat {
-  description: "Allow BusinessAdmin to do TambahKandidat"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.TambahKandidat"
-  action: ALLOW
-}
-
-rule BusinessAdminToTambahPartaiPolitik {
-  description: "Allow BusinessAdmin to do some TambahPartaiPolitik"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.TambahPartaiPolitik"
-  action: ALLOW
-}
-
-rule BusinessAdminToTambahPemilih {
-  description: "Allow BusinessAdmin to do some TambahPemilih"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.TambahPemilih"
-  action: ALLOW
-}
-
-rule BusinessAdminToHapusSuara {
-  description: "Allow BusinessAdmin to delete ALL Suara for sake of resetting the state"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.HapusSuara"
-  action: ALLOW
-}
-
-rule BusinessAdminToBuatSuara {
-  description: "Allow BusinessAdmin to assign a Suara to ALL of Pemilih"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.BuatSuara"
-  action: ALLOW
-}
-
 rule MonitoringWebServerToSuara {
   description: "Allow MonitoringWebServer to READ Suara"
   participant: "org.pemilu.pemilihan.MonitoringWebServer"
@@ -93,6 +13,8 @@ rule MonitoringWebServerToLihatSuara {
   resource: "org.pemilu.pemilihan.LihatSuara"
   action: ALLOW
 }
+
+// =============================================================
 
 rule PemilihToSuara {
   description: "Allow Pemilih to UPDATE access"
@@ -111,6 +33,74 @@ rule PemilihToGunakanSuara {
   action: ALLOW
 }
 
+// =============================================================
+
+rule KPUMemberToKandidat {
+  description: "Grant all operation by KPU Member to Kandidat"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: ALL
+  resource: "org.pemilu.pemilihan.Kandidat"
+  action: ALLOW
+}
+
+rule KPUMemberToTambahKandidat {
+  description: "Allow KPUMember to make TambahKandidat transaction"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahKandidat"
+  action: ALLOW
+}
+
+rule KPUMemberToHapusKandidat {
+  description: "Allow KPUMember to make HapusKandidat transaction"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.HapusKandidat"
+  action: ALLOW
+}
+
+rule KPUMemberToPemilih {
+  description: "Grant all operation for KPU Member to Pemilih"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: CREATE, UPDATE, DELETE
+  resource: "org.pemilu.pemilihan.Pemilih"
+  action: ALLOW
+}
+
+rule KPUMemberToTambahPemilih {
+  description: "Grant KPUMember CREATE permission to TambahPemilih"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahKandidat"
+  action: ALLOW
+}
+
+rule KPUMemberToHapusPemilih {
+  description: "Grant KPUMember CREATE permission to HapusPemilih"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.HapusPemilih"
+  action: ALLOW
+}
+
+rule KPUMemberToSuara {
+  description: "Grant KPUMember CREATE permission to Suara"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.Suara"
+  action: ALLOW
+}
+
+rule KPUMemberToTPS {
+  description: "Grant KPUMember CREATE permission to TPS"
+  participant: "org.pemilu.pemilihan.KPUMember"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TPS"
+  action: ALLOW
+}
+
+// =============================================================
+
 rule SystemACL {
   description:  "System ACL to permit all access"
   participant: "org.hyperledger.composer.system.Participant"
@@ -119,18 +109,18 @@ rule SystemACL {
   action: ALLOW
 }
 
-rule BusinessAdmin {
-  description:  "BusinessAdmin can access identity command"
-  participant: "org.pemilu.pemilihan.BusinessAdmin"
-  operation: ALL
-  resource: "org.hyperledger.composer.system.Identity"
-  action: ALLOW
-}
-
-rule NetworkAdminUser {
+rule NetworkAdminUserToKPUMember {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: ALL
-    resource: "org.pemilu.pemilihan.BusinessAdmin"
+    resource: "org.pemilu.pemilihan.KPUMember"
+    action: ALLOW
+}
+
+rule NetworkAdminUserToMonitoringWebServer {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.pemilu.pemilihan.MonitoringWebServer"
     action: ALLOW
 }

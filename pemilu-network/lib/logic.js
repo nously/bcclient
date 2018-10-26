@@ -53,31 +53,12 @@ async function TambahPemilih(tx) {
 
 /**
  * Business admin bisa menghapus semua suara
- * @param {org.pemilu.pemilihan.TambahPartaiPolitik} tx
- * @transaction
- */
-async function TambahPartaiPolitik(tx) {
-
-}
-
-/**
- * Business admin bisa menghapus semua suara
  * @param {org.pemilu.pemilihan.TambahKandidat} tx
  * @transaction
  */
 async function TambahKandidat(tx) {
 
 }
-
-/**
- * Business admin bisa menghapus semua suara
- * @param {org.pemilu.pemilihan.HapusPartaiPolitik} tx
- * @transaction
- */
-async function HapusPartaiPolitik(tx) {
-
-}
-
 
 /**
  * Business admin bisa menghapus semua suara

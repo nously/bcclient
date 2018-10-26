@@ -1,8 +1,15 @@
+
+if [ -z ${1} ]; then
+	ls | grep pemilu-network
+	exit
+fi
+
+VERSION=$1
+
 composer card delete -c PeerAdmin@byfn-network-jabar
 composer card delete -c PeerAdmin@byfn-network-jatim
 composer card delete -c bob@pemilu-network
 composer card delete -c alice@pemilu-network
-composer card delete -c admin@trade-network
 rm -rv alice
 rm -rv bob
 
@@ -300,13 +307,13 @@ composer card create -p ./byfn-network-jabar.json -u PeerAdmin -c $JABARADMIN/si
 composer card import -f PeerAdmin@byfn-network-jatim.card --card PeerAdmin@byfn-network-jatim
 composer card import -f PeerAdmin@byfn-network-jabar.card --card PeerAdmin@byfn-network-jabar
 
-composer network install --card PeerAdmin@byfn-network-jatim --archiveFile pemilu-network@1.0.0.bna
-composer network install --card PeerAdmin@byfn-network-jabar --archiveFile pemilu-network@1.0.0.bna
+composer network install --card PeerAdmin@byfn-network-jatim --archiveFile pemilu-network@$VERSION.bna
+composer network install --card PeerAdmin@byfn-network-jabar --archiveFile pemilu-network@$VERSION.bna
 
 composer identity request -c PeerAdmin@byfn-network-jatim -u admin -s adminpw -d alice
 composer identity request -c PeerAdmin@byfn-network-jabar -u admin -s adminpw -d bob
 
-composer network start -c PeerAdmin@byfn-network-jatim -n pemilu-network -V 1.0.0 -o endorsementPolicyFile=./endorsement-policy.json -A alice -C alice/admin-pub.pem -A bob -C bob/admin-pub.pem
+composer network start -c PeerAdmin@byfn-network-jatim -n pemilu-network -V $VERSION -o endorsementPolicyFile=./endorsement-policy.json -A alice -C alice/admin-pub.pem -A bob -C bob/admin-pub.pem
 
 # create card for alice, as business network admin
 composer card create -p ./byfn-network-jatim.json -u alice -n pemilu-network -c alice/admin-pub.pem -k alice/admin-priv.pem

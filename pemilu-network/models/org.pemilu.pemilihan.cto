@@ -52,13 +52,6 @@ participant Pemilih identified by nik {
   --> Suara hakSuara optional
 }
 
-participant PartaiPolitik identified by partaiPolitikId {
-  o String partaiPolitikId
-  o String nama
-  o String lambang
-  o String jargon optional
-}
-
 participant Kandidat identified by kandidatId {
   o String kandidatId
   o String namaCalon
@@ -67,7 +60,7 @@ participant Kandidat identified by kandidatId {
   o String nikWakilCalon
   o Integer nomorUrut
   o String jargon optional
-  --> PartaiPolitik partaiPolitik
+  o String namaPartai
 }
 
 participant MonitoringWebServer identified by monitoringWebServerId {
@@ -75,8 +68,8 @@ participant MonitoringWebServer identified by monitoringWebServerId {
   o String alamat // bisa berupa url
 }
 
-participant BusinessAdmin identified by nik {
-  o String nik
+participant KPUMember identified by KPUMemberId {
+  o String KPUMemberId
   o String nama
 }
 
@@ -90,7 +83,8 @@ event SuaraDigunakan {
   --> Pemilih pemilih
 }
 
-// delete ALL voting rights
+
+// suara
 transaction HapusSuara {
   
 }
@@ -99,16 +93,12 @@ event SuaraTerhapus {
   o String detail
 }
 
-// assign a right voting to ALL voters
-transaction BuatSuara {
-
-}
-
 @returns(Suara[])
 transaction LihatSuara {
   
 }
 
+// pemilih
 transaction TambahPemilih {
   o String nik
   o String nama
@@ -121,13 +111,11 @@ transaction TambahPemilih {
   --> Suara hakSuara optional
 }
 
-transaction TambahPartaiPolitik {
-  o String partaiPolitikId
-  o String nama
-  o String lambang
-  o String jargon optional
+transaction HapusPemilih {
+  
 }
 
+// kandidat
 transaction TambahKandidat {
   o String kandidatId
   o String namaCalon
@@ -136,13 +124,20 @@ transaction TambahKandidat {
   o String nikWakilCalon
   o Integer nomorUrut
   o String jargon optional
-  --> PartaiPolitik partaiPolitik
-}
-
-transaction HapusPartaiPolitik {
-  --> PartaiPolitik partaiPolitik
+  o String namaPartai
 }
 
 transaction HapusKandidat {
   --> Kandidat kandidat
+}
+
+// monitoringWebServer
+transaction CreateMonitoringWebServer {
+  o String monitoringWebServerId
+  o String alamat // bisa berupa url
+}
+
+transaction CreateKPUMember {
+  o String KPUMemberId
+  o String nama
 }
