@@ -36,7 +36,7 @@ asset TPS identified by tpsId {
 asset Suara identified by suaraId {
   o String suaraId
   o Boolean sudahDigunakan
-  --> Kandidat owner
+  --> Kandidat owner optional
 }
 
 // participants ============================================================================

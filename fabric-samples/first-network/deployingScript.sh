@@ -10,8 +10,16 @@ composer card delete -c PeerAdmin@byfn-network-jabar
 composer card delete -c PeerAdmin@byfn-network-jatim
 composer card delete -c bob@pemilu-network
 composer card delete -c alice@pemilu-network
+composer card delete -c dyahayu@pemilu-network
+composer card delete -c monitoring1@pemilu-network
+composer card delete -c kandidat1dyahayu@pemilu-network
+composer card delete -c bukanDyahAyu@pemilu-network
 rm -rv alice
 rm -rv bob
+rm dyahayu.card
+rm monitoring1.card
+rm kandidat1dyahayu.card
+rm bukanDyahAyu.card
 
 echo "INSERT_ORG1_CA_CERT: "
 awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' crypto-config/peerOrganizations/jatim.pemilu.com/peers/peer0.jatim.pemilu.com/tls/ca.crt > ./tmp/INSERT_ORG1_CA_CERT
