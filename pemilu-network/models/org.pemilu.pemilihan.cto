@@ -37,6 +37,7 @@ asset Suara identified by suaraId {
   o String suaraId
   o Boolean sudahDigunakan
   --> Kandidat owner optional
+  --> Pemilih pemilih optional
 }
 
 // participants ============================================================================
@@ -49,7 +50,6 @@ participant Pemilih identified by nik {
   o Boolean sudahMemilih
   --> TPS tpsAsal
   --> TPS tpsMemilih
-  --> Suara hakSuara optional
 }
 
 participant Kandidat identified by kandidatId {
@@ -75,7 +75,7 @@ participant KPUMember identified by KPUMemberId {
 
 // transactions ============================================================================
 transaction GunakanSuara {
-  --> Pemilih pemilih
+  --> Suara suara
   --> Kandidat kandidat
 }
 

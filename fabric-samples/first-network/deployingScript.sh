@@ -1,4 +1,3 @@
-
 if [ -z ${1} ]; then
 	ls | grep pemilu-network
 	exit

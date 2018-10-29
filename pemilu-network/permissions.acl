@@ -1,8 +1,9 @@
 rule MonitoringWebServerToSuara {
   description: "Allow MonitoringWebServer to READ Suara"
-  participant: "org.pemilu.pemilihan.MonitoringWebServer"
+  participant(p): "org.pemilu.pemilihan.MonitoringWebServer"
   operation: READ
-  resource: "org.pemilu.pemilihan.Suara"
+  resource(r): "org.pemilu.pemilihan.Suara"
+  condition: (r.sudahDigunakan == true)
   action: ALLOW
 }
 
@@ -17,11 +18,11 @@ rule MonitoringWebServerToLihatSuara {
 // =============================================================
 
 rule PemilihToSuara {
-  description: "Allow Pemilih to UPDATE access"
+  description: "Allow Pemilih to READ and UPDATE access"
   participant(p): "org.pemilu.pemilihan.Pemilih"
-  operation: UPDATE
+  operation: READ, UPDATE
   resource(r): "org.pemilu.pemilihan.Suara"
-  condition: (p.hakSuara.getIdentifier() == r.getIdentifier())
+  condition: (p.getIdentifier() == r.pemilih.getIdentifier())
   action: ALLOW
 }
 
@@ -62,7 +63,7 @@ rule KPUMemberToHapusKandidat {
 rule KPUMemberToPemilih {
   description: "Grant all operation for KPU Member to Pemilih"
   participant: "org.pemilu.pemilihan.KPUMember"
-  operation: CREATE, UPDATE, DELETE
+  operation: ALL
   resource: "org.pemilu.pemilihan.Pemilih"
   action: ALLOW
 }

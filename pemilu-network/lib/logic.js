@@ -24,13 +24,22 @@
  */
 async function GunakanSuara(tx) {
 
-    tx.pemilih.hakSuara.sudahDigunakan = true;
-    tx.pemilih.hakSuara.owner = tx.kandidat;
+    tx.suara.sudahDigunakan = true;
+    tx.suara.pemilih = null;
+    tx.suara.owner = tx.kandidat;
+
+    return getAssetRegistry('org.pemilu.pemilihan.Suara')
+        .then(function (suaraRegistry) {
+            return suaraRegistry.update(tx.suara);
+        })
+        .catch(function (error) {
+            // Add optional error handling here.
+        });
 
     // Emit an event for the modified asset.
-    let event = getFactory().newEvent('org.pemilu.pemilihan', 'SuaraDigunakan');
-    event.pemilih = tx.pemilih;
-    emit(event);
+    // let event = getFactory().newEvent('org.pemilu.pemilihan', 'SuaraDigunakan');
+    // event.pemilih = tx.pemilih;
+    // emit(event);
 }
 
 /**
