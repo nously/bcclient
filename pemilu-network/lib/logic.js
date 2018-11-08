@@ -23,57 +23,114 @@
  * @transaction
  */
 async function GunakanSuara(tx) {
-
     tx.suara.sudahDigunakan = true;
+    tx.suara.pemilih.sudahMemilih = true;
     tx.suara.pemilih = null;
     tx.suara.owner = tx.kandidat;
 
+    // javascript promise
     return getAssetRegistry('org.pemilu.pemilihan.Suara')
         .then(function (suaraRegistry) {
             return suaraRegistry.update(tx.suara);
         })
         .catch(function (error) {
-            // Add optional error handling here.
+            console.error(error);
         });
-
-    // Emit an event for the modified asset.
-    // let event = getFactory().newEvent('org.pemilu.pemilihan', 'SuaraDigunakan');
-    // event.pemilih = tx.pemilih;
-    // emit(event);
 }
 
 /**
- * Business admin bisa menghapus semua suara
- * @param {org.pemilu.pemilihan.HapusSuara} tx
- * @transaction
- */
-async function HapusSuara(tx) {
-
-}
-
-/**
- * Business admin bisa menghapus semua suara
+ * VotingOrganizer bisa menambah pemilih
  * @param {org.pemilu.pemilihan.TambahPemilih} tx
  * @transaction
  */
 async function TambahPemilih(tx) {
+    const factory = getFactory();
+    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'Pemilih', tx.nik);
+    newParticipant.nama = tx.nama;
+    newParticipant.tempatLahir = tx.tempatLahir;
+    newParticipant.tanggalLahir = tx.tanggalLahir;
+    newParticipant.sudahMemilih = tx.sudahMemilih;
 
+    getParticipantRegistry('org.pemilu.pemilihan.Pemilih')
+        .then(function (pemilihRegistry) {
+            return pemilihRegistry.add(newParticipant);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+    
+    let newSuara = factory.newResource('org.pemilu.pemilihan', 'Suara', "WillBeRandom-1234");
+    newSuara.sudahDigunakan = false;
+    newSuara.owner = null;
+    newSuara.pemilih = newParticipant;
+
+    getAssetRegistry('org.pemilu.pemilihan.Suara')
+        .then(function (suaraRegistry) {
+            return suaraRegistry.add(newSuara);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }
 
 /**
- * Business admin bisa menghapus semua suara
+ * Business admin bisa menambah VotingOrganizer
+ * @param {org.pemilu.pemilihan.TambahVotingOrganizer} tx
+ * @transaction
+ */
+async function TambahVotingOrganizer(tx) {
+    const factory = getFactory();
+    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'VotingOrganizer', tx.votingOrganizerId);
+    newParticipant.nama = tx.nama;
+
+    return getParticipantRegistry('org.pemilu.pemilihan.VotingOrganizer')
+        .then(function (votingOrganizerRegistry) {
+            return votingOrganizerRegistry.add(newParticipant);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+
+/**
+ * VotingOrganizer bisa menambah kandidat
  * @param {org.pemilu.pemilihan.TambahKandidat} tx
  * @transaction
  */
 async function TambahKandidat(tx) {
+    const factory = getFactory();
+    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'Kandidat', tx.kandidatId);
+    newParticipant.namaCalon = tx.namaCalon;
+    newParticipant.namaWakilCalon = tx.namaWakilCalon;
+    newParticipant.nikCalon = tx.nikCalon;
+    newParticipant.nikWakilCalon = tx.nikWakilCalon;
+    newParticipant.nomorUrut = tx.nomorUrut;
+    newParticipant.jargon = tx.jargon;
 
+    return getParticipantRegistry('org.pemilu.pemilihan.Kandidat')
+        .then(function (kandidatRegistry) {
+            return kandidatRegistry.add(newParticipant);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }
 
 /**
- * Business admin bisa menghapus semua suara
- * @param {org.pemilu.pemilihan.HapusKandidat} tx
+ * VotingOrganizer bisa membuat suara
+ * @param {org.pemilu.pemilihan.BuatMonitoringWebServer} tx
  * @transaction
  */
-async function HapusKandidat(tx) {
+async function BuatMonitoringWebServer(tx) {
+    const factory = getFactory();
+    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'MonitoringWebServer', tx.monitoringWebServerId);
+    newParticipant.alamat = tx.alamat;
 
+    return getParticipantRegistry('org.pemilu.pemilihan.MonitoringWebServer')
+        .then(function (monitoringWebServerRegistry) {
+            return monitoringWebServerRegistry.add(newParticipant);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }

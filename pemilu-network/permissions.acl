@@ -7,14 +7,6 @@ rule MonitoringWebServerToSuara {
   action: ALLOW
 }
 
-rule MonitoringWebServerToLihatSuara {
-  description: "Allow MonitoringWebServer to LihatSuara"
-  participant: "org.pemilu.pemilihan.MonitoringWebServer"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.LihatSuara"
-  action: ALLOW
-}
-
 // =============================================================
 
 rule PemilihToSuara {
@@ -23,6 +15,14 @@ rule PemilihToSuara {
   operation: READ, UPDATE
   resource(r): "org.pemilu.pemilihan.Suara"
   condition: (p.getIdentifier() == r.pemilih.getIdentifier())
+  action: ALLOW
+}
+
+rule PemilihToKandidat {
+  description: "Allow Pemilih to READ and UPDATE access"
+  participant: "org.pemilu.pemilihan.Pemilih"
+  operation: READ
+  resource: "org.pemilu.pemilihan.Kandidat"
   action: ALLOW
 }
 
@@ -36,67 +36,43 @@ rule PemilihToGunakanSuara {
 
 // =============================================================
 
-rule KPUMemberToKandidat {
+rule VotingOrganizerToKandidat {
   description: "Grant all operation by KPU Member to Kandidat"
-  participant: "org.pemilu.pemilihan.KPUMember"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
   operation: ALL
   resource: "org.pemilu.pemilihan.Kandidat"
   action: ALLOW
 }
 
-rule KPUMemberToTambahKandidat {
-  description: "Allow KPUMember to make TambahKandidat transaction"
-  participant: "org.pemilu.pemilihan.KPUMember"
+rule VotingOrganizerToTambahKandidat {
+  description: "Allow VotingOrganizer to make TambahKandidat transaction"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
   operation: CREATE
   resource: "org.pemilu.pemilihan.TambahKandidat"
   action: ALLOW
 }
 
-rule KPUMemberToHapusKandidat {
-  description: "Allow KPUMember to make HapusKandidat transaction"
-  participant: "org.pemilu.pemilihan.KPUMember"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.HapusKandidat"
-  action: ALLOW
-}
-
-rule KPUMemberToPemilih {
+rule VotingOrganizerToPemilih {
   description: "Grant all operation for KPU Member to Pemilih"
-  participant: "org.pemilu.pemilihan.KPUMember"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
   operation: ALL
   resource: "org.pemilu.pemilihan.Pemilih"
   action: ALLOW
 }
 
-rule KPUMemberToTambahPemilih {
-  description: "Grant KPUMember CREATE permission to TambahPemilih"
-  participant: "org.pemilu.pemilihan.KPUMember"
+rule VotingOrganizerToTambahPemilih {
+  description: "Grant VotingOrganizer CREATE permission to TambahPemilih"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
   operation: CREATE
-  resource: "org.pemilu.pemilihan.TambahKandidat"
+  resource: "org.pemilu.pemilihan.TambahPemilih"
   action: ALLOW
 }
 
-rule KPUMemberToHapusPemilih {
-  description: "Grant KPUMember CREATE permission to HapusPemilih"
-  participant: "org.pemilu.pemilihan.KPUMember"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.HapusPemilih"
-  action: ALLOW
-}
-
-rule KPUMemberToSuara {
-  description: "Grant KPUMember CREATE permission to Suara"
-  participant: "org.pemilu.pemilihan.KPUMember"
+rule VotingOrganizerToSuara {
+  description: "Grant VotingOrganizer CREATE permission to Suara"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
   operation: CREATE
   resource: "org.pemilu.pemilihan.Suara"
-  action: ALLOW
-}
-
-rule KPUMemberToTPS {
-  description: "Grant KPUMember CREATE permission to TPS"
-  participant: "org.pemilu.pemilihan.KPUMember"
-  operation: CREATE
-  resource: "org.pemilu.pemilihan.TPS"
   action: ALLOW
 }
 
@@ -110,18 +86,34 @@ rule SystemACL {
   action: ALLOW
 }
 
-rule NetworkAdminUserToKPUMember {
+rule NetworkAdminUserToTambahVotingOrganizer {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
-    operation: ALL
-    resource: "org.pemilu.pemilihan.KPUMember"
+    operation: CREATE
+    resource: "org.pemilu.pemilihan.TambahVotingOrganizer"
+    action: ALLOW
+}
+
+rule NetworkAdminUserToVotingOrganizer {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: CREATE, READ, DELETE
+    resource: "org.pemilu.pemilihan.VotingOrganizer"
+    action: ALLOW
+}
+
+rule NetworkAdminUserToBuatMonitoringWebServer {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: CREATE
+    resource: "org.pemilu.pemilihan.BuatMonitoringWebServer"
     action: ALLOW
 }
 
 rule NetworkAdminUserToMonitoringWebServer {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
-    operation: ALL
+    operation: CREATE, READ, DELETE
     resource: "org.pemilu.pemilihan.MonitoringWebServer"
     action: ALLOW
 }

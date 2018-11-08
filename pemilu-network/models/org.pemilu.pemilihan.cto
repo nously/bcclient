@@ -18,20 +18,7 @@
 
 namespace org.pemilu.pemilihan
 
-enum JenisPemilih {
-  o DPPT
-  o DPPH
-  o DPTB
-}
-
 // assets ==================================================================================
-asset TPS identified by tpsId {
-  o String tpsId
-  o String provinsi
-  o String kota
-  o Double lat
-  o Double lang
-}
 
 asset Suara identified by suaraId {
   o String suaraId
@@ -46,10 +33,7 @@ participant Pemilih identified by nik {
   o String nama
   o String tempatLahir
   o DateTime tanggalLahir
-  o JenisPemilih jenis
   o Boolean sudahMemilih
-  --> TPS tpsAsal
-  --> TPS tpsMemilih
 }
 
 participant Kandidat identified by kandidatId {
@@ -60,7 +44,6 @@ participant Kandidat identified by kandidatId {
   o String nikWakilCalon
   o Integer nomorUrut
   o String jargon optional
-  o String namaPartai
 }
 
 participant MonitoringWebServer identified by monitoringWebServerId {
@@ -68,8 +51,8 @@ participant MonitoringWebServer identified by monitoringWebServerId {
   o String alamat // bisa berupa url
 }
 
-participant KPUMember identified by KPUMemberId {
-  o String KPUMemberId
+participant VotingOrganizer identified by votingOrganizerId {
+  o String votingOrganizerId
   o String nama
 }
 
@@ -79,40 +62,12 @@ transaction GunakanSuara {
   --> Kandidat kandidat
 }
 
-event SuaraDigunakan {
-  --> Pemilih pemilih
-}
-
-
-// suara
-transaction HapusSuara {
-  
-}
-
-event SuaraTerhapus {
-  o String detail
-}
-
-@returns(Suara[])
-transaction LihatSuara {
-  
-}
-
-// pemilih
 transaction TambahPemilih {
   o String nik
   o String nama
   o String tempatLahir
   o DateTime tanggalLahir
-  o JenisPemilih jenis
   o Boolean sudahMemilih
-  --> TPS tpsAsal
-  --> TPS tpsMemilih
-  --> Suara hakSuara optional
-}
-
-transaction HapusPemilih {
-  
 }
 
 // kandidat
@@ -124,20 +79,15 @@ transaction TambahKandidat {
   o String nikWakilCalon
   o Integer nomorUrut
   o String jargon optional
-  o String namaPartai
 }
 
-transaction HapusKandidat {
-  --> Kandidat kandidat
+transaction TambahVotingOrganizer {
+  o String votingOrganizerId
+  o String nama
 }
 
-// monitoringWebServer
-transaction CreateMonitoringWebServer {
+transaction BuatMonitoringWebServer {
   o String monitoringWebServerId
   o String alamat // bisa berupa url
 }
 
-transaction CreateKPUMember {
-  o String KPUMemberId
-  o String nama
-}
