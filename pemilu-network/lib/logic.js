@@ -39,6 +39,27 @@ async function GunakanSuara(tx) {
 }
 
 /**
+ * VotingOrganizer bisa menambah suara
+ * @param {org.pemilu.pemilihan.TambahSuara} tx
+ * @transaction
+ */
+async function TambahSuara(tx) {
+    const factory = getFactory();
+    let newSuara = factory.newResource('org.pemilu.pemilihan', 'Suara', "WillBeRandom-1234");
+    newSuara.sudahDigunakan = false;
+    newSuara.owner = null;
+    newSuara.pemilih = tx.pemilih;
+
+    getAssetRegistry('org.pemilu.pemilihan.Suara')
+        .then(function (suaraRegistry) {
+            return suaraRegistry.add(newSuara);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+
+/**
  * VotingOrganizer bisa menambah pemilih
  * @param {org.pemilu.pemilihan.TambahPemilih} tx
  * @transaction
@@ -51,22 +72,9 @@ async function TambahPemilih(tx) {
     newParticipant.tanggalLahir = tx.tanggalLahir;
     newParticipant.sudahMemilih = tx.sudahMemilih;
 
-    getParticipantRegistry('org.pemilu.pemilihan.Pemilih')
+    return getParticipantRegistry('org.pemilu.pemilihan.Pemilih')
         .then(function (pemilihRegistry) {
             return pemilihRegistry.add(newParticipant);
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-    
-    let newSuara = factory.newResource('org.pemilu.pemilihan', 'Suara', "WillBeRandom-1234");
-    newSuara.sudahDigunakan = false;
-    newSuara.owner = null;
-    newSuara.pemilih = newParticipant;
-
-    getAssetRegistry('org.pemilu.pemilihan.Suara')
-        .then(function (suaraRegistry) {
-            return suaraRegistry.add(newSuara);
         })
         .catch(function (error) {
             console.error(error);

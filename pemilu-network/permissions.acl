@@ -76,6 +76,14 @@ rule VotingOrganizerToSuara {
   action: ALLOW
 }
 
+rule VotingOrganizerToTambahSuara {
+  description: "Grant VotingOrganizer CREATE permission to Suara"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahSuara"
+  action: ALLOW
+}
+
 // =============================================================
 
 rule SystemACL {
@@ -115,5 +123,15 @@ rule NetworkAdminUserToMonitoringWebServer {
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: CREATE, READ, DELETE
     resource: "org.pemilu.pemilihan.MonitoringWebServer"
+    action: ALLOW
+}
+
+
+// for debug purpose
+rule NetworkAdminUserToAll {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: READ
+    resource: "org.pemilu.pemilihan.**"
     action: ALLOW
 }

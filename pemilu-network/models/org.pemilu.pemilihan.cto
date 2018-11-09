@@ -70,6 +70,10 @@ transaction TambahPemilih {
   o Boolean sudahMemilih
 }
 
+transaction TambahSuara {
+  --> Pemilih pemilih
+}
+
 // kandidat
 transaction TambahKandidat {
   o String kandidatId

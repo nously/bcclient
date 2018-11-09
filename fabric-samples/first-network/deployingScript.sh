@@ -11,6 +11,7 @@ composer card delete -c bob@pemilu-network
 composer card delete -c alice@pemilu-network
 composer card delete -c dyahayu@pemilu-network
 composer card delete -c monitoring1@pemilu-network
+composer card delete -c monitoring2@pemilu-network
 composer card delete -c kandidat1dyahayu@pemilu-network
 composer card delete -c bukanDyahAyu@pemilu-network
 rm -rv alice
