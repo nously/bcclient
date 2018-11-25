@@ -24,7 +24,6 @@
  */
 async function GunakanSuara(tx) {
     tx.suara.sudahDigunakan = true;
-    tx.suara.pemilih.sudahMemilih = true;
     tx.suara.pemilih = null;
     tx.suara.owner = tx.kandidat;
 
@@ -70,7 +69,6 @@ async function TambahPemilih(tx) {
     newParticipant.nama = tx.nama;
     newParticipant.tempatLahir = tx.tempatLahir;
     newParticipant.tanggalLahir = tx.tanggalLahir;
-    newParticipant.sudahMemilih = tx.sudahMemilih;
 
     return getParticipantRegistry('org.pemilu.pemilihan.Pemilih')
         .then(function (pemilihRegistry) {
@@ -142,3 +140,4 @@ async function BuatMonitoringWebServer(tx) {
             console.error(error);
         });
 }
+

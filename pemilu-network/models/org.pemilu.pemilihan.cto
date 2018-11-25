@@ -67,7 +67,6 @@ transaction TambahPemilih {
   o String nama
   o String tempatLahir
   o DateTime tanggalLahir
-  o Boolean sudahMemilih
 }
 
 transaction TambahSuara {
@@ -94,4 +93,3 @@ transaction BuatMonitoringWebServer {
   o String monitoringWebServerId
   o String alamat // bisa berupa url
 }
-

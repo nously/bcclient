@@ -1,0 +1,22 @@
+{
+  "name": "voting-client",
+  "version": "1.0.0",
+  "description": "Voting Client in blockchain technology",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Dyah Ayu",
+  "license": "ISC",
+  "dependencies": {
+    "composer": "^4.1.0",
+    "composer-client": "^0.20.4",
+    "composer-common": "^0.20.4",
+    "electron": "^3.0.9"
+  },
+  "devDependencies": {
+    "composer-cli": "^0.20.4",
+    "grpc": "^1.16.0",
+    "prettyjson": "^1.2.1"
+  }
+}

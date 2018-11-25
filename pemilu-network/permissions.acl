@@ -18,19 +18,19 @@ rule PemilihToSuara {
   action: ALLOW
 }
 
-rule PemilihToKandidat {
-  description: "Allow Pemilih to READ and UPDATE access"
-  participant: "org.pemilu.pemilihan.Pemilih"
-  operation: READ
-  resource: "org.pemilu.pemilihan.Kandidat"
-  action: ALLOW
-}
-
 rule PemilihToGunakanSuara {
   description: "Allow Pemilih to GunakanSuara"
   participant: "org.pemilu.pemilihan.Pemilih"
   operation: CREATE
   resource: "org.pemilu.pemilihan.GunakanSuara"
+  action: ALLOW
+}
+
+rule PemilihToKandidat {
+  description: "Allow Pemilih to READ and UPDATE access"
+  participant: "org.pemilu.pemilihan.Pemilih"
+  operation: READ
+  resource: "org.pemilu.pemilihan.Kandidat"
   action: ALLOW
 }
 

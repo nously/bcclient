@@ -1,0 +1,687 @@
+================================================================================
+==== Node Report ===============================================================
+
+Event: exception, location: "OnUncaughtException"
+Filename: node-report.20181125.103713.13228.001.txt
+Dump event time:  2018/11/25 10:37:13
+Module load time: 2018/11/25 10:34:18
+Process ID: 13228
+Command line: /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/electron . 
+
+Node.js version: v10.2.0
+(http_parser: 2.8.0, v8: 6.6.346.32, uv: 1.20.3, zlib: 1.2.11, ares: 1.14.0,
+ modules: 64, nghttp2: 1.29.0, napi: 3, openssl: 1.1.0h, electron: 3.0.9,
+ chrome: 66.0.3359.181)
+
+node-report version: 2.2.1 (built against Node.js v10.2.0, glibc 2.27, 64 bit)
+
+OS version: Linux 4.15.0-36-generic #39-Ubuntu SMP Mon Sep 24 16:19:09 UTC 2018
+(glibc: 2.27)
+
+Machine: X450JB x86_64
+
+================================================================================
+==== JavaScript Stack Trace ====================================================
+
+EventEmitter.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/main.js:1:1)
+EventEmitter.emit (events.js:1:1)
+WebContents.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/resources/electron.asar/browser/api/web-contents.js:1:1)
+WebContents.emit (events.js:1:1)
+
+================================================================================
+==== Native Stack Trace ========================================================
+
+ 0: [pc=0x7f66c77de0ab] nodereport::OnUncaughtException(v8::Isolate*) [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/node-report/api.node]
+ 1: [pc=0x7f66dbfd362f]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 2: [pc=0x7f66dbf8c81e]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 3: [pc=0x7f66dbf8cf95]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 4: [pc=0x7f66dbf9441c]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 5: [pc=0x3f0f722841fd] 
+
+================================================================================
+==== JavaScript Heap and Garbage Collector =====================================
+
+Heap space name: new_space
+    Memory size: 16,777,216 bytes, committed memory: 16,777,064 bytes
+    Capacity: 8,249,344 bytes, used: 5,788,584 bytes, available: 2,460,760 bytes
+Heap space name: old_space
+    Memory size: 45,948,928 bytes, committed memory: 45,915,152 bytes
+    Capacity: 44,884,528 bytes, used: 41,394,480 bytes, available: 3,490,048 bytes
+Heap space name: code_space
+    Memory size: 2,621,440 bytes, committed memory: 2,147,072 bytes
+    Capacity: 2,517,888 bytes, used: 1,583,840 bytes, available: 934,048 bytes
+Heap space name: map_space
+    Memory size: 4,739,072 bytes, committed memory: 4,422,960 bytes
+    Capacity: 4,651,232 bytes, used: 1,593,680 bytes, available: 3,057,552 bytes
+Heap space name: large_object_space
+    Memory size: 4,395,008 bytes, committed memory: 4,395,008 bytes
+    Capacity: 2,109,052,048 bytes, used: 3,028,624 bytes, available: 2,106,023,424 bytes
+
+Total heap memory size: 74,481,664 bytes
+Total heap committed memory: 73,657,256 bytes
+Total used heap memory: 53,389,208 bytes
+Total available heap memory: 2,115,965,832 bytes
+
+Heap memory limit: 2,181,038,080
+
+================================================================================
+==== Resource Usage ============================================================
+
+Process total resource usage:
+  User mode CPU: 8.441770 secs
+  Kernel mode CPU: 2.013563 secs
+  Average CPU Consumption : 5.97448%
+  Maximum resident set size: 233,930,752 bytes
+  Page faults: 0 (I/O required) 185438 (no I/O required)
+  Filesystem activity: 0 reads 224 writes
+
+Event loop thread resource usage:
+  User mode CPU: 5.742560 secs
+  Kernel mode CPU: 1.344473 secs
+  Average CPU Consumption : 4.04973%
+  Filesystem activity: 0 reads 80 writes
+
+================================================================================
+==== Node.js libuv Handle Summary ==============================================
+
+(Flags: R=Ref, A=Active)
+Flags  Type      Address             Details
+[RA]   async     0x00002c0272e4bdc8  
+[-A]   async     0x00002c0273053680  
+[-A]   check     0x00002c0273202868  
+[R-]   idle      0x00002c02732028e0  
+[--]   prepare   0x00002c0273202958  
+[--]   check     0x00002c02732029d0  
+[-A]   async     0x00007f66dc93da40  
+[R-]   tty       0x00002c0273331098  width: 75, height: 19, file descriptor: 24, write queue size: 0, writable
+[-A]   signal    0x00002c0272fcd500  signum: 28 (SIGWINCH)
+[R-]   tty       0x00002c0273332098  width: 75, height: 19, file descriptor: 26, write queue size: 0, writable
+[-A]   async     0x00007f66c79e6ce0  
+[RA]   async     0x00002c0272e42780  
+[R-]   timer     0x00002c027389fa00  repeat: 0, timeout expired: 33034 ms ago
+[-A]   async     0x00007f66a9e32d58  
+[R-]   timer     0x00002c0273899be0  repeat: 0, timeout expired: 41619520 ms ago
+[RA]   prepare   0x00007f66a9e32ca0  
+[R-]   timer     0x00002c02739ef820  repeat: 0, timeout expired: 41619520 ms ago
+[-A]   tcp       0x00002c02731a4000  localhost:50906 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 2227051, file descriptor: 78, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02739df600  localhost:57180 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 3406078, file descriptor: 79, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02739df100  localhost:41022 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 3406078, file descriptor: 96, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02739df400  localhost:36804 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 3406078, file descriptor: 105, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02739df500  localhost:50922 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 3406078, file descriptor: 106, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02738a2300  localhost:57196 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 3406078, file descriptor: 107, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b8d000  localhost:41038 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 3406078, file descriptor: 108, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b8d100  localhost:36820 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 3406078, file descriptor: 109, write queue size: 0, readable, writable
+[-A]   timer     0x00002c02739efb40  repeat: 0, timeout in: 195626 ms
+[-A]   timer     0x00002c02739efbe0  repeat: 0, timeout in: 195633 ms
+[-A]   timer     0x00002c02739efd20  repeat: 0, timeout in: 195633 ms
+[-A]   timer     0x00002c02739efe60  repeat: 0, timeout in: 195633 ms
+[-A]   timer     0x00002c0273936dc0  repeat: 0, timeout in: 195633 ms
+[-A]   timer     0x00002c02739e1780  repeat: 0, timeout in: 195633 ms
+[-A]   timer     0x00002c02739ef0a0  repeat: 0, timeout in: 195633 ms
+[-A]   timer     0x00002c02739ef140  repeat: 0, timeout in: 195633 ms
+[-A]   tcp       0x00002c0273137d00  localhost:50938 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 110, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b8d900  localhost:50942 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 111, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9a200  localhost:57216 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 113, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9a300  localhost:41058 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 114, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9a400  localhost:36840 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 115, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9a600  localhost:57228 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 116, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9a500  localhost:41070 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 117, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9a700  localhost:36852 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 118, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273137400  localhost:47464 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 119, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273137500  localhost:47468 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 120, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02739df000  localhost:50978 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 121, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02739df200  localhost:57252 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 122, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02738a2e00  localhost:41094 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 124, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02738a2d00  localhost:36876 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 125, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0273d7bbe0  repeat: 0, timeout in: 208442 ms
+[-A]   timer     0x00002c0273d7bd20  repeat: 0, timeout in: 208442 ms
+[-A]   timer     0x00002c0273d7b640  repeat: 0, timeout in: 208442 ms
+[-A]   timer     0x00002c027389f000  repeat: 0, timeout in: 208442 ms
+[-A]   tcp       0x00002c0273ce7100  localhost:50994 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 126, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273874300  localhost:57268 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 127, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273ce7400  localhost:36888 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 128, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273ce7500  localhost:41114 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 129, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273ce7a00  localhost:47504 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 130, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9a900  localhost:51014 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 131, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273045f00  localhost:57288 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 132, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273045e00  localhost:41130 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 133, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b8d200  localhost:36912 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 134, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0273320c80  repeat: 0, timeout in: 211225 ms
+[-A]   timer     0x00002c0273d7bc80  repeat: 0, timeout in: 211225 ms
+[-A]   timer     0x00002c0273320b40  repeat: 0, timeout in: 211227 ms
+[-A]   timer     0x00002c0273056d20  repeat: 0, timeout in: 211227 ms
+[-A]   tcp       0x00002c02731a4100  localhost:51030 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 135, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273045100  localhost:51034 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 136, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273045200  localhost:57308 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 137, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273045300  localhost:41150 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 138, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273045400  localhost:36932 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 139, write queue size: 0, readable, writable
+[-A]   timer     0x00002c027304b280  repeat: 0, timeout in: 211279 ms
+[-A]   timer     0x00002c027304b3c0  repeat: 0, timeout in: 211279 ms
+[-A]   timer     0x00002c027412b3c0  repeat: 0, timeout in: 211279 ms
+[-A]   timer     0x00002c027412b140  repeat: 0, timeout in: 211280 ms
+[-A]   tcp       0x00002c0273b9aa00  localhost:51050 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 140, write queue size: 0, readable, writable
+[-A]   signal    0x00002c02730076e0  signum: 6 (SIGABRT)
+[-A]   signal    0x00002c0273007050  signum: 14 (SIGALRM)
+[-A]   signal    0x00002c0273007500  signum: 1 (SIGHUP)
+[-A]   signal    0x00002c02730079b0  signum: 2 (SIGINT)
+[-A]   signal    0x00002c0273007aa0  signum: 15 (SIGTERM)
+[-A]   signal    0x00002c0273007b90  signum: 26 (SIGVTALRM)
+[-A]   signal    0x00002c0273007c80  signum: 24 (SIGXCPU)
+[-A]   signal    0x00002c0273007d70  signum: 25 (SIGXFSZ)
+[-A]   signal    0x00002c0273007e60  signum: 12 (SIGUSR2)
+[-A]   signal    0x00002c0273007f50  signum: 5 (SIGTRAP)
+[-A]   signal    0x00002c0273008050  signum: 31 (SIGSYS)
+[-A]   signal    0x00002c0272ff7320  signum: 3 (SIGQUIT)
+[-A]   signal    0x00002c0272ff7410  signum: 6 (SIGABRT)
+[-A]   signal    0x00002c0272ff7500  signum: 29 (SIGIO)
+[-A]   signal    0x00002c0272ff75f0  signum: 29 (SIGIO)
+[-A]   signal    0x00002c0272ff76e0  signum: 30 (SIGPWR)
+[-A]   signal    0x00002c0272ff77d0  signum: 16 (SIGSTKFLT)
+[-A]   signal    0x00002c0272ff78c0  signum: 31 (SIGSYS)
+[R-]   timer     0x00002c0273056a00  repeat: 0, timeout expired: 41619520 ms ago
+[-A]   tcp       0x00002c0273b8db00  localhost:41166 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 141, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273137a00  localhost:57332 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 142, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273b9ac00  localhost:36952 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 143, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273045d00  localhost:47564 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 144, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273ce7200  localhost:51074 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 145, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273ce7d00  localhost:57348 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 146, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273ce7900  localhost:41190 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 147, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02745e5000  localhost:36972 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 148, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0273ecc640  repeat: 0, timeout in: 221318 ms
+[-A]   timer     0x00002c0273ecc820  repeat: 0, timeout in: 221318 ms
+[-A]   timer     0x00002c02745e61e0  repeat: 0, timeout in: 221318 ms
+[-A]   timer     0x00002c027304be60  repeat: 0, timeout in: 221319 ms
+[-A]   tcp       0x00002c02745e5700  localhost:51090 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 149, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02745e5200  localhost:41202 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 150, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02745e5900  localhost:57368 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 151, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02745e5a00  localhost:36988 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 152, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02745e5f00  localhost:47600 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 153, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274670200  localhost:51110 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 155, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274670f00  localhost:57384 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 156, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274670800  localhost:41226 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 157, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274670700  localhost:37008 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 158, write queue size: 0, readable, writable
+[-A]   timer     0x00002c027466f000  repeat: 0, timeout in: 224089 ms
+[-A]   timer     0x00002c0273ecc780  repeat: 0, timeout in: 224089 ms
+[-A]   timer     0x00002c0273ecc6e0  repeat: 0, timeout in: 224090 ms
+[-A]   timer     0x00002c027466fdc0  repeat: 0, timeout in: 224090 ms
+[-A]   tcp       0x00002c02745e5c00  localhost:51126 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 154, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273ce7e00  localhost:51130 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 159, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274726d00  localhost:57404 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 160, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274726000  localhost:41246 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 161, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273137100  localhost:37028 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 162, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0274702780  repeat: 0, timeout in: 224164 ms
+[-A]   timer     0x00002c02747028c0  repeat: 0, timeout in: 224164 ms
+[-A]   timer     0x00002c0274702820  repeat: 0, timeout in: 224165 ms
+[-A]   timer     0x00002c0273d24820  repeat: 0, timeout in: 224166 ms
+[-A]   tcp       0x00002c0273d29b00  localhost:51146 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 163, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273d29e00  localhost:41262 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 164, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273d29f00  localhost:37044 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 165, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273d29100  localhost:57432 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 166, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273d29700  localhost:47660 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 167, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02738a2100  localhost:51180 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 168, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5f100  localhost:57454 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 169, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5f200  localhost:41296 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 170, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5f300  localhost:37078 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 171, write queue size: 0, readable, writable
+[-A]   timer     0x00002c02747ebaa0  repeat: 0, timeout in: 311252 ms
+[-A]   timer     0x00002c02747e68c0  repeat: 0, timeout in: 311252 ms
+[-A]   timer     0x00002c027389ff00  repeat: 0, timeout in: 311252 ms
+[-A]   timer     0x00002c02738e2000  repeat: 0, timeout in: 311253 ms
+[-A]   tcp       0x00002c0273f5fa00  localhost:51196 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 172, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5fd00  localhost:41308 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 173, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5fe00  localhost:57474 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 174, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5ff00  localhost:37094 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 175, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c027481a600  localhost:47706 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 176, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c027481a200  localhost:51216 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 178, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c027481a900  localhost:57490 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 179, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c027481af00  localhost:41332 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 180, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c027481aa00  localhost:37114 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 181, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0273fb9780  repeat: 0, timeout in: 316716 ms
+[-A]   timer     0x00002c02739d7640  repeat: 0, timeout in: 316716 ms
+[-A]   timer     0x00002c02738e2dc0  repeat: 0, timeout in: 316716 ms
+[-A]   timer     0x00002c027393d6e0  repeat: 0, timeout in: 316716 ms
+[-A]   tcp       0x00002c0274726300  localhost:51232 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 177, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274726500  localhost:51236 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 182, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274726800  localhost:57510 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 183, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274726900  localhost:41352 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 184, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274726a00  localhost:37134 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 185, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0274644960  repeat: 0, timeout in: 316756 ms
+[-A]   timer     0x00002c02738d0aa0  repeat: 0, timeout in: 316756 ms
+[-A]   timer     0x00002c0274b99280  repeat: 0, timeout in: 316756 ms
+[-A]   timer     0x00002c0274b99000  repeat: 0, timeout in: 316757 ms
+[-A]   tcp       0x00002c0274872100  localhost:51252 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 186, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274670400  localhost:57530 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 187, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273874a00  localhost:41372 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 188, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274670c00  localhost:37154 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 189, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02741c0100  localhost:47766 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 190, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274872b00  localhost:51276 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 192, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c027481a100  localhost:57550 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 193, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5f500  localhost:41392 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 194, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02745e5b00  localhost:37174 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 196, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0272fec000  repeat: 0, timeout in: 321310 ms
+[-A]   timer     0x00002c0274e5e820  repeat: 0, timeout in: 321313 ms
+[-A]   timer     0x00002c0274e5e960  repeat: 0, timeout in: 321313 ms
+[-A]   timer     0x00002c0274e5eaa0  repeat: 0, timeout in: 321313 ms
+[-A]   tcp       0x00002c0274dcd000  localhost:51292 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 197, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274dcd900  localhost:57566 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 198, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274dcdb00  localhost:41408 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 199, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274dcdc00  localhost:37190 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 200, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274dcd300  localhost:47802 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 201, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274dcd600  localhost:51316 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 191, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5f400  localhost:57590 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 195, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274dcd700  localhost:41432 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 202, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274670300  localhost:37214 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 203, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c02741c0000  localhost:51332 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 205, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90000  localhost:57606 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 206, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90100  localhost:41448 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 207, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90200  localhost:37230 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 208, write queue size: 0, readable, writable
+[-A]   timer     0x00002c02747eb820  repeat: 0, timeout in: 324137 ms
+[-A]   timer     0x00002c0274e5e6e0  repeat: 0, timeout in: 324137 ms
+[-A]   timer     0x00002c0274805e60  repeat: 0, timeout in: 324143 ms
+[-A]   timer     0x00002c0274a21280  repeat: 0, timeout in: 324143 ms
+[-A]   timer     0x00002c0274a213c0  repeat: 0, timeout in: 324143 ms
+[-A]   timer     0x00002c0274a21500  repeat: 0, timeout in: 324143 ms
+[-A]   timer     0x00002c0274a21640  repeat: 0, timeout in: 324143 ms
+[-A]   timer     0x00002c0273fb9960  repeat: 0, timeout in: 324144 ms
+[-A]   tcp       0x00002c0274e19100  localhost:51348 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 204, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90e00  localhost:51352 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 209, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90a00  localhost:51356 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 210, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90c00  localhost:57630 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 211, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90800  localhost:41472 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 212, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274d90400  localhost:37254 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 213, write queue size: 0, readable, writable
+[-A]   timer     0x00002c0274a21320  repeat: 0, timeout in: 324192 ms
+[-A]   timer     0x00002c0274a21e60  repeat: 0, timeout in: 324192 ms
+[-A]   timer     0x00002c0274fc0e60  repeat: 0, timeout in: 324192 ms
+[-A]   timer     0x00002c0274fc0be0  repeat: 0, timeout in: 324193 ms
+[-A]   tcp       0x00002c0274e19900  localhost:51372 connected to localhost:7051, send buffer size: 2626560, recv buffer size: 4847111, file descriptor: 214, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274e19800  localhost:57648 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 215, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274e19b00  localhost:41490 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 216, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0274e19c00  localhost:37272 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 217, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c027481a000  localhost:47884 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 218, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0273f5fc00  localhost:41506 connected to localhost:9051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 219, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0275118100  localhost:57672 connected to localhost:8051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 220, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0275118200  localhost:37292 connected to localhost:10051, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 221, write queue size: 0, readable, writable
+[-A]   tcp       0x00002c0275118300  localhost:47904 connected to localhost:7050, send buffer size: 2626560, recv buffer size: 1061808, file descriptor: 222, write queue size: 0, readable, writable
+[-A]   timer     0x00002c027551c3c0  repeat: 0, timeout in: 5000 ms
+
+================================================================================
+==== System Information ========================================================
+
+Environment variables
+  LESSOPEN=| /usr/bin/lesspipe %s
+  npm_config_cache_lock_stale=60000
+  npm_config_ham_it_up=
+  npm_config_legacy_bundling=
+  npm_config_sign_git_tag=
+  USER=dyahayu
+  _system_version=18.04
+  npm_config_user_agent=npm/6.4.1 node/v8.11.4 linux x64
+  npm_config_always_auth=
+  TEXTDOMAIN=im-config
+  XDG_SEAT=seat0
+  npm_config_bin_links=true
+  npm_config_key=
+  SSH_AGENT_PID=2228
+  XDG_SESSION_TYPE=x11
+  npm_config_allow_same_version=
+  npm_config_description=true
+  npm_config_fetch_retries=2
+  npm_config_heading=npm
+  npm_config_if_present=
+  npm_config_init_version=1.0.0
+  npm_config_user=1000
+  npm_node_execpath=/home/dyahayu/.nvm/versions/node/v8.11.4/bin/node
+  GREP_COLOR=1;33
+  AUTOFEATURE=true autotest
+  SHLVL=1
+  npm_config_prefer_online=
+  npm_config_noproxy=
+  QT4_IM_MODULE=xim
+  HOME=/home/dyahayu
+  OLDPWD=/home/dyahayu/Hyperledger/Pemilu_Network/fabric-samples/first-network
+  npm_config_force=
+  DESKTOP_SESSION=ubuntu
+  NVM_BIN=/home/dyahayu/.nvm/versions/node/v8.11.4/bin
+  npm_config_only=
+  npm_config_read_only=
+  LSCOLORS=Gxfxcxdxdxegedabagacad
+  GIO_LAUNCHED_DESKTOP_FILE=/home/dyahayu/.config/autostart/terminator.desktop
+  npm_config_cache_min=10
+  npm_config_init_license=ISC
+  GNOME_SHELL_SESSION_MODE=ubuntu
+  GTK_MODULES=gail:atk-bridge
+  npm_config_editor=vi
+  npm_config_rollback=true
+  npm_config_tag_version_prefix=v
+  GIT_HOSTING=nously@github.com
+  npm_config_cache_max=Infinity
+  npm_config_timing=
+  npm_config_userconfig=/home/dyahayu/.npmrc
+  SCM_CHECK=true
+  GOROOT=/usr/local/go
+  COMPOSER=/home/dyahayu/Hyperledger/Pemilu_Network/pemilu-network
+  DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+  npm_config_engine_strict=
+  npm_config_init_author_name=
+  npm_config_init_author_url=
+  npm_config_preid=
+  npm_config_tmp=/tmp
+  COLORTERM=truecolor
+  GIO_LAUNCHED_DESKTOP_FILE_PID=2677
+  TERMINATOR_DBUS_NAME=net.tenshu.Terminator20x1a6021154d881c
+  npm_package_description=Voting Client in blockchain technology
+  npm_config_depth=Infinity
+  npm_config_package_lock_only=
+  npm_config_save_dev=
+  npm_config_usage=
+  NVM_DIR=/home/dyahayu/.nvm
+  npm_config_metrics_registry=https://registry.npmjs.org/
+  npm_config_cafile=
+  npm_config_otp=
+  npm_config_package_lock=true
+  npm_config_progress=true
+  npm_config_https_proxy=
+  npm_config_save_prod=
+  MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+  IM_CONFIG_PHASE=2
+  npm_config_audit=true
+  npm_config_cidr=
+  npm_config_onload_script=
+  npm_config_sso_type=oauth
+  LOGNAME=dyahayu
+  GTK_IM_MODULE=ibus
+  npm_config_rebuild_bundle=true
+  npm_config_save_bundle=
+  npm_config_shell=/bin/bash
+  TODO=t
+  rvm_bin_path=/home/dyahayu/.rvm/bin
+  DESKTOP_AUTOSTART_ID=10f22d4e0b7a6652a154307044092454700000020070019
+  _=/home/dyahayu/.nvm/versions/node/v8.11.4/bin/npm
+  npm_config_dry_run=
+  npm_config_prefix=/home/dyahayu/.nvm/versions/node/v8.11.4
+  RUBY_VERSION=ruby-2.5.1
+  DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+  IRBRC=/home/dyahayu/.rvm/rubies/ruby-2.5.1/.irbrc
+  npm_config_scope=
+  npm_config_browser=
+  npm_config_cache_lock_wait=10000
+  npm_config_ignore_prepublish=
+  npm_config_registry=https://registry.npmjs.org/
+  npm_config_save_optional=
+  npm_config_searchopts=
+  npm_config_versions=
+  USERNAME=dyahayu
+  XDG_SESSION_ID=1
+  TERM=xterm-256color
+  npm_config_cache=/home/dyahayu/.npm
+  npm_config_proxy=
+  npm_config_send_metrics=
+  GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+  npm_package_scripts_start=electron .
+  npm_config_global_style=
+  npm_config_ignore_scripts=
+  npm_config_version=
+  HISTCONTROL=ignoreboth
+  WINDOWPATH=1
+  npm_package_dependencies_electron=^3.0.9
+  npm_config_local_address=
+  npm_config_viewer=man
+  npm_config_node_gyp=/home/dyahayu/.nvm/versions/node/v8.11.4/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js
+  PATH=/home/dyahayu/.nvm/versions/node/v8.11.4/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/.bin:/home/dyahayu/.nvm/versions/node/v8.11.4/bin:/mnt/8CD8B3D0D8B3B6B4/AndroidStudio/android-studio/bin:/home/dyahayu/Hyperledger/chaincode/bin:/usr/local/go/bin:/home/dyahayu/.rvm/gems/ruby-2.5.1/bin:/home/dyahayu/.rvm/gems/ruby-2.5.1@global/bin:/home/dyahayu/.rvm/rubies/ruby-2.5.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/dyahayu/.rvm/bin:/home/dyahayu/.rvm/bin
+  IRC_CLIENT=irssi
+  SESSION_MANAGER=local/X450JB:@/tmp/.ICE-unix/2007,unix/X450JB:/tmp/.ICE-unix/2007
+  npm_package_name=voting-client
+  npm_config_audit_level=low
+  npm_config_prefer_offline=
+  NODE=/home/dyahayu/.nvm/versions/node/v8.11.4/bin/node
+  XDG_MENU_PREFIX=gnome-
+  S_COLORS=auto
+  FABRIC=/home/dyahayu/Hyperledger/Pemilu_Network/fabric-samples/first-network
+  XDG_RUNTIME_DIR=/run/user/1000
+  npm_config_color=true
+  npm_config_sign_git_commit=
+  DISPLAY=:0
+  MY_RUBY_HOME=/home/dyahayu/.rvm/rubies/ruby-2.5.1
+  npm_package_devDependencies_prettyjson=^1.2.1
+  npm_config_fetch_retry_mintimeout=10000
+  npm_config_maxsockets=50
+  npm_config_offline=
+  npm_config_sso_poll_frequency=500
+  LANG=en_US.UTF-8
+  TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+  XDG_CURRENT_DESKTOP=Unity
+  HISTSIZE=1000
+  npm_package_devDependencies_composer_cli=^0.20.4
+  npm_config_umask=0002
+  LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+  XDG_SESSION_DESKTOP=ubuntu
+  XMODIFIERS=@im=ibus
+  XAUTHORITY=/run/user/1000/gdm/Xauthority
+  npm_package_main=main.js
+  npm_package_dependencies_composer_client=^0.20.4
+  npm_config_fetch_retry_maxtimeout=60000
+  npm_config_loglevel=notice
+  npm_config_logs_max=10
+  npm_config_message=%s
+  npm_lifecycle_script=electron .
+  SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+  npm_config_ca=
+  npm_config_cert=
+  npm_config_global=
+  npm_config_link=
+  TERMINATOR_UUID=urn:uuid:8d9df235-903b-4723-83b9-dd4e9bbf5b5c
+  GOPATH=/home/dyahayu/Hyperledger/chaincode
+  SHELL=/bin/bash
+  npm_package_version=1.0.0
+  npm_config_access=
+  npm_config_also=
+  npm_config_save=true
+  npm_config_unicode=true
+  npm_lifecycle_event=start
+  QT_ACCESSIBILITY=1
+  rvm_prefix=/home/dyahayu
+  GDMSESSION=ubuntu
+  npm_config_argv={"remain":[],"cooked":["start"],"original":["start"]}
+  npm_config_long=
+  npm_config_production=
+  npm_config_searchlimit=20
+  npm_config_unsafe_perm=true
+  npm_config_update_notifier=true
+  _system_type=Linux
+  LESSCLOSE=/usr/bin/lesspipe %s %s
+  GEM_HOME=/home/dyahayu/.rvm/gems/ruby-2.5.1
+  npm_config_auth_type=legacy
+  npm_config_node_version=8.11.4
+  npm_config_tag=latest
+  npm_config_git_tag_version=true
+  npm_config_commit_hooks=true
+  npm_config_script_shell=
+  npm_config_shrinkwrap=true
+  rvm_version=1.29.4 (latest)
+  TEXTDOMAINDIR=/usr/share/locale/
+  GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+  npm_package_license=ISC
+  npm_package_devDependencies_grpc=^1.16.0
+  npm_config_fetch_retry_factor=10
+  npm_config_save_exact=
+  npm_config_strict_ssl=true
+  BASH_IT_THEME=powerline-multiline
+  XDG_VTNR=1
+  _system_arch=x86_64
+  QT_IM_MODULE=ibus
+  npm_package_dependencies_composer=^4.1.0
+  npm_config_dev=
+  npm_config_globalconfig=/home/dyahayu/.nvm/versions/node/v8.11.4/etc/npmrc
+  npm_config_init_module=/home/dyahayu/.npm-init.js
+  npm_config_parseable=
+  PWD=/home/dyahayu/Hyperledger/Pemilu_Network/voting-client
+  GEM_PATH=/home/dyahayu/.rvm/gems/ruby-2.5.1:/home/dyahayu/.rvm/gems/ruby-2.5.1@global
+  npm_config_globalignorefile=/home/dyahayu/.nvm/versions/node/v8.11.4/etc/npmignore
+  npm_execpath=/home/dyahayu/.nvm/versions/node/v8.11.4/lib/node_modules/npm/bin/npm-cli.js
+  CLUTTER_IM_MODULE=xim
+  BASH_IT=/home/dyahayu/.bash_it
+  NVM_CD_FLAGS=
+  XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+  XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+  npm_package_author_name=Dyah Ayu
+  npm_config_cache_lock_retries=10
+  npm_config_searchstaleness=900
+  _system_name=Ubuntu
+  npm_package_dependencies_composer_common=^0.20.4
+  npm_config_node_options=
+  npm_config_save_prefix=^
+  npm_config_scripts_prepend_node_path=warn-only
+  npm_config_group=1000
+  npm_config_init_author_email=
+  npm_config_searchexclude=
+  rvm_path=/home/dyahayu/.rvm
+  VTE_VERSION=5202
+  npm_config_git=git
+  npm_config_optional=true
+  npm_config_json=
+  INIT_CWD=/home/dyahayu/Hyperledger/Pemilu_Network/voting-client
+  NO_AT_BRIDGE=1
+  CHROME_DESKTOP=Electron.desktop
+  SUPPRESS_NO_CONFIG_WARNING=y
+  GRPC_SSL_CIPHER_SUITES=ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384
+
+Resource limits                        soft limit      hard limit
+  core file size (blocks)                       0       unlimited
+  data seg size (kbytes)                unlimited       unlimited
+  file size (blocks)                    unlimited       unlimited
+  max locked memory (bytes)              16777216        16777216
+  max memory size (kbytes)              unlimited       unlimited
+  open files                                 8192         1048576
+  stack size (bytes)                      8388608       unlimited
+  cpu time (seconds)                    unlimited       unlimited
+  max user processes                        30444           30444
+  virtual memory (kbytes)               unlimited       unlimited
+
+Loaded libraries
+  linux-vdso.so.1
+  /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so
+  /lib/x86_64-linux-gnu/libpthread.so.0
+  /usr/lib/x86_64-linux-gnu/libgtk-3.so.0
+  /usr/lib/x86_64-linux-gnu/libgdk-3.so.0
+  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libpango-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libatk-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libcairo.so.2
+  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0
+  /lib/x86_64-linux-gnu/libdbus-1.so.3
+  /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1
+  /usr/lib/x86_64-linux-gnu/libxcb.so.1
+  /usr/lib/x86_64-linux-gnu/libXi.so.6
+  /usr/lib/x86_64-linux-gnu/libXcursor.so.1
+  /usr/lib/x86_64-linux-gnu/libXdamage.so.1
+  /usr/lib/x86_64-linux-gnu/libXrandr.so.2
+  /usr/lib/x86_64-linux-gnu/libXcomposite.so.1
+  /usr/lib/x86_64-linux-gnu/libXext.so.6
+  /usr/lib/x86_64-linux-gnu/libXfixes.so.3
+  /usr/lib/x86_64-linux-gnu/libXrender.so.1
+  /usr/lib/x86_64-linux-gnu/libX11.so.6
+  /usr/lib/x86_64-linux-gnu/libXtst.so.6
+  /usr/lib/x86_64-linux-gnu/libXss.so.1
+  /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libnss3.so
+  /usr/lib/x86_64-linux-gnu/libnssutil3.so
+  /usr/lib/x86_64-linux-gnu/libsmime3.so
+  /usr/lib/x86_64-linux-gnu/libnspr4.so
+  /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libffmpeg.so
+  /usr/lib/x86_64-linux-gnu/libasound.so.2
+  /usr/lib/x86_64-linux-gnu/libcups.so.2
+  /lib/x86_64-linux-gnu/librt.so.1
+  /lib/x86_64-linux-gnu/libdl.so.2
+  /usr/lib/x86_64-linux-gnu/libfontconfig.so.1
+  /lib/x86_64-linux-gnu/libexpat.so.1
+  /lib/x86_64-linux-gnu/libm.so.6
+  /lib/x86_64-linux-gnu/libgcc_s.so.1
+  /lib/x86_64-linux-gnu/libc.so.6
+  /lib64/ld-linux-x86-64.so.2
+  /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so.2
+  /usr/lib/x86_64-linux-gnu/libepoxy.so.0
+  /usr/lib/x86_64-linux-gnu/libpangoft2-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libXinerama.so.1
+  /usr/lib/x86_64-linux-gnu/libxkbcommon.so.0
+  /usr/lib/x86_64-linux-gnu/libwayland-cursor.so.0
+  /usr/lib/x86_64-linux-gnu/libwayland-egl.so.1
+  /usr/lib/x86_64-linux-gnu/libwayland-client.so.0
+  /usr/lib/x86_64-linux-gnu/libfreetype.so.6
+  /usr/lib/x86_64-linux-gnu/libthai.so.0
+  /usr/lib/x86_64-linux-gnu/libpixman-1.so.0
+  /usr/lib/x86_64-linux-gnu/libpng16.so.16
+  /usr/lib/x86_64-linux-gnu/libxcb-shm.so.0
+  /usr/lib/x86_64-linux-gnu/libxcb-render.so.0
+  /lib/x86_64-linux-gnu/libz.so.1
+  /lib/x86_64-linux-gnu/libselinux.so.1
+  /lib/x86_64-linux-gnu/libresolv.so.2
+  /lib/x86_64-linux-gnu/libmount.so.1
+  /usr/lib/x86_64-linux-gnu/libffi.so.6
+  /usr/lib/x86_64-linux-gnu/libatspi.so.0
+  /lib/x86_64-linux-gnu/libsystemd.so.0
+  /usr/lib/x86_64-linux-gnu/libXau.so.6
+  /usr/lib/x86_64-linux-gnu/libXdmcp.so.6
+  /lib/x86_64-linux-gnu/libpcre.so.3
+  /usr/lib/x86_64-linux-gnu/libplc4.so
+  /usr/lib/x86_64-linux-gnu/libplds4.so
+  /usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2
+  /usr/lib/x86_64-linux-gnu/libgnutls.so.30
+  /usr/lib/x86_64-linux-gnu/libavahi-common.so.3
+  /usr/lib/x86_64-linux-gnu/libavahi-client.so.3
+  /usr/lib/x86_64-linux-gnu/libharfbuzz.so.0
+  /usr/lib/x86_64-linux-gnu/libdatrie.so.1
+  /lib/x86_64-linux-gnu/libblkid.so.1
+  /lib/x86_64-linux-gnu/liblzma.so.5
+  /usr/lib/x86_64-linux-gnu/liblz4.so.1
+  /lib/x86_64-linux-gnu/libgcrypt.so.20
+  /lib/x86_64-linux-gnu/libbsd.so.0
+  /usr/lib/x86_64-linux-gnu/libkrb5.so.3
+  /usr/lib/x86_64-linux-gnu/libk5crypto.so.3
+  /lib/x86_64-linux-gnu/libcom_err.so.2
+  /usr/lib/x86_64-linux-gnu/libkrb5support.so.0
+  /usr/lib/x86_64-linux-gnu/libp11-kit.so.0
+  /usr/lib/x86_64-linux-gnu/libidn2.so.0
+  /usr/lib/x86_64-linux-gnu/libunistring.so.2
+  /usr/lib/x86_64-linux-gnu/libtasn1.so.6
+  /usr/lib/x86_64-linux-gnu/libnettle.so.6
+  /usr/lib/x86_64-linux-gnu/libhogweed.so.4
+  /usr/lib/x86_64-linux-gnu/libgmp.so.10
+  /usr/lib/x86_64-linux-gnu/libgraphite2.so.3
+  /lib/x86_64-linux-gnu/libuuid.so.1
+  /lib/x86_64-linux-gnu/libgpg-error.so.0
+  /lib/x86_64-linux-gnu/libkeyutils.so.1
+  /usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+  /usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+  /usr/lib/x86_64-linux-gnu/gtk-3.0/modules/libcanberra-gtk-module.so
+  /usr/lib/x86_64-linux-gnu/libcanberra-gtk3.so.0
+  /usr/lib/x86_64-linux-gnu/libcanberra.so.0
+  /usr/lib/x86_64-linux-gnu/libvorbisfile.so.3
+  /usr/lib/x86_64-linux-gnu/libtdb.so.1
+  /usr/lib/x86_64-linux-gnu/libltdl.so.7
+  /usr/lib/x86_64-linux-gnu/libvorbis.so.0
+  /usr/lib/x86_64-linux-gnu/libogg.so.0
+  /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/node-report/api.node
+  /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  /usr/lib/x86_64-linux-gnu/libpulse.so.0
+  /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-11.1.so
+  /lib/x86_64-linux-gnu/libwrap.so.0
+  /usr/lib/x86_64-linux-gnu/libsndfile.so.1
+  /usr/lib/x86_64-linux-gnu/libasyncns.so.0
+  /lib/x86_64-linux-gnu/libnsl.so.1
+  /usr/lib/x86_64-linux-gnu/libFLAC.so.8
+  /usr/lib/x86_64-linux-gnu/libvorbisenc.so.2
+  /usr/lib/x86_64-linux-gnu/nss/libsoftokn3.so
+  /usr/lib/x86_64-linux-gnu/libsqlite3.so.0
+  /usr/lib/x86_64-linux-gnu/nss/libfreeblpriv3.so
+  /usr/lib/x86_64-linux-gnu/nss/libnssckbi.so
+  /lib/x86_64-linux-gnu/libudev.so.1
+  /usr/lib/x86_64-linux-gnu/gio/modules/libdconfsettings.so
+  /usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ibus.so
+  /usr/lib/x86_64-linux-gnu/libibus-1.0.so.5
+  /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/fabric-client/node_modules/grpc/src/node/extension_binary/electron-v3.0-linux-x64-glibc/grpc_node.node
+  /lib/x86_64-linux-gnu/libnss_files.so.2
+
+================================================================================
