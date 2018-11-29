@@ -23,7 +23,7 @@ class ReadPemilih {
 							"nik": resourceCollection[i].nik,
 							"nama": resourceCollection[i].nama,
 							"tempatLahir": resourceCollection[i].tempatLahir,
-							"tanggalLahir": resourceCollection[i].tanggalLahir,
+							"tanggalLahir": resourceCollection[i].tanggalLahir
 						});
 					}
 					return resources;

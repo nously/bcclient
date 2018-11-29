@@ -33,7 +33,6 @@ participant Pemilih identified by nik {
   o String nama
   o String tempatLahir
   o DateTime tanggalLahir
-  o Boolean sudahMemilih
 }
 
 participant Kandidat identified by kandidatId {

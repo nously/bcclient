@@ -82,21 +82,19 @@ ipcMain.on('login', function(event, userIdentity) {
 				let readMWS = new ReadMonitoringWebServer(userLoggedIn.cardname);
 				readMWS.read().then(function(resources) {
 					window.webContents.send('refresh:monitoringWebServer', resources);
-				});
-
-				let readVO = new ReadVotingOrganizer(userLoggedIn.cardname);
-				readVO.read().then(function(resources) {
-					window.webContents.send('refresh:votingOrganizer', resources);
+					let readVO = new ReadVotingOrganizer(userLoggedIn.cardname);
+					readVO.read().then(function(resources) {
+						window.webContents.send('refresh:votingOrganizer', resources);
+					});
 				});
 			} else if (userLoggedIn.role === "organizer") {
 				let readKandidat = new ReadKandidat(userLoggedIn.cardname);
 				readKandidat.read().then(function(resources) {
 					window.webContents.send('refresh:kandidat', resources);
-				});
-
-				let readPemilih = new ReadPemilih(userLoggedIn.cardname);
-				readPemilih.read().then(function(resources) {
-					window.webContents.send('refresh:pemilih', resources);
+					let readPemilih = new ReadPemilih(userLoggedIn.cardname);
+					readPemilih.read().then(function(resources) {
+						window.webContents.send('refresh:pemilih', resources);
+					});
 				});
 			} else if (userLoggedIn.role === "voter") {
 				let readKandidat = new ReadKandidat(userLoggedIn.cardname);
