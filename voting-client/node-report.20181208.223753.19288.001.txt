@@ -1,0 +1,500 @@
+================================================================================
+==== Node Report ===============================================================
+
+Event: exception, location: "OnUncaughtException"
+Filename: node-report.20181208.223753.19288.001.txt
+Dump event time:  2018/12/08 22:37:53
+Module load time: 2018/12/08 22:37:53
+Process ID: 19288
+Command line: /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/electron . 
+
+Node.js version: v10.2.0
+(http_parser: 2.8.0, v8: 6.6.346.32, uv: 1.20.3, zlib: 1.2.11, ares: 1.14.0,
+ modules: 64, nghttp2: 1.29.0, napi: 3, openssl: 1.1.0h, electron: 3.0.9,
+ chrome: 66.0.3359.181)
+
+node-report version: 2.2.1 (built against Node.js v10.2.0, glibc 2.27, 64 bit)
+
+OS version: Linux 4.15.0-36-generic #39-Ubuntu SMP Mon Sep 24 16:19:09 UTC 2018
+(glibc: 2.27)
+
+Machine: X450JB x86_64
+
+================================================================================
+==== JavaScript Stack Trace ====================================================
+
+Script (vm.js:1:1)
+createScript (vm.js:1:1)
+Object.runInThisContext (vm.js:1:1)
+Module._compile (internal/modules/cjs/loader.js:1:1)
+Object.Module._extensions..js (internal/modules/cjs/loader.js:1:1)
+Module.load (internal/modules/cjs/loader.js:1:1)
+tryModuleLoad (internal/modules/cjs/loader.js:1:1)
+Function.Module._load (internal/modules/cjs/loader.js:1:1)
+Module.require (internal/modules/cjs/loader.js:1:1)
+require (internal/modules/cjs/helpers.js:1:1)
+Object.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/main.js:1:1)
+Object.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/main.js:1:1)
+Module._compile (internal/modules/cjs/loader.js:1:1)
+Object.Module._extensions..js (internal/modules/cjs/loader.js:1:1)
+Module.load (internal/modules/cjs/loader.js:1:1)
+tryModuleLoad (internal/modules/cjs/loader.js:1:1)
+Function.Module._load (internal/modules/cjs/loader.js:1:1)
+loadApplicationPackage (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/resources/default_app.asar/main.js:1:1)
+Object.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/resources/default_app.asar/main.js:1:1)
+Object.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/resources/default_app.asar/main.js:1:1)
+Module._compile (internal/modules/cjs/loader.js:1:1)
+Object.Module._extensions..js (internal/modules/cjs/loader.js:1:1)
+Module.load (internal/modules/cjs/loader.js:1:1)
+tryModuleLoad (internal/modules/cjs/loader.js:1:1)
+Function.Module._load (internal/modules/cjs/loader.js:1:1)
+Object.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/resources/electron.asar/browser/init.js:1:1)
+Object.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/resources/electron.asar/browser/init.js:1:1)
+Module._compile (internal/modules/cjs/loader.js:1:1)
+Object.Module._extensions..js (internal/modules/cjs/loader.js:1:1)
+Module.load (internal/modules/cjs/loader.js:1:1)
+tryModuleLoad (internal/modules/cjs/loader.js:1:1)
+Function.Module._load (internal/modules/cjs/loader.js:1:1)
+Function.Module.runMain (internal/modules/cjs/loader.js:1:1)
+startup (internal/bootstrap/node.js:1:1)
+bootstrapNodeJSCore (internal/bootstrap/node.js:1:1)
+
+================================================================================
+==== Native Stack Trace ========================================================
+
+ 0: [pc=0x7f550c8ba0ab] nodereport::OnUncaughtException(v8::Isolate*) [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/node-report/api.node]
+ 1: [pc=0x7f55210b062f]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 2: [pc=0x7f5520e7372f]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 3: [pc=0x7f5520e63ebf] v8::internal::parsing::ParseProgram(v8::internal::ParseInfo*, v8::internal::Isolate*) [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 4: [pc=0x7f5521370835]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 5: [pc=0x7f5521371e44] v8::internal::Compiler::GetSharedFunctionInfoForScript(v8::internal::Handle<v8::internal::String>, v8::internal::Compiler::ScriptDetails const&, v8::ScriptOriginOptions, v8::Extension*, v8::internal::ScriptData**, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason, v8::internal::NativesFlag) [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 6: [pc=0x7f5520e05fc6] v8::ScriptCompiler::CompileUnboundInternal(v8::Isolate*, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions, v8::ScriptCompiler::NoCacheReason) [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 7: [pc=0x7f552178aff5] node::contextify::ContextifyScript::New(v8::FunctionCallbackInfo<v8::Value> const&) [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 8: [pc=0x7f55213ad05c]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+ 9: [pc=0x7f55213fdb1e]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+10: [pc=0x7f55213fd5a0]  [/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so]
+11: [pc=0x342c139841fd] 
+
+================================================================================
+==== JavaScript Heap and Garbage Collector =====================================
+
+Heap space name: new_space
+    Memory size: 16,777,216 bytes, committed memory: 16,701,360 bytes
+    Capacity: 8,249,344 bytes, used: 5,311,808 bytes, available: 2,937,536 bytes
+Heap space name: old_space
+    Memory size: 17,113,088 bytes, committed memory: 17,024,896 bytes
+    Capacity: 16,656,944 bytes, used: 16,312,696 bytes, available: 344,248 bytes
+Heap space name: code_space
+    Memory size: 1,572,864 bytes, committed memory: 1,084,704 bytes
+    Capacity: 1,478,560 bytes, used: 786,144 bytes, available: 692,416 bytes
+Heap space name: map_space
+    Memory size: 1,593,344 bytes, committed memory: 1,100,736 bytes
+    Capacity: 1,066,048 bytes, used: 1,024,080 bytes, available: 41,968 bytes
+Heap space name: large_object_space
+    Memory size: 3,883,008 bytes, committed memory: 3,883,008 bytes
+    Capacity: 2,142,081,160 bytes, used: 2,515,592 bytes, available: 2,139,565,568 bytes
+
+Total heap memory size: 40,939,520 bytes
+Total heap committed memory: 39,794,704 bytes
+Total used heap memory: 25,950,320 bytes
+Total available heap memory: 2,143,581,736 bytes
+
+Heap memory limit: 2,181,038,080
+
+================================================================================
+==== Resource Usage ============================================================
+
+Process total resource usage:
+  User mode CPU: 0.577798 secs
+  Kernel mode CPU: 0.043236 secs
+  Average CPU Consumption : 62.1034%
+  Maximum resident set size: 111,271,936 bytes
+  Page faults: 7 (I/O required) 31148 (no I/O required)
+  Filesystem activity: 1536 reads 24 writes
+
+Event loop thread resource usage:
+  User mode CPU: 0.507990 secs
+  Kernel mode CPU: 0.031999 secs
+  Average CPU Consumption : 53.9989%
+  Filesystem activity: 1536 reads 24 writes
+
+================================================================================
+==== Node.js libuv Handle Summary ==============================================
+
+(Flags: R=Ref, A=Active)
+Flags  Type      Address             Details
+[RA]   async     0x00001be62db62dc8  
+[-A]   async     0x00001be62dff5680  
+[-A]   check     0x00001be62df11868  
+[R-]   idle      0x00001be62df118e0  
+[--]   prepare   0x00001be62df11958  
+[--]   check     0x00001be62df119d0  
+[-A]   async     0x00007f5521a1aa40  
+[R-]   tty       0x00001be62e048098  width: 75, height: 38, file descriptor: 24, write queue size: 0, writable
+[-A]   signal    0x00001be62dce4500  signum: 28 (SIGWINCH)
+[R-]   tty       0x00001be62e049098  width: 75, height: 38, file descriptor: 26, write queue size: 0, writable
+[-A]   async     0x00007f550cac2ce0  
+
+================================================================================
+==== System Information ========================================================
+
+Environment variables
+  LESSOPEN=| /usr/bin/lesspipe %s
+  npm_config_cache_lock_stale=60000
+  npm_config_ham_it_up=
+  npm_config_legacy_bundling=
+  npm_config_sign_git_tag=
+  USER=dyahayu
+  _system_version=18.04
+  npm_config_user_agent=npm/6.4.1 node/v8.11.4 linux x64
+  npm_config_always_auth=
+  TEXTDOMAIN=im-config
+  XDG_SEAT=seat0
+  npm_config_bin_links=true
+  npm_config_key=
+  SSH_AGENT_PID=2124
+  XDG_SESSION_TYPE=x11
+  npm_config_allow_same_version=
+  npm_config_description=true
+  npm_config_fetch_retries=2
+  npm_config_heading=npm
+  npm_config_if_present=
+  npm_config_init_version=1.0.0
+  npm_config_user=1000
+  npm_node_execpath=/home/dyahayu/.nvm/versions/node/v8.11.4/bin/node
+  GREP_COLOR=1;33
+  AUTOFEATURE=true autotest
+  SHLVL=1
+  npm_config_prefer_online=
+  npm_config_noproxy=
+  QT4_IM_MODULE=xim
+  HOME=/home/dyahayu
+  OLDPWD=/home/dyahayu/Hyperledger/Pemilu_Network/fabric-samples/first-network
+  npm_config_force=
+  DESKTOP_SESSION=ubuntu
+  NVM_BIN=/home/dyahayu/.nvm/versions/node/v8.11.4/bin
+  npm_config_only=
+  npm_config_read_only=
+  LSCOLORS=Gxfxcxdxdxegedabagacad
+  GIO_LAUNCHED_DESKTOP_FILE=/home/dyahayu/.config/autostart/terminator.desktop
+  npm_config_cache_min=10
+  npm_config_init_license=ISC
+  GNOME_SHELL_SESSION_MODE=ubuntu
+  GTK_MODULES=gail:atk-bridge
+  npm_config_editor=vi
+  npm_config_rollback=true
+  npm_config_tag_version_prefix=v
+  GIT_HOSTING=nously@github.com
+  npm_config_cache_max=Infinity
+  npm_config_timing=
+  npm_config_userconfig=/home/dyahayu/.npmrc
+  SCM_CHECK=true
+  GOROOT=/usr/local/go
+  COMPOSER=/home/dyahayu/Hyperledger/Pemilu_Network/pemilu-network
+  DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+  npm_config_engine_strict=
+  npm_config_init_author_name=
+  npm_config_init_author_url=
+  npm_config_preid=
+  npm_config_tmp=/tmp
+  COLORTERM=truecolor
+  GIO_LAUNCHED_DESKTOP_FILE_PID=3496
+  TERMINATOR_DBUS_NAME=net.tenshu.Terminator20x1a6021154d881c
+  npm_package_description=Voting Client in blockchain technology
+  npm_config_depth=Infinity
+  npm_config_package_lock_only=
+  npm_config_save_dev=
+  npm_config_usage=
+  NVM_DIR=/home/dyahayu/.nvm
+  npm_config_metrics_registry=https://registry.npmjs.org/
+  npm_config_cafile=
+  npm_config_otp=
+  npm_config_package_lock=true
+  npm_config_progress=true
+  npm_config_https_proxy=
+  npm_config_save_prod=
+  MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+  IM_CONFIG_PHASE=2
+  npm_config_audit=true
+  npm_config_cidr=
+  npm_config_onload_script=
+  npm_config_sso_type=oauth
+  LOGNAME=dyahayu
+  GTK_IM_MODULE=ibus
+  npm_config_rebuild_bundle=true
+  npm_config_save_bundle=
+  npm_config_shell=/bin/bash
+  TODO=t
+  rvm_bin_path=/home/dyahayu/.rvm/bin
+  DESKTOP_AUTOSTART_ID=10d0b7e5a3fb3d86c3154430173329622900000019500019
+  _=/home/dyahayu/.nvm/versions/node/v8.11.4/bin/npm
+  npm_config_dry_run=
+  npm_config_prefix=/home/dyahayu/.nvm/versions/node/v8.11.4
+  RUBY_VERSION=ruby-2.5.1
+  DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+  IRBRC=/home/dyahayu/.rvm/rubies/ruby-2.5.1/.irbrc
+  npm_config_scope=
+  npm_config_browser=
+  npm_config_cache_lock_wait=10000
+  npm_config_ignore_prepublish=
+  npm_config_registry=https://registry.npmjs.org/
+  npm_config_save_optional=
+  npm_config_searchopts=
+  npm_config_versions=
+  USERNAME=dyahayu
+  XDG_SESSION_ID=1
+  TERM=xterm-256color
+  npm_config_cache=/home/dyahayu/.npm
+  npm_config_proxy=
+  npm_config_send_metrics=
+  GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+  npm_package_scripts_start=electron .
+  npm_config_global_style=
+  npm_config_ignore_scripts=
+  npm_config_version=
+  HISTCONTROL=ignoreboth
+  WINDOWPATH=1
+  npm_package_dependencies_electron=^3.0.9
+  npm_config_local_address=
+  npm_config_viewer=man
+  npm_config_node_gyp=/home/dyahayu/.nvm/versions/node/v8.11.4/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js
+  PATH=/home/dyahayu/.nvm/versions/node/v8.11.4/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/.bin:/home/dyahayu/.nvm/versions/node/v8.11.4/bin:/mnt/8CD8B3D0D8B3B6B4/AndroidStudio/android-studio/bin:/home/dyahayu/Hyperledger/chaincode/bin:/usr/local/go/bin:/home/dyahayu/.rvm/gems/ruby-2.5.1/bin:/home/dyahayu/.rvm/gems/ruby-2.5.1@global/bin:/home/dyahayu/.rvm/rubies/ruby-2.5.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/dyahayu/.rvm/bin:/home/dyahayu/.rvm/bin:/usr/share/swift/usr/bin
+  IRC_CLIENT=irssi
+  SESSION_MANAGER=local/X450JB:@/tmp/.ICE-unix/1950,unix/X450JB:/tmp/.ICE-unix/1950
+  npm_package_name=voting-client
+  npm_config_audit_level=low
+  npm_config_prefer_offline=
+  NODE=/home/dyahayu/.nvm/versions/node/v8.11.4/bin/node
+  XDG_MENU_PREFIX=gnome-
+  S_COLORS=auto
+  FABRIC=/home/dyahayu/Hyperledger/Pemilu_Network/fabric-samples/first-network
+  XDG_RUNTIME_DIR=/run/user/1000
+  npm_config_color=true
+  npm_config_sign_git_commit=
+  DISPLAY=:0
+  MY_RUBY_HOME=/home/dyahayu/.rvm/rubies/ruby-2.5.1
+  npm_package_devDependencies_prettyjson=^1.2.1
+  npm_config_fetch_retry_mintimeout=10000
+  npm_config_maxsockets=50
+  npm_config_offline=
+  npm_config_sso_poll_frequency=500
+  LANG=en_US.UTF-8
+  TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+  XDG_CURRENT_DESKTOP=Unity
+  HISTSIZE=1000
+  npm_package_devDependencies_composer_cli=^0.20.4
+  npm_config_umask=0002
+  LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+  XDG_SESSION_DESKTOP=ubuntu
+  XMODIFIERS=@im=ibus
+  XAUTHORITY=/run/user/1000/gdm/Xauthority
+  npm_package_main=main.js
+  npm_package_dependencies_composer_client=^0.20.4
+  npm_config_fetch_retry_maxtimeout=60000
+  npm_config_loglevel=notice
+  npm_config_logs_max=10
+  npm_config_message=%s
+  npm_lifecycle_script=electron .
+  SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+  npm_config_ca=
+  npm_config_cert=
+  npm_config_global=
+  npm_config_link=
+  TERMINATOR_UUID=urn:uuid:a04bb7b9-64af-4298-8b76-f1548203af33
+  GOPATH=/home/dyahayu/Hyperledger/chaincode
+  SHELL=/bin/bash
+  npm_package_version=1.0.0
+  npm_config_access=
+  npm_config_also=
+  npm_config_save=true
+  npm_config_unicode=true
+  npm_lifecycle_event=start
+  QT_ACCESSIBILITY=1
+  rvm_prefix=/home/dyahayu
+  GDMSESSION=ubuntu
+  npm_config_argv={"remain":[],"cooked":["start"],"original":["start"]}
+  npm_config_long=
+  npm_config_production=
+  npm_config_searchlimit=20
+  npm_config_unsafe_perm=true
+  npm_config_update_notifier=true
+  _system_type=Linux
+  LESSCLOSE=/usr/bin/lesspipe %s %s
+  GEM_HOME=/home/dyahayu/.rvm/gems/ruby-2.5.1
+  npm_config_auth_type=legacy
+  npm_config_node_version=8.11.4
+  npm_config_tag=latest
+  npm_config_git_tag_version=true
+  npm_config_commit_hooks=true
+  npm_config_script_shell=
+  npm_config_shrinkwrap=true
+  rvm_version=1.29.4 (latest)
+  TEXTDOMAINDIR=/usr/share/locale/
+  GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+  npm_package_license=ISC
+  npm_package_devDependencies_grpc=^1.16.0
+  npm_config_fetch_retry_factor=10
+  npm_config_save_exact=
+  npm_config_strict_ssl=true
+  BASH_IT_THEME=powerline-multiline
+  XDG_VTNR=1
+  _system_arch=x86_64
+  QT_IM_MODULE=ibus
+  npm_package_dependencies_composer=^4.1.0
+  npm_config_dev=
+  npm_config_globalconfig=/home/dyahayu/.nvm/versions/node/v8.11.4/etc/npmrc
+  npm_config_init_module=/home/dyahayu/.npm-init.js
+  npm_config_parseable=
+  PWD=/home/dyahayu/Hyperledger/Pemilu_Network/voting-client
+  GEM_PATH=/home/dyahayu/.rvm/gems/ruby-2.5.1:/home/dyahayu/.rvm/gems/ruby-2.5.1@global
+  npm_config_globalignorefile=/home/dyahayu/.nvm/versions/node/v8.11.4/etc/npmignore
+  npm_execpath=/home/dyahayu/.nvm/versions/node/v8.11.4/lib/node_modules/npm/bin/npm-cli.js
+  CLUTTER_IM_MODULE=xim
+  BASH_IT=/home/dyahayu/.bash_it
+  NVM_CD_FLAGS=
+  XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+  XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+  npm_package_author_name=Dyah Ayu
+  npm_config_cache_lock_retries=10
+  npm_config_searchstaleness=900
+  _system_name=Ubuntu
+  npm_package_dependencies_composer_common=^0.20.4
+  npm_config_node_options=
+  npm_config_save_prefix=^
+  npm_config_scripts_prepend_node_path=warn-only
+  npm_config_group=1000
+  npm_config_init_author_email=
+  npm_config_searchexclude=
+  rvm_path=/home/dyahayu/.rvm
+  VTE_VERSION=5202
+  npm_config_git=git
+  npm_config_optional=true
+  npm_config_json=
+  INIT_CWD=/home/dyahayu/Hyperledger/Pemilu_Network/voting-client
+  NO_AT_BRIDGE=1
+  CHROME_DESKTOP=Electron.desktop
+  SUPPRESS_NO_CONFIG_WARNING=y
+
+Resource limits                        soft limit      hard limit
+  core file size (blocks)                       0       unlimited
+  data seg size (kbytes)                unlimited       unlimited
+  file size (blocks)                    unlimited       unlimited
+  max locked memory (bytes)              16777216        16777216
+  max memory size (kbytes)              unlimited       unlimited
+  open files                                 8192         1048576
+  stack size (bytes)                      8388608       unlimited
+  cpu time (seconds)                    unlimited       unlimited
+  max user processes                        30444           30444
+  virtual memory (kbytes)               unlimited       unlimited
+
+Loaded libraries
+  linux-vdso.so.1
+  /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libnode.so
+  /lib/x86_64-linux-gnu/libpthread.so.0
+  /usr/lib/x86_64-linux-gnu/libgtk-3.so.0
+  /usr/lib/x86_64-linux-gnu/libgdk-3.so.0
+  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libpango-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libatk-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libcairo.so.2
+  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0
+  /lib/x86_64-linux-gnu/libdbus-1.so.3
+  /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1
+  /usr/lib/x86_64-linux-gnu/libxcb.so.1
+  /usr/lib/x86_64-linux-gnu/libXi.so.6
+  /usr/lib/x86_64-linux-gnu/libXcursor.so.1
+  /usr/lib/x86_64-linux-gnu/libXdamage.so.1
+  /usr/lib/x86_64-linux-gnu/libXrandr.so.2
+  /usr/lib/x86_64-linux-gnu/libXcomposite.so.1
+  /usr/lib/x86_64-linux-gnu/libXext.so.6
+  /usr/lib/x86_64-linux-gnu/libXfixes.so.3
+  /usr/lib/x86_64-linux-gnu/libXrender.so.1
+  /usr/lib/x86_64-linux-gnu/libX11.so.6
+  /usr/lib/x86_64-linux-gnu/libXtst.so.6
+  /usr/lib/x86_64-linux-gnu/libXss.so.1
+  /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libnss3.so
+  /usr/lib/x86_64-linux-gnu/libnssutil3.so
+  /usr/lib/x86_64-linux-gnu/libsmime3.so
+  /usr/lib/x86_64-linux-gnu/libnspr4.so
+  /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/electron/dist/libffmpeg.so
+  /usr/lib/x86_64-linux-gnu/libasound.so.2
+  /usr/lib/x86_64-linux-gnu/libcups.so.2
+  /lib/x86_64-linux-gnu/librt.so.1
+  /lib/x86_64-linux-gnu/libdl.so.2
+  /usr/lib/x86_64-linux-gnu/libfontconfig.so.1
+  /lib/x86_64-linux-gnu/libexpat.so.1
+  /lib/x86_64-linux-gnu/libm.so.6
+  /lib/x86_64-linux-gnu/libgcc_s.so.1
+  /lib/x86_64-linux-gnu/libc.so.6
+  /lib64/ld-linux-x86-64.so.2
+  /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0
+  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so.2
+  /usr/lib/x86_64-linux-gnu/libepoxy.so.0
+  /usr/lib/x86_64-linux-gnu/libpangoft2-1.0.so.0
+  /usr/lib/x86_64-linux-gnu/libXinerama.so.1
+  /usr/lib/x86_64-linux-gnu/libxkbcommon.so.0
+  /usr/lib/x86_64-linux-gnu/libwayland-cursor.so.0
+  /usr/lib/x86_64-linux-gnu/libwayland-egl.so.1
+  /usr/lib/x86_64-linux-gnu/libwayland-client.so.0
+  /usr/lib/x86_64-linux-gnu/libfreetype.so.6
+  /usr/lib/x86_64-linux-gnu/libthai.so.0
+  /usr/lib/x86_64-linux-gnu/libpixman-1.so.0
+  /usr/lib/x86_64-linux-gnu/libpng16.so.16
+  /usr/lib/x86_64-linux-gnu/libxcb-shm.so.0
+  /usr/lib/x86_64-linux-gnu/libxcb-render.so.0
+  /lib/x86_64-linux-gnu/libz.so.1
+  /lib/x86_64-linux-gnu/libselinux.so.1
+  /lib/x86_64-linux-gnu/libresolv.so.2
+  /lib/x86_64-linux-gnu/libmount.so.1
+  /usr/lib/x86_64-linux-gnu/libffi.so.6
+  /usr/lib/x86_64-linux-gnu/libatspi.so.0
+  /lib/x86_64-linux-gnu/libsystemd.so.0
+  /usr/lib/x86_64-linux-gnu/libXau.so.6
+  /usr/lib/x86_64-linux-gnu/libXdmcp.so.6
+  /lib/x86_64-linux-gnu/libpcre.so.3
+  /usr/lib/x86_64-linux-gnu/libplc4.so
+  /usr/lib/x86_64-linux-gnu/libplds4.so
+  /usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2
+  /usr/lib/x86_64-linux-gnu/libgnutls.so.30
+  /usr/lib/x86_64-linux-gnu/libavahi-common.so.3
+  /usr/lib/x86_64-linux-gnu/libavahi-client.so.3
+  /usr/lib/x86_64-linux-gnu/libharfbuzz.so.0
+  /usr/lib/x86_64-linux-gnu/libdatrie.so.1
+  /lib/x86_64-linux-gnu/libblkid.so.1
+  /lib/x86_64-linux-gnu/liblzma.so.5
+  /usr/lib/x86_64-linux-gnu/liblz4.so.1
+  /lib/x86_64-linux-gnu/libgcrypt.so.20
+  /lib/x86_64-linux-gnu/libbsd.so.0
+  /usr/lib/x86_64-linux-gnu/libkrb5.so.3
+  /usr/lib/x86_64-linux-gnu/libk5crypto.so.3
+  /lib/x86_64-linux-gnu/libcom_err.so.2
+  /usr/lib/x86_64-linux-gnu/libkrb5support.so.0
+  /usr/lib/x86_64-linux-gnu/libp11-kit.so.0
+  /usr/lib/x86_64-linux-gnu/libidn2.so.0
+  /usr/lib/x86_64-linux-gnu/libunistring.so.2
+  /usr/lib/x86_64-linux-gnu/libtasn1.so.6
+  /usr/lib/x86_64-linux-gnu/libnettle.so.6
+  /usr/lib/x86_64-linux-gnu/libhogweed.so.4
+  /usr/lib/x86_64-linux-gnu/libgmp.so.10
+  /usr/lib/x86_64-linux-gnu/libgraphite2.so.3
+  /lib/x86_64-linux-gnu/libuuid.so.1
+  /lib/x86_64-linux-gnu/libgpg-error.so.0
+  /lib/x86_64-linux-gnu/libkeyutils.so.1
+  /usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+  /usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+  /usr/lib/x86_64-linux-gnu/gtk-3.0/modules/libcanberra-gtk-module.so
+  /usr/lib/x86_64-linux-gnu/libcanberra-gtk3.so.0
+  /usr/lib/x86_64-linux-gnu/libcanberra.so.0
+  /usr/lib/x86_64-linux-gnu/libvorbisfile.so.3
+  /usr/lib/x86_64-linux-gnu/libtdb.so.1
+  /usr/lib/x86_64-linux-gnu/libltdl.so.7
+  /usr/lib/x86_64-linux-gnu/libvorbis.so.0
+  /usr/lib/x86_64-linux-gnu/libogg.so.0
+  /home/dyahayu/Hyperledger/Pemilu_Network/voting-client/node_modules/node-report/api.node
+  /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+
+================================================================================

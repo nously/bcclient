@@ -9,6 +9,7 @@ const TambahPemilih = require('./lib/TambahPemilih.js');
 const TambahSuara = require('./lib/TambahSuara.js');
 const GunakanSuara = require('./lib/GunakanSuara.js');
 
+const ReadHasilSuara = require('./lib/ReadHasilSuara.js');
 const ReadPemilih = require('./lib/ReadPemilih.js');
 const ReadKandidat = require('./lib/ReadKandidat.js');
 const ReadMonitoringWebServer = require('./lib/ReadMonitoringWebServer.js');
@@ -64,6 +65,12 @@ ipcMain.on('login', function(event, userIdentity) {
 			"role": "admin",
 			"cardname": "alice@" + networkName
 		};
+	} else if (username === "monitoring1" && password === "monitor") {
+		userLoggedIn = {
+			"username": "monitoring1",
+			"role": "monitor",
+			"cardname": "monitoring1@" + networkName
+		};
 	} else {
 		userLoggedIn = null;
 	}
@@ -100,6 +107,11 @@ ipcMain.on('login', function(event, userIdentity) {
 				let readKandidat = new ReadKandidat(userLoggedIn.cardname);
 				readKandidat.read().then(function(resources) {
 					window.webContents.send('refresh:kandidat', resources);
+				});
+			} else if (userLoggedIn.role === "monitor") {
+				let readHasilSuara = new ReadHasilSuara(userLoggedIn.cardname);
+				readHasilSuara.read().then(function(resources) {
+					window.webContents.send('refresh:monitor', resources);
 				});
 			}
 		});

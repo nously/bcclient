@@ -7,6 +7,15 @@ rule MonitoringWebServerToSuara {
   action: ALLOW
 }
 
+rule MonitoringWebServerToKandidat {
+  description: "Allow MonitoringWebServer to READ Suara"
+  participant: "org.pemilu.pemilihan.MonitoringWebServer"
+  operation: READ
+  resource: "org.pemilu.pemilihan.Kandidat"
+  action: ALLOW
+}
+
+
 // =============================================================
 
 rule PemilihToSuara {

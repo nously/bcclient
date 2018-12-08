@@ -140,4 +140,3 @@ async function BuatMonitoringWebServer(tx) {
             console.error(error);
         });
 }
-
