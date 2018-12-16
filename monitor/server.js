@@ -7,7 +7,8 @@ const ReadHasilSuara = require('./ReadHasilSuara');
 
 var rl = readline.createInterface(process.stdin, process.stdout);
 
-var index;
+var top;
+var bottom;
 var css;
 var script;
 
@@ -21,7 +22,8 @@ rl.on('line', function(line) {
 	readHasilSuara = new ReadHasilSuara(line);
 });
 
-fs.readFile('./index.html', function(err, data) { index = data; });
+fs.readFile('./top.html', function(err, data) { top = data; });
+fs.readFile('./bottom.html', function(err, data) { bottom = data; });
 fs.readFile('./style.css', function(err, data) { css = data; });
 fs.readFile('./script.js', function(err, data) { script = data; });
 
@@ -34,9 +36,20 @@ http.createServer(function(request, response) {
 
 	switch (filename) {
 		case './index.html':
-			response.writeHead(200, {"Content-Type": "text/html"});
-			response.write(index);
-			response.end();
+			readHasilSuara.read().then(function(resources) {
+				var hasilSuara = "";
+				for (let i = 0; i < resources.length; i++) {
+					hasilSuara += `<tr>
+						<td>${resources[i].nomorUrut}</td>
+						<td>${resources[i].namaCalon}</td>
+						<td>${resources[i].namaWakilCalon}</td>
+						<td>${resources[i].jumlahSuara}</td>
+					</tr>`;
+				}
+				response.writeHead(200, {"Content-Type": "text/html"});
+				response.write(top + hasilSuara + bottom);
+				response.end();
+			});
 			break;
 		case './style.css':
 			response.writeHead(200, {"Content-Type": "text/css"});

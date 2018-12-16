@@ -44,7 +44,7 @@ async function GunakanSuara(tx) {
  */
 async function TambahSuara(tx) {
     const factory = getFactory();
-    let newSuara = factory.newResource('org.pemilu.pemilihan', 'Suara', "WillBeRandom-1234");
+    let newSuara = factory.newResource('org.pemilu.pemilihan', 'Suara', tx.x);
     newSuara.sudahDigunakan = false;
     newSuara.owner = null;
     newSuara.pemilih = tx.pemilih;

@@ -53,6 +53,12 @@ ipcMain.on('login', function(event, userIdentity) {
 			"role": "voter",
 			"cardname": "bukanDyahAyu@" + networkName
 		};
+	} else if (username === "bukanDyahAyu2" && password === "pemilih") {
+		userLoggedIn = {
+			"username": "bukanDyahAyu2",
+			"role": "voter",
+			"cardname": "bukanDyahAyu2@" + networkName
+		};
 	} else if (username === "bob" && password === "admin") {
 		userLoggedIn = {
 			"username": "bob",

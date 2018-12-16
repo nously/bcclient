@@ -70,6 +70,7 @@ transaction TambahPemilih {
 
 transaction TambahSuara {
   --> Pemilih pemilih
+  o String x
 }
 
 // kandidat

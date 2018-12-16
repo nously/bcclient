@@ -25,7 +25,7 @@ class ReadHasilSuara {
 											resources[j].namaWakilCalon === kandidat.namaWakilCalon ||
 											resources[j].nomorUrut === kandidat.nomorUrut) {
 
-											resources[j].jumlahSuara = resources.jumlahSuara + 1;
+											resources[j].jumlahSuara = resources[j].jumlahSuara + 1;
 										} else if (j === resources.length - 1) {
 											resources.push({
 												"namaCalon": kandidat.namaCalon,
