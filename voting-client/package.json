@@ -10,13 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "composer": "^4.1.0",
-    "composer-client": "^0.20.4",
-    "composer-common": "^0.20.4",
-    "electron": "^3.0.9"
+    "composer-client": "^0.20.5",
+    "composer-common": "^0.20.5",
+    "electron": "^3.0.12"
   },
   "devDependencies": {
-    "composer-cli": "^0.20.4",
-    "grpc": "^1.16.0",
+    "composer-cli": "^0.20.5",
+    "grpc": "^1.16.1",
     "prettyjson": "^1.2.1"
   }
 }
