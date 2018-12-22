@@ -1,0 +1,93 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+volumes:
+  orderer.pemilu.com:
+  peer0.jatim.pemilu.com:
+  peer1.jatim.pemilu.com:
+  peer0.jabar.pemilu.com:
+  peer1.jabar.pemilu.com:
+
+networks:
+  byfn:
+
+services:
+
+  orderer.pemilu.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer.pemilu.com
+    container_name: orderer.pemilu.com
+    networks:
+      - byfn
+
+  peer0.jatim.pemilu.com:
+    container_name: peer0.jatim.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer0.jatim.pemilu.com
+    networks:
+      - byfn
+
+  peer1.jatim.pemilu.com:
+    container_name: peer1.jatim.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer1.jatim.pemilu.com
+    networks:
+      - byfn
+
+  peer0.jabar.pemilu.com:
+    container_name: peer0.jabar.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer0.jabar.pemilu.com
+    networks:
+      - byfn
+
+  peer1.jabar.pemilu.com:
+    container_name: peer1.jabar.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer1.jabar.pemilu.com
+    networks:
+      - byfn
+
+  cli:
+    container_name: cli
+    image: hyperledger/fabric-tools:$IMAGE_TAG
+    tty: true
+    stdin_open: true
+    environment:
+      - GOPATH=/opt/gopath
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      #- CORE_LOGGING_LEVEL=DEBUG
+      - CORE_LOGGING_LEVEL=INFO
+      - CORE_PEER_ID=cli
+      - CORE_PEER_ADDRESS=peer0.jatim.pemilu.com:7051
+      - CORE_PEER_LOCALMSPID=JatimMSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/jatim.pemilu.com/peers/peer0.jatim.pemilu.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/jatim.pemilu.com/peers/peer0.jatim.pemilu.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/jatim.pemilu.com/peers/peer0.jatim.pemilu.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/jatim.pemilu.com/users/Admin@jatim.pemilu.com/msp
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: /bin/bash
+    volumes:
+        - /var/run/:/host/var/run/
+        - ./../chaincode/:/opt/gopath/src/github.com/chaincode
+        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+        - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+    depends_on:
+      - orderer.pemilu.com
+      - peer0.jatim.pemilu.com
+      - peer1.jatim.pemilu.com
+      - peer0.jabar.pemilu.com
+      - peer1.jabar.pemilu.com
+    networks:
+      - byfn

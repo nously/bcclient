@@ -1,0 +1,90 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+volumes:
+  orderer.pemilu.com:
+  peer0.jatim.pemilu.com:
+  peer1.jatim.pemilu.com:
+  peer0.jabar.pemilu.com:
+  peer1.jabar.pemilu.com:
+
+networks:
+  byfn:
+services:
+  ca0:
+    image: hyperledger/fabric-ca:$IMAGE_TAG
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-jatim
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.jatim.pemilu.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY
+    ports:
+      - "7054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.jatim.pemilu.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/jatim.pemilu.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerJatim
+    networks:
+      - byfn
+
+  ca1:
+    image: hyperledger/fabric-ca:$IMAGE_TAG
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-jabar
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.jabar.pemilu.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/CA2_PRIVATE_KEY
+    ports:
+      - "8054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.jabar.pemilu.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA2_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/jabar.pemilu.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerJabar
+    networks:
+      - byfn
+
+  orderer.pemilu.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer.pemilu.com
+    container_name: orderer.pemilu.com
+    networks:
+      - byfn
+
+  peer0.jatim.pemilu.com:
+    container_name: peer0.jatim.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer0.jatim.pemilu.com
+    networks:
+      - byfn
+
+  peer1.jatim.pemilu.com:
+    container_name: peer1.jatim.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer1.jatim.pemilu.com
+    networks:
+      - byfn
+
+  peer0.jabar.pemilu.com:
+    container_name: peer0.jabar.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer0.jabar.pemilu.com
+    networks:
+      - byfn
+
+  peer1.jabar.pemilu.com:
+    container_name: peer1.jabar.pemilu.com
+    extends:
+      file:  base/docker-compose-base.yaml
+      service: peer1.jabar.pemilu.com
+    networks:
+      - byfn

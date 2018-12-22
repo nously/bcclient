@@ -1,0 +1,146 @@
+rule MonitoringWebServerToSuara {
+  description: "Allow MonitoringWebServer to READ Suara"
+  participant(p): "org.pemilu.pemilihan.MonitoringWebServer"
+  operation: READ
+  resource(r): "org.pemilu.pemilihan.Suara"
+  condition: (r.sudahDigunakan == true)
+  action: ALLOW
+}
+
+rule MonitoringWebServerToKandidat {
+  description: "Allow MonitoringWebServer to READ Suara"
+  participant: "org.pemilu.pemilihan.MonitoringWebServer"
+  operation: READ
+  resource: "org.pemilu.pemilihan.Kandidat"
+  action: ALLOW
+}
+
+
+// =============================================================
+
+rule PemilihToSuara {
+  description: "Allow Pemilih to READ and UPDATE access"
+  participant(p): "org.pemilu.pemilihan.Pemilih"
+  operation: READ, UPDATE
+  resource(r): "org.pemilu.pemilihan.Suara"
+  condition: (p.getIdentifier() == r.pemilih.getIdentifier())
+  action: ALLOW
+}
+
+rule PemilihToGunakanSuara {
+  description: "Allow Pemilih to GunakanSuara"
+  participant: "org.pemilu.pemilihan.Pemilih"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.GunakanSuara"
+  action: ALLOW
+}
+
+rule PemilihToKandidat {
+  description: "Allow Pemilih to READ and UPDATE access"
+  participant: "org.pemilu.pemilihan.Pemilih"
+  operation: READ
+  resource: "org.pemilu.pemilihan.Kandidat"
+  action: ALLOW
+}
+
+// =============================================================
+
+rule VotingOrganizerToKandidat {
+  description: "Grant all operation by KPU Member to Kandidat"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  operation: ALL
+  resource: "org.pemilu.pemilihan.Kandidat"
+  action: ALLOW
+}
+
+rule VotingOrganizerToTambahKandidat {
+  description: "Allow VotingOrganizer to make TambahKandidat transaction"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahKandidat"
+  action: ALLOW
+}
+
+rule VotingOrganizerToPemilih {
+  description: "Grant all operation for KPU Member to Pemilih"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  operation: ALL
+  resource: "org.pemilu.pemilihan.Pemilih"
+  action: ALLOW
+}
+
+rule VotingOrganizerToTambahPemilih {
+  description: "Grant VotingOrganizer CREATE permission to TambahPemilih"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahPemilih"
+  action: ALLOW
+}
+
+rule VotingOrganizerToSuara {
+  description: "Grant VotingOrganizer CREATE permission to Suara"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.Suara"
+  action: ALLOW
+}
+
+rule VotingOrganizerToTambahSuara {
+  description: "Grant VotingOrganizer CREATE permission to Suara"
+  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  operation: CREATE
+  resource: "org.pemilu.pemilihan.TambahSuara"
+  action: ALLOW
+}
+
+// =============================================================
+
+rule SystemACL {
+  description:  "System ACL to permit all access"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}
+
+rule NetworkAdminUserToTambahVotingOrganizer {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: CREATE
+    resource: "org.pemilu.pemilihan.TambahVotingOrganizer"
+    action: ALLOW
+}
+
+rule NetworkAdminUserToVotingOrganizer {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: CREATE, READ, DELETE
+    resource: "org.pemilu.pemilihan.VotingOrganizer"
+    action: ALLOW
+}
+
+rule NetworkAdminUserToBuatMonitoringWebServer {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: CREATE
+    resource: "org.pemilu.pemilihan.BuatMonitoringWebServer"
+    action: ALLOW
+}
+
+rule NetworkAdminUserToMonitoringWebServer {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: CREATE, READ, DELETE
+    resource: "org.pemilu.pemilihan.MonitoringWebServer"
+    action: ALLOW
+}
+
+
+// for debug purpose
+rule NetworkAdminUserToAll {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: READ
+    resource: "org.pemilu.pemilihan.**"
+    action: ALLOW
+}

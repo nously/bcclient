@@ -1,0 +1,134 @@
+{
+    "name": "byfn-network",
+    "x-type": "hlfv1",
+    "version": "1.0.0",
+	"client": {
+		"organization": "Jabar",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "2100",
+					"eventHub": "2100",
+					"eventReg": "2100"
+				},
+				"orderer": "2100"
+			}
+		}
+	},
+    "channels": {
+        "mychannel": {
+            "orderers": [
+                "orderer.pemilu.com"
+            ],
+            "peers": {
+                "peer0.jatim.pemilu.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "eventSource": true
+                },
+                "peer1.jatim.pemilu.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "eventSource": true
+                },
+                "peer0.jabar.pemilu.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "eventSource": true
+                },
+                "peer1.jabar.pemilu.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "eventSource": true
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Jatim": {
+            "mspid": "JatimMSP",
+            "peers": [
+                "peer0.jatim.pemilu.com",
+                "peer1.jatim.pemilu.com"
+            ],
+            "certificateAuthorities": [
+                "ca.jatim.pemilu.com"
+            ]
+        },
+        "Jabar": {
+            "mspid": "JabarMSP",
+            "peers": [
+                "peer0.jabar.pemilu.com",
+                "peer1.jabar.pemilu.com"
+            ],
+            "certificateAuthorities": [
+                "ca.jabar.pemilu.com"
+            ]
+        }
+    },
+    "orderers": {
+        "orderer.pemilu.com": {
+            "url": "grpcs://localhost:7050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer.pemilu.com"
+            },
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICMjCCAdigAwIBAgIRAM99h223Dd1KgsZBROd9az8wCgYIKoZIzj0EAwIwajEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xEzARBgNVBAoTCnBlbWlsdS5jb20xGTAXBgNVBAMTEHRsc2NhLnBl\nbWlsdS5jb20wHhcNMTgxMjE2MTE1MTA1WhcNMjgxMjEzMTE1MTA1WjBqMQswCQYD\nVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5j\naXNjbzETMBEGA1UEChMKcGVtaWx1LmNvbTEZMBcGA1UEAxMQdGxzY2EucGVtaWx1\nLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABIF78k6PmvF6soitlU5R3MJ/\nahtSgxu/1V4MzKA8taPRMVFk6wZBeMCw51kAiMGTLqj9Uc4xCbCVoWaF/FRotX2j\nXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQF\nMAMBAf8wKQYDVR0OBCIEIHfSNAvWO54mz2AH3RhnULZcAKx33vlggeQkRptgRYHo\nMAoGCCqGSM49BAMCA0gAMEUCIQCaY63UFNkZhajscw5HfGSUzXKMOTbPeT3EwFDQ\n4t2cxgIgVIUn/HX2KOkfN5jYNRisinFNQR7jYtdGxYzBj48Mr20=\n-----END CERTIFICATE-----\n"
+            }
+        }
+    },
+    "peers": {
+        "peer0.jatim.pemilu.com": {
+            "url": "grpcs://localhost:7051",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.jatim.pemilu.com"
+            },
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICSTCCAfCgAwIBAgIRAMpiUgJsysux96E80q0anrcwCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGphdGltLnBlbWlsdS5jb20xHzAdBgNVBAMTFnRs\nc2NhLmphdGltLnBlbWlsdS5jb20wHhcNMTgxMjE2MTE1MTA0WhcNMjgxMjEzMTE1\nMTA0WjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQamF0aW0ucGVtaWx1LmNvbTEfMB0G\nA1UEAxMWdGxzY2EuamF0aW0ucGVtaWx1LmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABDVm0Vrq6kwm0bABdP4Qa5Mpg932Ep0VsLH+hRX/T24vpeC6ZUr5d+/s\nm38AH7ZEsu8N5QTxRNaNQtX5LQMTF7CjXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNV\nHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEICWCfGseOEcw\n/mL9idnb2g9xjTMn7KIA+WDGTvb9xCpMMAoGCCqGSM49BAMCA0cAMEQCIC7aGHGm\nZn5tfVDKGxNHlJIYMxh7inoQuL2fFTyhgP56AiAd8oXDVyjgYHBROpel3CiPy/jL\nDO6G6yHnC1O3vDxKxg==\n-----END CERTIFICATE-----\n"
+            }
+        },
+        "peer1.jatim.pemilu.com": {
+            "url": "grpcs://localhost:8051",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.jatim.pemilu.com"
+            },
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICSTCCAfCgAwIBAgIRAMpiUgJsysux96E80q0anrcwCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGphdGltLnBlbWlsdS5jb20xHzAdBgNVBAMTFnRs\nc2NhLmphdGltLnBlbWlsdS5jb20wHhcNMTgxMjE2MTE1MTA0WhcNMjgxMjEzMTE1\nMTA0WjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQamF0aW0ucGVtaWx1LmNvbTEfMB0G\nA1UEAxMWdGxzY2EuamF0aW0ucGVtaWx1LmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABDVm0Vrq6kwm0bABdP4Qa5Mpg932Ep0VsLH+hRX/T24vpeC6ZUr5d+/s\nm38AH7ZEsu8N5QTxRNaNQtX5LQMTF7CjXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNV\nHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEICWCfGseOEcw\n/mL9idnb2g9xjTMn7KIA+WDGTvb9xCpMMAoGCCqGSM49BAMCA0cAMEQCIC7aGHGm\nZn5tfVDKGxNHlJIYMxh7inoQuL2fFTyhgP56AiAd8oXDVyjgYHBROpel3CiPy/jL\nDO6G6yHnC1O3vDxKxg==\n-----END CERTIFICATE-----\n"
+            }
+        },
+        "peer0.jabar.pemilu.com": {
+            "url": "grpcs://localhost:9051",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.jabar.pemilu.com"
+            },
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICSTCCAe+gAwIBAgIQWLTrqqB0dqL8nLNqE5TDXDAKBggqhkjOPQQDAjB2MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQamFiYXIucGVtaWx1LmNvbTEfMB0GA1UEAxMWdGxz\nY2EuamFiYXIucGVtaWx1LmNvbTAeFw0xODEyMTYxMTUxMDVaFw0yODEyMTMxMTUx\nMDVaMHYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH\nEw1TYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBqYWJhci5wZW1pbHUuY29tMR8wHQYD\nVQQDExZ0bHNjYS5qYWJhci5wZW1pbHUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAEhOq3s3hhQWITZ+ItCVgwwXEaWvW4Wn0ZTVYzxrPyWwNuenDaWlZ7webT\nAIBupTFmVoHjkUkqXAXThx24OEH8v6NfMF0wDgYDVR0PAQH/BAQDAgGmMA8GA1Ud\nJQQIMAYGBFUdJQAwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgYHs4BE2P5WX9\n9jNzfQpJmy2q05zjaGOzDCuwHjbtsOswCgYIKoZIzj0EAwIDSAAwRQIhAKZAQIIG\nOWxMZPwMphYCl2/t+coBFOR4yDG6MQ/xOBHxAiAeHh/zmVTceMPSqMUsTVpR8LVd\nAJF2OT2JrdM2vF8nNw==\n-----END CERTIFICATE-----\n"
+            }
+        },
+        "peer1.jabar.pemilu.com": {
+            "url": "grpcs://localhost:10051",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.jabar.pemilu.com"
+            },
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICSTCCAe+gAwIBAgIQWLTrqqB0dqL8nLNqE5TDXDAKBggqhkjOPQQDAjB2MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQamFiYXIucGVtaWx1LmNvbTEfMB0GA1UEAxMWdGxz\nY2EuamFiYXIucGVtaWx1LmNvbTAeFw0xODEyMTYxMTUxMDVaFw0yODEyMTMxMTUx\nMDVaMHYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH\nEw1TYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBqYWJhci5wZW1pbHUuY29tMR8wHQYD\nVQQDExZ0bHNjYS5qYWJhci5wZW1pbHUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAEhOq3s3hhQWITZ+ItCVgwwXEaWvW4Wn0ZTVYzxrPyWwNuenDaWlZ7webT\nAIBupTFmVoHjkUkqXAXThx24OEH8v6NfMF0wDgYDVR0PAQH/BAQDAgGmMA8GA1Ud\nJQQIMAYGBFUdJQAwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgYHs4BE2P5WX9\n9jNzfQpJmy2q05zjaGOzDCuwHjbtsOswCgYIKoZIzj0EAwIDSAAwRQIhAKZAQIIG\nOWxMZPwMphYCl2/t+coBFOR4yDG6MQ/xOBHxAiAeHh/zmVTceMPSqMUsTVpR8LVd\nAJF2OT2JrdM2vF8nNw==\n-----END CERTIFICATE-----\n"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.jatim.pemilu.com": {
+            "url": "https://localhost:7054",
+            "caName": "ca-jatim",
+            "httpOptions": {
+                "verify": false
+            }
+        },
+        "ca.jabar.pemilu.com": {
+            "url": "https://localhost:8054",
+            "caName": "ca-jabar",
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

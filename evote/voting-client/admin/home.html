@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Voting Client - Home</title>
+
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Home</h1>
+		</header>
+
+		<hr />
+
+		<div class="row">
+			<div class="row">
+				<div class="four columns">
+					<h5>Voting Organizer List</h5>
+				</div>
+				<div class="three columns">
+					<button id="addVO-button" class="tooltip">
+						<span class="tooltiptext">Add Voting organizer</span>
+						<i class="fas fa-plus"></i>
+					</button>
+				</div>
+			</div>
+			<table class="u-full-width">
+				<thead>
+					<tr>
+						<th>Number</th>
+						<th>ID</th>
+						<th>Name</th>
+					</tr>
+				</thead>
+				<tbody id="organizer-list">
+				</tbody>
+			</table>
+		</div>
+
+		<hr />
+
+		<div class="row">
+			<div class="row">
+				<div class="four columns">
+					<h5>Monitoring Web Server List</h5>
+				</div>
+				<div class="three columns">
+					<button id="addMWS-button" class="tooltip">
+						<span class="tooltiptext">Add Monitoring Web Server</span>
+						<i class="fas fa-plus"></i>
+					</button>
+				</div>
+				<table class="u-full-width">
+					<thead>
+						<tr>
+							<th>Number</th>
+							<th>ID</th>
+							<th>Address</th>
+						</tr>
+					</thead>
+					<tbody id="monitor-list">
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<button class="u-pull-right" type="button" id="logout-btn">Logout</button>
+		</div>
+	</div>
+
+	<div id="addVO-modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<form>
+				<label for="unameVo">Username</label>
+				<input autofocus class="u-full-width" type="text" id="unameVo" name="unameVo">
+				<label for="namaVo">ID</label>
+				<input class="u-full-width" type="text" id="IDVo" name="IDVo">
+				<label for="namaVo">Nama Lengkap</label>
+				<input class="u-full-width" type="text" id="namaVo" name="namaVo">
+
+				<input class="button-primary u-pull-right" type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+
+	<div id="addMWS-modal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<form>
+				<label for="unameMWS">Username</label>
+				<input autofocus class="u-full-width" type="text" id="unameMWS" name="unameMWS">
+				<label for="namaVo">ID</label>
+				<input class="u-full-width" type="text" id="IDMWS" name="IDMWS">
+				<label for="namaMWS">Alamat</label>
+				<input class="u-full-width" type="text" id="alamatMWS" name="alamatMWS">
+				
+				<input class="button-primary u-pull-right" type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>

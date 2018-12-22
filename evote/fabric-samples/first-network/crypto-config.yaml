@@ -1,0 +1,21 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: pemilu.com
+    Specs:
+      - Hostname: orderer
+PeerOrgs:
+  - Name: Jatim
+    Domain: jatim.pemilu.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 2
+
+  - Name: Jabar
+    Domain: jabar.pemilu.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+    Users:
+      Count: 2
