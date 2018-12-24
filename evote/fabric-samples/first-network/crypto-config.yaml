@@ -1,11 +1,11 @@
 OrdererOrgs:
   - Name: Orderer
-    Domain: pemilu.com
+    Domain: evote.com
     Specs:
       - Hostname: orderer
 PeerOrgs:
   - Name: Jatim
-    Domain: jatim.pemilu.com
+    Domain: jatim.evote.com
     EnableNodeOUs: true
     Template:
       Count: 2
@@ -13,7 +13,7 @@ PeerOrgs:
       Count: 2
 
   - Name: Jabar
-    Domain: jabar.pemilu.com
+    Domain: jabar.evote.com
     EnableNodeOUs: true
     Template:
       Count: 2

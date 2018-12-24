@@ -5,25 +5,25 @@
     "channels": {
         "mychannel": {
             "orderers": [
-                "orderer.pemilu.com"
+                "orderer.evote.com"
             ],
             "peers": {
-                "peer0.jatim.pemilu.com": {
+                "peer0.jatim.evote.com": {
                     "endorsingPeer": true,
                     "chaincodeQuery": true,
                     "eventSource": true
                 },
-                "peer1.jatim.pemilu.com": {
+                "peer1.jatim.evote.com": {
                     "endorsingPeer": true,
                     "chaincodeQuery": true,
                     "eventSource": true
                 },
-                "peer0.jabar.pemilu.com": {
+                "peer0.jabar.evote.com": {
                     "endorsingPeer": true,
                     "chaincodeQuery": true,
                     "eventSource": true
                 },
-                "peer1.jabar.pemilu.com": {
+                "peer1.jabar.evote.com": {
                     "endorsingPeer": true,
                     "chaincodeQuery": true,
                     "eventSource": true
@@ -35,29 +35,29 @@
         "Jatim": {
             "mspid": "JatimMSP",
             "peers": [
-                "peer0.jatim.pemilu.com",
-                "peer1.jatim.pemilu.com"
+                "peer0.jatim.evote.com",
+                "peer1.jatim.evote.com"
             ],
             "certificateAuthorities": [
-                "ca.jatim.pemilu.com"
+                "ca.jatim.evote.com"
             ]
         },
         "Jabar": {
             "mspid": "JabarMSP",
             "peers": [
-                "peer0.jabar.pemilu.com",
-                "peer1.jabar.pemilu.com"
+                "peer0.jabar.evote.com",
+                "peer1.jabar.evote.com"
             ],
             "certificateAuthorities": [
-                "ca.jabar.pemilu.com"
+                "ca.jabar.evote.com"
             ]
         }
     },
     "orderers": {
-        "orderer.pemilu.com": {
+        "orderer.evote.com": {
             "url": "grpcs://localhost:7050",
             "grpcOptions": {
-                "ssl-target-name-override": "orderer.pemilu.com"
+                "ssl-target-name-override": "orderer.evote.com"
             },
             "tlsCACerts": {
                 "pem": "-----BEGIN CERTIFICATE-----\nMIICMjCCAdigAwIBAgIRANr76usb9YHjXBfsBJkgRpcwCgYIKoZIzj0EAwIwajEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xEzARBgNVBAoTCnBlbWlsdS5jb20xGTAXBgNVBAMTEHRsc2NhLnBl\nbWlsdS5jb20wHhcNMTgxMDA5MDc1MzM5WhcNMjgxMDA2MDc1MzM5WjBqMQswCQYD\nVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5j\naXNjbzETMBEGA1UEChMKcGVtaWx1LmNvbTEZMBcGA1UEAxMQdGxzY2EucGVtaWx1\nLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABOSGS23UcRQWrb8CZqSOCzX+\nXd4aq+dJsLZ9EPbBi8Y2uIjnELc1mETPyyM5qW5TJEYJ1E+ObdtzFILNDp9O/Cuj\nXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNVHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQF\nMAMBAf8wKQYDVR0OBCIEINUQ+KwvqkdNJQPkzOGadPC3zuau8w9kT4/Foh04up63\nMAoGCCqGSM49BAMCA0gAMEUCIQCNSIh1sZ5jNFr3URz/7pI+AvPSGPA0+J2FBkqI\nmsBobgIgI/0Jtc78JyZhcIrd7MyE3KV46JhGmaEId3XRfgXsMVs=\n-----END CERTIFICATE-----\n"
@@ -65,37 +65,37 @@
         }
     },
     "peers": {
-        "peer0.jatim.pemilu.com": {
+        "peer0.jatim.evote.com": {
             "url": "grpcs://localhost:7051",
             "grpcOptions": {
-                "ssl-target-name-override": "peer0.jatim.pemilu.com"
+                "ssl-target-name-override": "peer0.jatim.evote.com"
             },
             "tlsCACerts": {
                 "pem": "-----BEGIN CERTIFICATE-----\nMIICSTCCAfCgAwIBAgIRAMtWc3fOxOjiJzCnzAfXjHswCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGphdGltLnBlbWlsdS5jb20xHzAdBgNVBAMTFnRs\nc2NhLmphdGltLnBlbWlsdS5jb20wHhcNMTgxMDA5MDc1MzM5WhcNMjgxMDA2MDc1\nMzM5WjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQamF0aW0ucGVtaWx1LmNvbTEfMB0G\nA1UEAxMWdGxzY2EuamF0aW0ucGVtaWx1LmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABHSGOu53/LJtVh7VpURuUd87PcLcOlYPotN788g0dCWSFzRys/89QpOp\nFnKuKMzu5+eIGkx9hIXcTXljbFasXBWjXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNV\nHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIBjXy0FiiMnL\nrN/0zNHsxJRjUj8diIh9wWn88gITkqMZMAoGCCqGSM49BAMCA0cAMEQCIEy96TXU\niL1HohN2qyjxZREo6lChhBAcMknkoTA5CUMbAiA9kszaKG5OyqTjCsMyDD8JiTq/\nuPVPES56aH9uHS0hsQ==\n-----END CERTIFICATE-----\n"
             }
         },
-        "peer1.jatim.pemilu.com": {
+        "peer1.jatim.evote.com": {
             "url": "grpcs://localhost:8051",
             "grpcOptions": {
-                "ssl-target-name-override": "peer1.jatim.pemilu.com"
+                "ssl-target-name-override": "peer1.jatim.evote.com"
             },
             "tlsCACerts": {
                 "pem": "-----BEGIN CERTIFICATE-----\nMIICSTCCAfCgAwIBAgIRAMtWc3fOxOjiJzCnzAfXjHswCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEGphdGltLnBlbWlsdS5jb20xHzAdBgNVBAMTFnRs\nc2NhLmphdGltLnBlbWlsdS5jb20wHhcNMTgxMDA5MDc1MzM5WhcNMjgxMDA2MDc1\nMzM5WjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQamF0aW0ucGVtaWx1LmNvbTEfMB0G\nA1UEAxMWdGxzY2EuamF0aW0ucGVtaWx1LmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABHSGOu53/LJtVh7VpURuUd87PcLcOlYPotN788g0dCWSFzRys/89QpOp\nFnKuKMzu5+eIGkx9hIXcTXljbFasXBWjXzBdMA4GA1UdDwEB/wQEAwIBpjAPBgNV\nHSUECDAGBgRVHSUAMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIBjXy0FiiMnL\nrN/0zNHsxJRjUj8diIh9wWn88gITkqMZMAoGCCqGSM49BAMCA0cAMEQCIEy96TXU\niL1HohN2qyjxZREo6lChhBAcMknkoTA5CUMbAiA9kszaKG5OyqTjCsMyDD8JiTq/\nuPVPES56aH9uHS0hsQ==\n-----END CERTIFICATE-----\n"
             }
         },
-        "peer0.jabar.pemilu.com": {
+        "peer0.jabar.evote.com": {
             "url": "grpcs://localhost:9051",
             "grpcOptions": {
-                "ssl-target-name-override": "peer0.jabar.pemilu.com"
+                "ssl-target-name-override": "peer0.jabar.evote.com"
             },
             "tlsCACerts": {
                 "pem": "-----BEGIN CERTIFICATE-----\nMIICSDCCAe+gAwIBAgIQATSlN+tbVXUDubNcbGvXCzAKBggqhkjOPQQDAjB2MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQamFiYXIucGVtaWx1LmNvbTEfMB0GA1UEAxMWdGxz\nY2EuamFiYXIucGVtaWx1LmNvbTAeFw0xODEwMDkwNzUzMzlaFw0yODEwMDYwNzUz\nMzlaMHYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH\nEw1TYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBqYWJhci5wZW1pbHUuY29tMR8wHQYD\nVQQDExZ0bHNjYS5qYWJhci5wZW1pbHUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAE6CgOYYnGBmeuKluFa6ea9AzRzyENSH/DNxABDcEvAujajGkahhnMSFqX\nC1PRbBojM2UJD18gFRf65r0rluKD+KNfMF0wDgYDVR0PAQH/BAQDAgGmMA8GA1Ud\nJQQIMAYGBFUdJQAwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgwjyJmkoOxoZq\n1z7uQANfViGa+i6wSkBNBgGQHOu5xEMwCgYIKoZIzj0EAwIDRwAwRAIgPf8qac50\nbkA3QrfDfhn8+ofTrxfdwmINViUsXflM+T8CIFbEzSQADXb8MSYxV12t0/Qe6Ve+\n0gGXA1L3Zww9RSYO\n-----END CERTIFICATE-----\n"
             }
         },
-        "peer1.jabar.pemilu.com": {
+        "peer1.jabar.evote.com": {
             "url": "grpcs://localhost:10051",
             "grpcOptions": {
-                "ssl-target-name-override": "peer1.jabar.pemilu.com"
+                "ssl-target-name-override": "peer1.jabar.evote.com"
             },
             "tlsCACerts": {
                 "pem": "-----BEGIN CERTIFICATE-----\nMIICSDCCAe+gAwIBAgIQATSlN+tbVXUDubNcbGvXCzAKBggqhkjOPQQDAjB2MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQamFiYXIucGVtaWx1LmNvbTEfMB0GA1UEAxMWdGxz\nY2EuamFiYXIucGVtaWx1LmNvbTAeFw0xODEwMDkwNzUzMzlaFw0yODEwMDYwNzUz\nMzlaMHYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH\nEw1TYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBqYWJhci5wZW1pbHUuY29tMR8wHQYD\nVQQDExZ0bHNjYS5qYWJhci5wZW1pbHUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAE6CgOYYnGBmeuKluFa6ea9AzRzyENSH/DNxABDcEvAujajGkahhnMSFqX\nC1PRbBojM2UJD18gFRf65r0rluKD+KNfMF0wDgYDVR0PAQH/BAQDAgGmMA8GA1Ud\nJQQIMAYGBFUdJQAwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgwjyJmkoOxoZq\n1z7uQANfViGa+i6wSkBNBgGQHOu5xEMwCgYIKoZIzj0EAwIDRwAwRAIgPf8qac50\nbkA3QrfDfhn8+ofTrxfdwmINViUsXflM+T8CIFbEzSQADXb8MSYxV12t0/Qe6Ve+\n0gGXA1L3Zww9RSYO\n-----END CERTIFICATE-----\n"
@@ -103,14 +103,14 @@
         }
     },
     "certificateAuthorities": {
-        "ca.jatim.pemilu.com": {
+        "ca.jatim.evote.com": {
             "url": "https://localhost:7054",
             "caName": "ca-jatim",
             "httpOptions": {
                 "verify": false
             }
         },
-        "ca.jabar.pemilu.com": {
+        "ca.jabar.evote.com": {
             "url": "https://localhost:8054",
             "caName": "ca-jabar",
             "httpOptions": {

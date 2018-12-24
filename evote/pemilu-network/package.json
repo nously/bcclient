@@ -2,11 +2,11 @@
   "engines": {
     "composer": "^0.20.0"
   },
-  "name": "pemilu-network",
-  "version": "1.2.5",
-  "description": "Jaringan Bisnis Dalam Pemilu",
+  "name": "evote-network",
+  "version": "0.0.2",
+  "description": "Jaringan Bisnis Dalam E-vote",
   "scripts": {
-    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/pemilu-network.bna",
+    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/evote-network.bna",
     "pretest": "npm run lint",
     "lint": "eslint .",
     "test": "nyc mocha -t 0 test/*.js && cucumber-js"

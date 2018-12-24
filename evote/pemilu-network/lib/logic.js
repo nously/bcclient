@@ -13,13 +13,16 @@
  */
 
 'use strict';
+
+import { emit } from "cluster";
+
 /**
  * Write your transction processor functions here
  */
 
 /**
  * Pemilih menggunakan hak suara
- * @param {org.pemilu.pemilihan.GunakanSuara} tx
+ * @param {org.evote.pemilihan.GunakanSuara} tx
  * @transaction
  */
 async function GunakanSuara(tx) {
@@ -28,7 +31,7 @@ async function GunakanSuara(tx) {
     tx.suara.owner = tx.kandidat;
 
     // javascript promise
-    return getAssetRegistry('org.pemilu.pemilihan.Suara')
+    return getAssetRegistry('org.evote.pemilihan.Suara')
         .then(function (suaraRegistry) {
             return suaraRegistry.update(tx.suara);
         })
@@ -39,17 +42,17 @@ async function GunakanSuara(tx) {
 
 /**
  * VotingOrganizer bisa menambah suara
- * @param {org.pemilu.pemilihan.TambahSuara} tx
+ * @param {org.evote.pemilihan.TambahSuara} tx
  * @transaction
  */
 async function TambahSuara(tx) {
     const factory = getFactory();
-    let newSuara = factory.newResource('org.pemilu.pemilihan', 'Suara', tx.x);
+    let newSuara = factory.newResource('org.evote.pemilihan', 'Suara', tx.x);
     newSuara.sudahDigunakan = false;
     newSuara.owner = null;
     newSuara.pemilih = tx.pemilih;
 
-    getAssetRegistry('org.pemilu.pemilihan.Suara')
+    getAssetRegistry('org.evote.pemilihan.Suara')
         .then(function (suaraRegistry) {
             return suaraRegistry.add(newSuara);
         })
@@ -60,17 +63,17 @@ async function TambahSuara(tx) {
 
 /**
  * VotingOrganizer bisa menambah pemilih
- * @param {org.pemilu.pemilihan.TambahPemilih} tx
+ * @param {org.evote.pemilihan.TambahPemilih} tx
  * @transaction
  */
 async function TambahPemilih(tx) {
     const factory = getFactory();
-    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'Pemilih', tx.nik);
+    let newParticipant = factory.newResource('org.evote.pemilihan', 'Pemilih', tx.nik);
     newParticipant.nama = tx.nama;
     newParticipant.tempatLahir = tx.tempatLahir;
     newParticipant.tanggalLahir = tx.tanggalLahir;
 
-    return getParticipantRegistry('org.pemilu.pemilihan.Pemilih')
+    return getParticipantRegistry('org.evote.pemilihan.Pemilih')
         .then(function (pemilihRegistry) {
             return pemilihRegistry.add(newParticipant);
         })
@@ -80,32 +83,13 @@ async function TambahPemilih(tx) {
 }
 
 /**
- * Business admin bisa menambah VotingOrganizer
- * @param {org.pemilu.pemilihan.TambahVotingOrganizer} tx
- * @transaction
- */
-async function TambahVotingOrganizer(tx) {
-    const factory = getFactory();
-    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'VotingOrganizer', tx.votingOrganizerId);
-    newParticipant.nama = tx.nama;
-
-    return getParticipantRegistry('org.pemilu.pemilihan.VotingOrganizer')
-        .then(function (votingOrganizerRegistry) {
-            return votingOrganizerRegistry.add(newParticipant);
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-}
-
-/**
  * VotingOrganizer bisa menambah kandidat
- * @param {org.pemilu.pemilihan.TambahKandidat} tx
+ * @param {org.evote.pemilihan.TambahKandidat} tx
  * @transaction
  */
 async function TambahKandidat(tx) {
     const factory = getFactory();
-    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'Kandidat', tx.kandidatId);
+    let newParticipant = factory.newResource('org.evote.pemilihan', 'Kandidat', tx.kandidatId);
     newParticipant.namaCalon = tx.namaCalon;
     newParticipant.namaWakilCalon = tx.namaWakilCalon;
     newParticipant.nikCalon = tx.nikCalon;
@@ -113,7 +97,7 @@ async function TambahKandidat(tx) {
     newParticipant.nomorUrut = tx.nomorUrut;
     newParticipant.jargon = tx.jargon;
 
-    return getParticipantRegistry('org.pemilu.pemilihan.Kandidat')
+    return getParticipantRegistry('org.evote.pemilihan.Kandidat')
         .then(function (kandidatRegistry) {
             return kandidatRegistry.add(newParticipant);
         })
@@ -124,17 +108,63 @@ async function TambahKandidat(tx) {
 
 /**
  * VotingOrganizer bisa membuat suara
- * @param {org.pemilu.pemilihan.BuatMonitoringWebServer} tx
+ * @param {org.evote.pemilihan.BuatOperator} tx
  * @transaction
  */
-async function BuatMonitoringWebServer(tx) {
+async function BuatOperator(tx) {
     const factory = getFactory();
-    let newParticipant = factory.newResource('org.pemilu.pemilihan', 'MonitoringWebServer', tx.monitoringWebServerId);
+    let newParticipant = factory.newResource('org.evote.pemilihan', 'Operator', tx.operatorId);
     newParticipant.alamat = tx.alamat;
 
-    return getParticipantRegistry('org.pemilu.pemilihan.MonitoringWebServer')
-        .then(function (monitoringWebServerRegistry) {
-            return monitoringWebServerRegistry.add(newParticipant);
+    return getParticipantRegistry('org.evote.pemilihan.Operator')
+        .then(function (operatorRegistry) {
+            return operatorRegistry.add(newParticipant);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+
+/**
+ * Handle a transaction that returns a string.
+ * @param {org.evote.pemilihan.GetBusinessCardName} transaction
+ * @returns {String}
+ * @transaction
+ */
+async function GetBusinessCardName(transaction) {
+    return getAssetRegistry('org.evote.pemilihan.Account')
+        .then(function (accountRegistry) {
+            return accountRegistry.resolveAll().then(function(resourceCollection){
+                for (let i = 0; i < resourceCollection.length; i++) {
+                    if (resourceCollection[i].username === transaction.username &&
+                        resourceCollection[i].password === transaction.password) {
+                            let factory = getFactory();
+                            let newEvent = factory.newEvent('org.evote.pemilihan', 'BusinessCardNameFound');
+                            newEvent.businessCardName = resourceCollection[i].cardName;
+                            emit(newEvent);
+                            break;
+                        }
+                }
+            });
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+
+
+/**
+ * VotingOrganizer bisa membuat suara
+ * @param {org.evote.pemilihan.BuatGuest} tx
+ * @transaction
+ */
+async function BuatGuest(tx) {
+    const factory = getFactory();
+    let newParticipant = factory.newResource('org.evote.pemilihan', 'Guest', tx.guestId);
+
+    return getParticipantRegistry('org.evote.pemilihan.Guest')
+        .then(function (guestRegistry) {
+            return guestRegistry.add(newParticipant);
         })
         .catch(function (error) {
             console.error(error);

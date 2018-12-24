@@ -1,17 +1,35 @@
-rule MonitoringWebServerToSuara {
-  description: "Allow MonitoringWebServer to READ Suara"
-  participant(p): "org.pemilu.pemilihan.MonitoringWebServer"
+rule GuestToGetBusinessCardName {
+  description: "Allow Guest to READ Account"
+  participant: "org.evote.pemilihan.Guest"
+  operation: CREATE
+  resource: "org.evote.pemilihan.GetBusinessCardName"
+  action: ALLOW
+}
+
+rule GuestToAccount {
+  description: "Allow Guest to READ Account"
+  participant: "org.evote.pemilihan.Guest"
   operation: READ
-  resource(r): "org.pemilu.pemilihan.Suara"
+  resource: "org.evote.pemilihan.Account"
+  action: ALLOW
+}
+
+// =============================================================
+
+rule OperatorToSuara {
+  description: "Allow Operator to READ Suara"
+  participant(p): "org.evote.pemilihan.Operator"
+  operation: READ
+  resource(r): "org.evote.pemilihan.Suara"
   condition: (r.sudahDigunakan == true)
   action: ALLOW
 }
 
-rule MonitoringWebServerToKandidat {
-  description: "Allow MonitoringWebServer to READ Suara"
-  participant: "org.pemilu.pemilihan.MonitoringWebServer"
+rule OperatorToKandidat {
+  description: "Allow Operator to READ Suara"
+  participant: "org.evote.pemilihan.Operator"
   operation: READ
-  resource: "org.pemilu.pemilihan.Kandidat"
+  resource: "org.evote.pemilihan.Kandidat"
   action: ALLOW
 }
 
@@ -20,80 +38,94 @@ rule MonitoringWebServerToKandidat {
 
 rule PemilihToSuara {
   description: "Allow Pemilih to READ and UPDATE access"
-  participant(p): "org.pemilu.pemilihan.Pemilih"
+  participant(p): "org.evote.pemilihan.Pemilih"
   operation: READ, UPDATE
-  resource(r): "org.pemilu.pemilihan.Suara"
+  resource(r): "org.evote.pemilihan.Suara"
   condition: (p.getIdentifier() == r.pemilih.getIdentifier())
   action: ALLOW
 }
 
 rule PemilihToGunakanSuara {
   description: "Allow Pemilih to GunakanSuara"
-  participant: "org.pemilu.pemilihan.Pemilih"
+  participant: "org.evote.pemilihan.Pemilih"
   operation: CREATE
-  resource: "org.pemilu.pemilihan.GunakanSuara"
+  resource: "org.evote.pemilihan.GunakanSuara"
   action: ALLOW
 }
 
 rule PemilihToKandidat {
   description: "Allow Pemilih to READ and UPDATE access"
-  participant: "org.pemilu.pemilihan.Pemilih"
+  participant: "org.evote.pemilihan.Pemilih"
   operation: READ
-  resource: "org.pemilu.pemilihan.Kandidat"
+  resource: "org.evote.pemilihan.Kandidat"
   action: ALLOW
 }
 
 // =============================================================
 
-rule VotingOrganizerToKandidat {
+rule AdminToKandidat {
   description: "Grant all operation by KPU Member to Kandidat"
-  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: ALL
-  resource: "org.pemilu.pemilihan.Kandidat"
+  resource: "org.evote.pemilihan.Kandidat"
   action: ALLOW
 }
 
-rule VotingOrganizerToTambahKandidat {
+rule AdminToTambahKandidat {
   description: "Allow VotingOrganizer to make TambahKandidat transaction"
-  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: CREATE
-  resource: "org.pemilu.pemilihan.TambahKandidat"
+  resource: "org.evote.pemilihan.TambahKandidat"
   action: ALLOW
 }
 
-rule VotingOrganizerToPemilih {
+rule AdminToPemilih {
   description: "Grant all operation for KPU Member to Pemilih"
-  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: ALL
-  resource: "org.pemilu.pemilihan.Pemilih"
+  resource: "org.evote.pemilihan.Pemilih"
   action: ALLOW
 }
 
-rule VotingOrganizerToTambahPemilih {
+rule AdminToTambahPemilih {
   description: "Grant VotingOrganizer CREATE permission to TambahPemilih"
-  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: CREATE
-  resource: "org.pemilu.pemilihan.TambahPemilih"
+  resource: "org.evote.pemilihan.TambahPemilih"
   action: ALLOW
 }
 
-rule VotingOrganizerToSuara {
+rule AdminToSuara {
   description: "Grant VotingOrganizer CREATE permission to Suara"
-  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: CREATE
-  resource: "org.pemilu.pemilihan.Suara"
+  resource: "org.evote.pemilihan.Suara"
   action: ALLOW
 }
 
-rule VotingOrganizerToTambahSuara {
+rule AdminToTambahSuara {
   description: "Grant VotingOrganizer CREATE permission to Suara"
-  participant: "org.pemilu.pemilihan.VotingOrganizer"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: CREATE
-  resource: "org.pemilu.pemilihan.TambahSuara"
+  resource: "org.evote.pemilihan.TambahSuara"
   action: ALLOW
 }
 
-// =============================================================
+rule AdminToGuest {
+  description: "Grant VotingOrganizer CREATE permission to Suara"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: CREATE
+  resource: "org.evote.pemilihan.Guest"
+  action: ALLOW
+}
+
+rule AdminToBuatGuest {
+  description: "Grant VotingOrganizer CREATE permission to Suara"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: CREATE
+  resource: "org.evote.pemilihan.BuatGuest"
+  action: ALLOW
+}
 
 rule SystemACL {
   description:  "System ACL to permit all access"
@@ -103,44 +135,27 @@ rule SystemACL {
   action: ALLOW
 }
 
-rule NetworkAdminUserToTambahVotingOrganizer {
+rule NetworkAdminUserToBuatOperator {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: CREATE
-    resource: "org.pemilu.pemilihan.TambahVotingOrganizer"
+    resource: "org.evote.pemilihan.BuatOperator"
     action: ALLOW
 }
 
-rule NetworkAdminUserToVotingOrganizer {
+rule NetworkAdminUserToOperator {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: CREATE, READ, DELETE
-    resource: "org.pemilu.pemilihan.VotingOrganizer"
+    resource: "org.evote.pemilihan.Operator"
     action: ALLOW
 }
-
-rule NetworkAdminUserToBuatMonitoringWebServer {
-    description: "Grant business network administrators full access to user resources"
-    participant: "org.hyperledger.composer.system.NetworkAdmin"
-    operation: CREATE
-    resource: "org.pemilu.pemilihan.BuatMonitoringWebServer"
-    action: ALLOW
-}
-
-rule NetworkAdminUserToMonitoringWebServer {
-    description: "Grant business network administrators full access to user resources"
-    participant: "org.hyperledger.composer.system.NetworkAdmin"
-    operation: CREATE, READ, DELETE
-    resource: "org.pemilu.pemilihan.MonitoringWebServer"
-    action: ALLOW
-}
-
 
 // for debug purpose
 rule NetworkAdminUserToAll {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: READ
-    resource: "org.pemilu.pemilihan.**"
+    resource: "org.evote.pemilihan.**"
     action: ALLOW
 }
