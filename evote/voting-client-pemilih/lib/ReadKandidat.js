@@ -9,7 +9,7 @@ class ReadKandidat {
 
 	read() {
 		let bizNetworkConnection = new BusinessNetworkConnection();
-		let namespace = 'org.pemilu.pemilihan';
+		let namespace = 'org.evote.pemilihan';
 		let registryName = 'Kandidat';
 		let resources = [];
 		return bizNetworkConnection.connect(this.cardname).then(function() {

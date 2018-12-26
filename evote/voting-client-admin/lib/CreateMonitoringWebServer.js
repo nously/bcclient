@@ -10,19 +10,19 @@ class CreateMonitoringWebServer {
 
 	commitTransaction(address, uname, id) {
 		let bizNetworkConnection = new BusinessNetworkConnection();
-		let namespace = 'org.pemilu.pemilihan';
-		let registryName = 'BuatMonitoringWebServer';
+		let namespace = 'org.evote.pemilihan';
+		let registryName = 'BuatOperator';
 		let cardname = this.cardname;
 
 		return bizNetworkConnection.connect(cardname).then(function() {
 			console.log("BuatMonitoringWebServer Connected Successfully!!!");
 			const factory = bizNetworkConnection.getBusinessNetwork().getFactory();
 			let newTransaction = factory.newTransaction(namespace, registryName);
-			newTransaction.monitoringWebServerId = id;
+			newTransaction.operatorId = id;
 			newTransaction.alamat = address;
 
 			return bizNetworkConnection.submitTransaction(newTransaction).then(function() {
-				issuer(cardname, uname, newTransaction.monitoringWebServerId, namespace + '.MonitoringWebServer', false);
+				issuer(cardname, uname, newTransaction.operatorId, namespace + '.Operator', false);
 			});
 		}).catch((error) => {
 			console.log(error);

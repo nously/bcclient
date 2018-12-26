@@ -50,6 +50,10 @@ btnMWS.onclick = function() {
 	modalMWS.style.display = "block";
 }
 
+btnPemilih.onclick = function() {
+	modalPemilih.style.display = "block";
+}
+
 spanMWS.onclick = function() {
 	var addMWSForm = document.querySelector('#addMWS-modal form');
 	modalMWS.style.display = "none";
@@ -125,7 +129,7 @@ ipcRenderer.on('refresh:monitoringWebServer', function(event, resources) {
 	for (let i = 0; i < resources.length; i++) {
 		monitorList.innerHTML += `<tr>
 			<td>${resources[i].i + 1}</td>
-			<td>${resources[i].monitoringWebServerId}</td>
+			<td>${resources[i].operatorId}</td>
 			<td>${resources[i].alamat}</td>
 		</tr>`;
 	}

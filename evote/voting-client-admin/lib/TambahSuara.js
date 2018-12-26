@@ -9,7 +9,7 @@ class TambahSuara {
 
 	commitTransaction(nik) {
 		let bizNetworkConnection = new BusinessNetworkConnection();
-		let namespace = 'org.pemilu.pemilihan';
+		let namespace = 'org.evote.pemilihan';
 		let registryName = 'TambahSuara';
 		let cardname = this.cardname;
 		var number = TambahSuara.number;

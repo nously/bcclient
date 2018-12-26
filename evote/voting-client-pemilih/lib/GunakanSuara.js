@@ -8,7 +8,7 @@ class GunakankanSuara {
 
 	commitTransaction(idKandidat) {
 		let bizNetworkConnection = new BusinessNetworkConnection();
-		let namespace = 'org.pemilu.pemilihan';
+		let namespace = 'org.evote.pemilihan';
 		let registryName = 'GunakanSuara';
 		let cardname = this.cardname;
 

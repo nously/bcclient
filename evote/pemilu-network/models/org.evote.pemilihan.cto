@@ -107,3 +107,14 @@ event BusinessCardNameFound {
 transaction BuatGuest {
   o String guestId
 }
+
+transaction BacaHasilPemilihan {
+  
+}
+
+event HasilPemilihanTerbaca {
+  o Integer[] nomorUrut
+  o String[] namaCalon
+  o String[] namaWakilCalon
+  o Integer[] jumlahSuara
+}

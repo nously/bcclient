@@ -8,8 +8,8 @@ class ReadMonitoringWebServer {
 
 	read() {
 		let bizNetworkConnection = new BusinessNetworkConnection();
-		let namespace = 'org.pemilu.pemilihan';
-		let registryName = 'MonitoringWebServer';
+		let namespace = 'org.evote.pemilihan';
+		let registryName = 'Operator';
 		let resources = [];
 
 		return bizNetworkConnection.connect(this.cardname).then(function() {
@@ -19,7 +19,7 @@ class ReadMonitoringWebServer {
 					for (let i = 0; i < resourceCollection.length; i++) {
 						resources.push({
 							"i": i,
-							"monitoringWebServerId" : resourceCollection[i].monitoringWebServerId,
+							"operatorId" : resourceCollection[i].operatorId,
 							"alamat": resourceCollection[i].alamat
 						});
 					}

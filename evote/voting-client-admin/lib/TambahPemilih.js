@@ -9,7 +9,7 @@ class TambahPemilih {
 
 	commitTransaction(uname, nik, nama, tempatLahir, tanggalLahir) {
 		let bizNetworkConnection = new BusinessNetworkConnection();
-		let namespace = 'org.pemilu.pemilihan';
+		let namespace = 'org.evote.pemilihan';
 		let registryName = 'TambahPemilih';
 		let cardname = this.cardname;
 

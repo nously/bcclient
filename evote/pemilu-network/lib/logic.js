@@ -14,8 +14,6 @@
 
 'use strict';
 
-import { emit } from "cluster";
-
 /**
  * Write your transction processor functions here
  */
@@ -128,22 +126,21 @@ async function BuatOperator(tx) {
 /**
  * Handle a transaction that returns a string.
  * @param {org.evote.pemilihan.GetBusinessCardName} transaction
- * @returns {String}
  * @transaction
  */
 async function GetBusinessCardName(transaction) {
     return getAssetRegistry('org.evote.pemilihan.Account')
         .then(function (accountRegistry) {
-            return accountRegistry.resolveAll().then(function(resourceCollection){
+            return accountRegistry.getAll().then(function (resourceCollection) {
                 for (let i = 0; i < resourceCollection.length; i++) {
                     if (resourceCollection[i].username === transaction.username &&
                         resourceCollection[i].password === transaction.password) {
-                            let factory = getFactory();
-                            let newEvent = factory.newEvent('org.evote.pemilihan', 'BusinessCardNameFound');
-                            newEvent.businessCardName = resourceCollection[i].cardName;
-                            emit(newEvent);
-                            break;
-                        }
+                        let factory = getFactory();
+                        let newEvent = factory.newEvent('org.evote.pemilihan', 'BusinessCardNameFound');
+                        newEvent.businessCardName = resourceCollection[i].cardName;
+                        emit(newEvent);
+                        break;
+                    }
                 }
             });
         })
@@ -152,6 +149,58 @@ async function GetBusinessCardName(transaction) {
         });
 }
 
+/**
+ * Handle a transaction that returns a string.
+ * @param {org.evote.pemilihan.BacaHasilPemilihan} transaction
+ * @transaction
+ */
+
+async function BacaHasilPemilihan(transaction) {
+    var kandidatId = [];
+    var nomorUrut = [];
+    var namaCalon = [];
+    var namaWakilCalon = [];
+    var jumlahSuara = [];
+
+    return getParticipantRegistry('org.evote.pemilihan.Kandidat').then(function (kandidatRegistry) {
+        return kandidatRegistry.getAll().then(function (resourceCollection) {
+            resourceCollection.forEach(function (resource) {
+                kandidatId.push(resource.kandidatId);
+                nomorUrut.push(resource.nomorUrut);
+                namaCalon.push(resource.namaCalon);
+                namaWakilCalon.push(resource.namaWakilCalon);
+                jumlahSuara.push(0);
+            });
+
+            return getAssetRegistry('org.evote.pemilihan.Suara').then(function (suaraRegistry) {
+                return suaraRegistry.getAll().then(function (suaraList) {
+                    suaraList.forEach(function (suara) {
+                        var kddtId = suara.owner.getIdentifier();
+                        for (var i = 0; i < nomorUrut.length; i++) {
+                            if (kandidatId[i] == kddtId) {
+                                jumlahSuara[i] = jumlahSuara[i] + 1;
+                            }
+                        }
+                    });
+                    var factory = getFactory();
+                    var newEvent = factory.newEvent('org.evote.pemilihan', 'HasilPemilihanTerbaca');
+                    newEvent.nomorUrut = nomorUrut;
+                    newEvent.namaCalon = namaCalon;
+                    newEvent.namaWakilCalon = namaWakilCalon;
+                    newEvent.jumlahSuara = jumlahSuara;
+                    emit(newEvent);
+                }).catch(function (error) {
+                    console.error(error);
+                });
+            }).catch(function (error) {
+                console.error(error);
+            });
+        });
+    })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
 
 /**
  * VotingOrganizer bisa membuat suara

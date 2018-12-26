@@ -33,6 +33,14 @@ rule OperatorToKandidat {
   action: ALLOW
 }
 
+rule OperatorToBacaHasilPemilihan {
+  description: "Allow Operator to READ Suara"
+  participant: "org.evote.pemilihan.Operator"
+  operation: CREATE
+  resource: "org.evote.pemilihan.BacaHasilPemilihan"
+  action: ALLOW
+}
+
 
 // =============================================================
 

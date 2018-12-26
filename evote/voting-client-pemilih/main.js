@@ -15,7 +15,7 @@ const {
 
 let window;
 let userLoggedIn;
-let networkName = "pemilu-network";
+let networkName = "evote-network";
 
 app.on('ready', function() {
 	window = new BrowserWindow({});
