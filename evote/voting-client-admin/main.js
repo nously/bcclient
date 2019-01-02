@@ -6,6 +6,7 @@ const CreateMonitoringWebServer = require('./lib/CreateMonitoringWebServer.js');
 const TambahKandidat = require('./lib/TambahKandidat.js');
 const TambahPemilih = require('./lib/TambahPemilih.js');
 const TambahSuara = require('./lib/TambahSuara.js');
+const GetBusinessCardName = require('./lib/GetBusinessCardName.js');
 
 const ReadPemilih = require('./lib/ReadPemilih.js');
 const ReadKandidat = require('./lib/ReadKandidat.js');
@@ -19,8 +20,10 @@ const {
 } = electron;
 
 let window;
-let userLoggedIn;
+var userLoggedIn;
 let networkName = "evote-network";
+let getBusinessCardName = new GetBusinessCardName("guest@evote-network");
+
 
 app.on('ready', function() {
 	window = new BrowserWindow({});
@@ -31,54 +34,19 @@ app.on('ready', function() {
 		slashes: true
 	}));
 
+	getBusinessCardName.listen(window, userLoggedIn);
 	window.setFullScreen(true);
 });
 
 ipcMain.on('login', function(event, userIdentity) {
 	let username = userIdentity.username;
 	let password = userIdentity.password;
-	if (username === "bob" && password === "admin") {
-		userLoggedIn = {
-			"username": "bob",
-			"role": "admin",
-			"cardname": "bob@" + networkName
-		};
-	} else if (username === "alice" && password === "admin") {
-		userLoggedIn = {
-			"username": "alice",
-			"role": "admin",
-			"cardname": "alice@" + networkName
-		};
-	} else {
-		userLoggedIn = null;
-	}
 
-	if (userLoggedIn !== null) {
-		window.loadURL(url.format({
-			pathname: path.join(__dirname, userLoggedIn.role, 'home.html'),
-			protocol: 'file:',
-			slashes: true
-		}));
+	getBusinessCardName.commitTransaction(username, password);
+});
 
-		window.webContents.once('dom-ready', () => {
-			window.webContents.send('login', userLoggedIn);
-
-			if (userLoggedIn.role === "admin") {
-				let readMWS = new ReadMonitoringWebServer(userLoggedIn.cardname);
-				readMWS.read().then(function(resources) {
-					window.webContents.send('refresh:monitoringWebServer', resources);
-					let readPemilih = new ReadPemilih(userLoggedIn.cardname);
-					readPemilih.read().then(function(resources) {
-						window.webContents.send('refresh:pemilih', resources);
-						let readKandidat = new ReadKandidat(userLoggedIn.cardname);
-						readKandidat.read().then(function(resources) {
-							window.webContents.send('refresh:kandidat', resources);
-						});
-					});
-				});
-			}
-		});
-	}
+ipcMain.on('login:dataTransfer', function(event, userData) {
+	userLoggedIn = userData;
 });
 
 ipcMain.on('logout', function(event, x) {

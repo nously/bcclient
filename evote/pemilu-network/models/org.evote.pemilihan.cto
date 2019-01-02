@@ -32,6 +32,7 @@ asset Account identified by accountId {
   o String username
   o String password
   o String cardName
+  o String role
 }
 
 // participants ============================================================================
@@ -101,7 +102,9 @@ transaction GetBusinessCardName {
 }
 
 event BusinessCardNameFound {
+  o String username
   o String businessCardName
+  o String role
 }
 
 transaction BuatGuest {

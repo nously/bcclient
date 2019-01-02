@@ -132,16 +132,21 @@ async function GetBusinessCardName(transaction) {
     return getAssetRegistry('org.evote.pemilihan.Account')
         .then(function (accountRegistry) {
             return accountRegistry.getAll().then(function (resourceCollection) {
-                for (let i = 0; i < resourceCollection.length; i++) {
-                    if (resourceCollection[i].username === transaction.username &&
-                        resourceCollection[i].password === transaction.password) {
+                resourceCollection.every(function(account, idx) {
+                    if (account.username === transaction.username &&
+                        account.password === transaction.password) {
                         let factory = getFactory();
                         let newEvent = factory.newEvent('org.evote.pemilihan', 'BusinessCardNameFound');
-                        newEvent.businessCardName = resourceCollection[i].cardName;
+                        newEvent.businessCardName = account.cardName;
+                        newEvent.role = account.role;
+                        newEvent.username = account.username;
+
                         emit(newEvent);
-                        break;
+                        return false;
+                    } else {
+                        return true;
                     }
-                }
+                });
             });
         })
         .catch(function (error) {
