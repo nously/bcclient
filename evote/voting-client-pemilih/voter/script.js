@@ -14,8 +14,9 @@ var span = document.getElementsByClassName("close")[0];
 
 var logoutBtn = document.getElementById('logout-btn');
 
-ipcRenderer.on('login', function(e, userLoggedIn) {
-	username = userLoggedIn.username;
+ipcRenderer.on('login:success', function(e, userLoggedIn) {
+	console.log(userLoggedIn);
+	ipcRenderer.send('login:dataTransfer', userLoggedIn);
 });
 
 btn.onclick = function() {
