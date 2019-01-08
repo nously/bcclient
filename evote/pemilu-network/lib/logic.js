@@ -224,3 +224,25 @@ async function BuatGuest(tx) {
             console.error(error);
         });
 }
+
+/**
+ * VotingOrganizer bisa membuat suara
+ * @param {org.evote.pemilihan.BuatAccount} tx
+ * @transaction
+ */
+async function BuatAccount(tx) {
+    const factory = getFactory();
+    let newAsset = factory.newResource('org.evote.pemilihan', 'Account', tx.accountId);
+    newAsset.username = tx.username;
+    newAsset.password = tx.password;
+    newAsset.cardName = tx.cardName;
+    newAsset.role = tx.role;
+
+    return getAssetRegistry('org.evote.pemilihan.Account')
+        .then(function (accountRegistry) {
+            return accountRegistry.add(newAsset);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}

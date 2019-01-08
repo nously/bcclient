@@ -15,6 +15,7 @@ composer card delete -c monitoring2@evote-network
 composer card delete -c kandidat1dyahayu@evote-network
 composer card delete -c bukanDyahAyu@evote-network
 composer card delete -c bukanDyahAyu2@evote-network
+composer card delete -c guest@evote-network
 rm -rv alice
 rm -rv bob
 rm dyahayu.card

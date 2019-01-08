@@ -7,6 +7,7 @@ const TambahKandidat = require('./lib/TambahKandidat.js');
 const TambahPemilih = require('./lib/TambahPemilih.js');
 const TambahSuara = require('./lib/TambahSuara.js');
 const GetBusinessCardName = require('./lib/GetBusinessCardName.js');
+const BuatAccount = require('./lib/BuatAccount.js');
 
 const ReadPemilih = require('./lib/ReadPemilih.js');
 const ReadKandidat = require('./lib/ReadKandidat.js');
@@ -83,6 +84,9 @@ ipcMain.on('add:pemilih', function(event, data) {
 	addPemilih.commitTransaction(data[0], data[1], data[2], data[3], data[4]).then(function() {
 		let tambahSuara = new TambahSuara(userLoggedIn.cardname);
 		tambahSuara.commitTransaction(data[1]);
+
+		let buatAccount = new BuatAccount(userLoggedIn.cardname);
+		buatAccount.commitTransaction(data[0], data[1], data[5], data[0] + "@evote-network", "voter");
 
 		let readPemilih = new ReadPemilih(userLoggedIn.cardname);
 		readPemilih.read().then(function(resources) {

@@ -3,7 +3,7 @@
     "composer": "^0.20.0"
   },
   "name": "evote-network",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Jaringan Bisnis Dalam E-vote",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/evote-network.bna",

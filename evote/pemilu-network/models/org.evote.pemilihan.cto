@@ -121,3 +121,11 @@ event HasilPemilihanTerbaca {
   o String[] namaWakilCalon
   o Integer[] jumlahSuara
 }
+
+transaction BuatAccount {
+  o String accountId
+  o String username
+  o String password
+  o String cardName
+  o String role
+}

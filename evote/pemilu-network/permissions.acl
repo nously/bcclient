@@ -167,6 +167,14 @@ rule NetworkAdminUserToAccount {
   action: ALLOW
 }
 
+rule NetworkAdminUserToBuatAccount {
+  description: "Grant business network administrators full access to user resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: CREATE
+  resource: "org.evote.pemilihan.BuatAccount"
+  action: ALLOW
+}
+
 // for debug purpose
 rule NetworkAdminUserToAll {
     description: "Grant business network administrators full access to user resources"

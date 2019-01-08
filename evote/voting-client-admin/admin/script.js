@@ -78,12 +78,13 @@ addKddtForm.addEventListener('submit', function(event) {
 addPemilihForm.addEventListener('submit', function(event) {
 	event.preventDefault();
 	let uname = document.querySelector('#unamePemilih').value;
+	let password = document.querySelector('#passPemilih').value;
 	let nik = document.querySelector('#nikPemilih').value;
 	let nama = document.querySelector('#namaPemilih').value;
 	let tempatLahir = document.querySelector('#tempatLahirPemilih').value;
 	let tglLahir = document.querySelector('#tglLahirPemilih').value;
 
-	let data = [uname, nik, nama, tempatLahir, tglLahir];
+	let data = [uname, nik, nama, tempatLahir, tglLahir, password];
 	ipcRenderer.send('add:pemilih', data);
 	modalPemilih.style.display = "none";
 });
