@@ -4,8 +4,15 @@
   "description": "local server in TPS",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "node server.js"
   },
   "author": "Dyah Ayu",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "composer-cli": "^0.20.6",
+    "composer-client": "^0.20.6",
+    "jsdom": "^13.1.0"
+  }
 }

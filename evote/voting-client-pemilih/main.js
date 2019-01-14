@@ -1,21 +1,24 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
+const axios = require('axios');
 
-const GunakanSuara = require('./lib/GunakanSuara.js');
 const ReadKandidat = require('./lib/ReadKandidat.js');
+const GunakanSuara = require('./lib/GunakanSuara.js');
 
 
 
 const {
 	app,
 	BrowserWindow,
-	ipcMain
+	ipcMain,
+	dialog
 } = electron;
 
 let window;
 let userLoggedIn;
 let networkName = "evote-network";
+var localserver = "http://localhost:8001";
 
 app.on('ready', function() {
 	window = new BrowserWindow({});
@@ -42,7 +45,7 @@ ipcMain.on('login', function(event, userIdentity) {
 		userLoggedIn = {
 			"username": "bukanDyahAyu2",
 			"role": "voter",
-			"cardname": "bukanDyahAyu2@" + networkName
+			"cardname": "lkjijasd@" + networkName
 		};
 	} else {
 		userLoggedIn = null;
@@ -78,6 +81,17 @@ ipcMain.on('logout', function(event, x) {
 });
 
 ipcMain.on('pilih:kandidat', function(event, data){
-	let gunakanSuara = new GunakanSuara(userLoggedIn.cardname);
-	gunakanSuara.commitTransaction(data[0]);
+	axios.post(localserver + '/kandidat/vote', {
+		cardname: userLoggedIn.cardname,
+		id: data[0]
+	}, {
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	}).then(function(response) {
+		console.log(dialog.showMessageBox({
+			type: 'info',
+			title: 'Perhatian',
+			message: response.data.pesan,
+			buttons: ["OK"]
+		}));
+	});
 });

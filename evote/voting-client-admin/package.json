@@ -15,6 +15,7 @@
     "electron": "^3.0.12"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "composer-cli": "^0.20.5",
     "grpc": "^1.16.1",
     "prettyjson": "^1.2.1"

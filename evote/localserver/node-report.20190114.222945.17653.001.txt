@@ -1,0 +1,241 @@
+================================================================================
+==== Node Report ===============================================================
+
+Event: exception, location: "OnUncaughtException"
+Filename: node-report.20190114.222945.17653.001.txt
+Dump event time:  2019/01/14 22:29:45
+Module load time: 2019/01/14 22:29:45
+Process ID: 17653
+Command line: node server.js 
+
+Node.js version: v8.14.0
+(http_parser: 2.8.0, v8: 6.2.414.72, uv: 1.23.2, zlib: 1.2.11, ares: 1.10.1-DEV,
+ modules: 57, nghttp2: 1.33.0, napi: 3, openssl: 1.0.2q, icu: 60.1, unicode: 10.0,
+ cldr: 32.0, tz: 2017c)
+
+node-report version: 2.2.1 (built against Node.js v8.14.0, glibc 2.27, 64 bit)
+
+OS version: Linux 4.15.0-43-generic #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
+(glibc: 2.27)
+
+Machine: X450JB x86_64
+
+================================================================================
+==== JavaScript Stack Trace ====================================================
+
+createScript (vm.js:80:10)
+Object.runInThisContext (vm.js:139:10)
+Module._compile (module.js:617:28)
+Object.Module._extensions..js (module.js:664:10)
+Module.load (module.js:566:32)
+tryModuleLoad (module.js:506:12)
+Function.Module._load (module.js:498:3)
+Module.require (module.js:597:17)
+require (internal/module.js:11:18)
+Object.<anonymous> (/home/dyahayu/Hyperledger/Pemilu_Network/evote/localserver/server.js:11:22)
+Module._compile (module.js:653:30)
+Object.Module._extensions..js (module.js:664:10)
+Module.load (module.js:566:32)
+tryModuleLoad (module.js:506:12)
+Function.Module._load (module.js:498:3)
+Function.Module.runMain (module.js:694:10)
+startup (bootstrap_node.js:204:16)
+bootstrap_node.js:625:3
+
+================================================================================
+==== Native Stack Trace ========================================================
+
+ 0: [pc=0x7febd6be909b] nodereport::OnUncaughtException(v8::Isolate*) [/home/dyahayu/Hyperledger/Pemilu_Network/evote/localserver/node_modules/node-report/api.node]
+ 1: [pc=0xeaf642] v8::internal::Isolate::Throw(v8::internal::Object*, v8::internal::MessageLocation*) [node]
+ 2: [pc=0xfb413e] v8::internal::PendingCompilationErrorHandler::ThrowPendingError(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Script>) [node]
+ 3: [pc=0xf81d0b] v8::internal::parsing::ParseProgram(v8::internal::ParseInfo*, v8::internal::Isolate*) [node]
+ 4: [pc=0xd2c54b]  [node]
+ 5: [pc=0xd2d628] v8::internal::Compiler::GetSharedFunctionInfoForScript(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::Object>, int, int, v8::ScriptOriginOptions, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Context>, v8::Extension*, v8::internal::ScriptData**, v8::ScriptCompiler::CompileOptions, v8::internal::NativesFlag) [node]
+ 6: [pc=0xa878ea] v8::ScriptCompiler::CompileUnboundInternal(v8::Isolate*, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions) [node]
+ 7: [pc=0xa87c97] v8::ScriptCompiler::CompileUnboundScript(v8::Isolate*, v8::ScriptCompiler::Source*, v8::ScriptCompiler::CompileOptions) [node]
+ 8: [pc=0x8f840e]  [node]
+ 9: [pc=0xa96423] v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) [node]
+10: [pc=0xb0db6f]  [node]
+11: [pc=0xb0e2e5] v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) [node]
+12: [pc=0x20fcd13042fd] 
+
+================================================================================
+==== JavaScript Heap and Garbage Collector =====================================
+
+Heap space name: new_space
+    Memory size: 33,554,432 bytes, committed memory: 32,570,608 bytes
+    Capacity: 16,498,688 bytes, used: 4,663,328 bytes, available: 11,835,360 bytes
+Heap space name: old_space
+    Memory size: 34,926,592 bytes, committed memory: 34,475,720 bytes
+    Capacity: 33,684,128 bytes, used: 32,776,176 bytes, available: 907,952 bytes
+Heap space name: code_space
+    Memory size: 2,097,152 bytes, committed memory: 1,410,208 bytes
+    Capacity: 1,639,840 bytes, used: 1,334,464 bytes, available: 305,376 bytes
+Heap space name: map_space
+    Memory size: 2,117,632 bytes, committed memory: 1,718,952 bytes
+    Capacity: 1,675,744 bytes, used: 1,606,264 bytes, available: 69,480 bytes
+Heap space name: large_object_space
+    Memory size: 2,928,640 bytes, committed memory: 2,928,640 bytes
+    Capacity: 1,426,703,520 bytes, used: 2,872,992 bytes, available: 1,423,830,528 bytes
+
+Total heap memory size: 75,624,448 bytes
+Total heap committed memory: 73,104,128 bytes
+Total used heap memory: 43,253,224 bytes
+Total available heap memory: 1,436,948,696 bytes
+
+Heap memory limit: 1,501,560,832
+
+================================================================================
+==== Resource Usage ============================================================
+
+Process total resource usage:
+  User mode CPU: 0.820895 secs
+  Kernel mode CPU: 0.048766 secs
+  Average CPU Consumption : 86.9661%
+  Maximum resident set size: 105,996,288 bytes
+  Page faults: 3 (I/O required) 25387 (no I/O required)
+  Filesystem activity: 776 reads 24 writes
+
+Event loop thread resource usage:
+  User mode CPU: 0.733400 secs
+  Kernel mode CPU: 0.044084 secs
+  Average CPU Consumption : 77.7484%
+  Filesystem activity: 776 reads 24 writes
+
+================================================================================
+==== Node.js libuv Handle Summary ==============================================
+
+(Flags: R=Ref, A=Active)
+Flags  Type      Address             Details
+[-A]   async     0x0000000003fc5da0  
+[--]   check     0x00007ffdf2bb2470  
+[R-]   idle      0x00007ffdf2bb24e8  
+[--]   prepare   0x00007ffdf2bb2560  
+[--]   check     0x00007ffdf2bb25d8  
+[-A]   async     0x0000000002183760  
+[-A]   async     0x0000000003fce090  
+[-A]   async     0x00007febd00021f0  
+[R-]   timer     0x0000000004003a40  repeat: 0, timeout expired: 27009467 ms ago
+[R-]   tty       0x0000000003fce678  width: 79, height: 22, file descriptor: 9, write queue size: 0, readable, writable
+[-A]   signal    0x0000000004003b90  signum: 28 (SIGWINCH)
+[R-]   tty       0x0000000004003ce8  width: 79, height: 22, file descriptor: 11, write queue size: 0, readable, writable
+[-A]   async     0x0000000003fc5190  
+[-A]   async     0x00007febc8000df0  
+[-A]   async     0x00007febd0002940  
+[-A]   async     0x00007febcc001810  
+[-A]   async     0x00007febc8001270  
+[-A]   async     0x00007febc0000e80  
+[-A]   async     0x00007febcc002fb0  
+[-A]   async     0x00007febc0003620  
+[-A]   async     0x00007febc80038b0  
+[-A]   async     0x00007febc0000b20  
+[-A]   async     0x00007febc0005220  
+[-A]   async     0x00007febc0001d70  
+[-A]   async     0x00007febc0001e00  
+[-A]   async     0x0000000004094b50  
+[-A]   async     0x00007febcc00ac90  
+[-A]   async     0x00007febcc008680  
+[-A]   async     0x00007febd6df1ce0  
+
+================================================================================
+==== System Information ========================================================
+
+Environment variables
+  CLUTTER_IM_MODULE=xim
+  NVM_DIR=/home/dyahayu/.nvm
+  LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+  LC_MEASUREMENT=id_ID.UTF-8
+  LESSCLOSE=/usr/bin/lesspipe %s %s
+  LC_PAPER=id_ID.UTF-8
+  LC_MONETARY=id_ID.UTF-8
+  TERMINATOR_UUID=urn:uuid:c8bc053c-ce88-4ecd-b89e-725aef9c31ad
+  XDG_MENU_PREFIX=gnome-
+  LANG=en_US.UTF-8
+  DISPLAY=:0
+  GNOME_SHELL_SESSION_MODE=ubuntu
+  COLORTERM=truecolor
+  NVM_CD_FLAGS=
+  DESKTOP_AUTOSTART_ID=1054f330d088c3b1d3154747279076465500000018950018
+  USERNAME=dyahayu
+  XDG_VTNR=1
+  GIO_LAUNCHED_DESKTOP_FILE_PID=2735
+  SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+  MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+  LC_NAME=id_ID.UTF-8
+  XDG_SESSION_ID=1
+  USER=dyahayu
+  DESKTOP_SESSION=ubuntu
+  QT4_IM_MODULE=xim
+  TEXTDOMAINDIR=/usr/share/locale/
+  DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+  PWD=/home/dyahayu/Hyperledger/Pemilu_Network/evote/localserver
+  THEME=/home/dyahayu/.bash/themes/agnoster-bash/agnoster.bash
+  HOME=/home/dyahayu
+  TEXTDOMAIN=im-config
+  SSH_AGENT_PID=1992
+  QT_ACCESSIBILITY=1
+  XDG_SESSION_TYPE=x11
+  XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+  TERMINATOR_DBUS_NAME=net.tenshu.Terminator20x1a6021154d881c
+  XDG_SESSION_DESKTOP=ubuntu
+  LC_ADDRESS=id_ID.UTF-8
+  LC_NUMERIC=id_ID.UTF-8
+  GTK_MODULES=gail:atk-bridge
+  TERMINATOR_DBUS_PATH=/net/tenshu/Terminator2
+  WINDOWPATH=1
+  TERM=xterm-256color
+  VTE_VERSION=5202
+  SHELL=/bin/bash
+  QT_IM_MODULE=ibus
+  XMODIFIERS=@im=ibus
+  IM_CONFIG_PHASE=2
+  NVM_BIN=/home/dyahayu/.nvm/versions/node/v8.14.0/bin
+  XDG_CURRENT_DESKTOP=ubuntu:GNOME
+  GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+  GIO_LAUNCHED_DESKTOP_FILE=/home/dyahayu/.config/autostart/terminator.desktop
+  SHLVL=1
+  XDG_SEAT=seat0
+  LC_TELEPHONE=id_ID.UTF-8
+  GDMSESSION=ubuntu
+  GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+  LOGNAME=dyahayu
+  DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+  XDG_RUNTIME_DIR=/run/user/1000
+  XAUTHORITY=/run/user/1000/gdm/Xauthority
+  XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+  PATH=/home/dyahayu/.nvm/versions/node/v8.14.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  LC_IDENTIFICATION=id_ID.UTF-8
+  SESSION_MANAGER=local/X450JB:@/tmp/.ICE-unix/1895,unix/X450JB:/tmp/.ICE-unix/1895
+  DEFAULT_USER=dyahayu
+  LESSOPEN=| /usr/bin/lesspipe %s
+  GTK_IM_MODULE=ibus
+  LC_TIME=id_ID.UTF-8
+  OLDPWD=/home/dyahayu/Hyperledger/Pemilu_Network/evote/voting-client-admin
+  _=/home/dyahayu/.nvm/versions/node/v8.14.0/bin/node
+  SUPPRESS_NO_CONFIG_WARNING=y
+
+Resource limits                        soft limit      hard limit
+  core file size (blocks)                       0       unlimited
+  data seg size (kbytes)                unlimited       unlimited
+  file size (blocks)                    unlimited       unlimited
+  max locked memory (bytes)              16777216        16777216
+  max memory size (kbytes)              unlimited       unlimited
+  open files                              1048576         1048576
+  stack size (bytes)                      8388608       unlimited
+  cpu time (seconds)                    unlimited       unlimited
+  max user processes                        30444           30444
+  virtual memory (kbytes)               unlimited       unlimited
+
+Loaded libraries
+  linux-vdso.so.1
+  /lib/x86_64-linux-gnu/libdl.so.2
+  /lib/x86_64-linux-gnu/librt.so.1
+  /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  /lib/x86_64-linux-gnu/libm.so.6
+  /lib/x86_64-linux-gnu/libgcc_s.so.1
+  /lib/x86_64-linux-gnu/libpthread.so.0
+  /lib/x86_64-linux-gnu/libc.so.6
+  /lib64/ld-linux-x86-64.so.2
+  /home/dyahayu/Hyperledger/Pemilu_Network/evote/localserver/node_modules/node-report/api.node
+
+================================================================================

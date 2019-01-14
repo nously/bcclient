@@ -1,6 +1,7 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
+const axios = require('axios');
 
 const CreateMonitoringWebServer = require('./lib/CreateMonitoringWebServer.js');
 const TambahKandidat = require('./lib/TambahKandidat.js');
@@ -21,6 +22,7 @@ const {
 let window;
 let userLoggedIn;
 let networkName = "evote-network";
+var localserver = "http://localhost:8001";
 
 app.on('ready', function() {
 	window = new BrowserWindow({});
@@ -91,34 +93,46 @@ ipcMain.on('logout', function(event, x) {
 });
 
 ipcMain.on('add:monitoringWebServer', function(event, data) {
-	let addMWS = new CreateMonitoringWebServer(userLoggedIn.cardname);
-	addMWS.commitTransaction(data[0], data[1], data[2]).then(function() {
-		let readMWS = new ReadMonitoringWebServer(userLoggedIn.cardname);
-		readMWS.read().then(function(resources) {
-			window.webContents.send('refresh:monitoringWebServer', resources);
-		});
+	axios.post(localserver + '/operator/create', {
+		cardname: userLoggedIn.cardname,
+		address: data[0],
+		uname: data[1],
+		id: data[2]
+	}, {
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	}).then(function(response) {
+		window.webContents.send('refresh:monitoringWebServer', response.data);
 	});
 });
 
 ipcMain.on('add:kandidat', function(event, data) {
-	let addKddt = new TambahKandidat(userLoggedIn.cardname);
-	addKddt.commitTransaction(data[0], data[1], data[2], data[3], data[4], data[5], data[6]).then(function() {
-		let readKddt = new ReadKandidat(userLoggedIn.cardname);
-		readKddt.read().then(function(resources) {
-			window.webContents.send('refresh:kandidat', resources);
-		});
+	axios.post(localserver + '/kandidat/create', {
+		cardname: userLoggedIn.cardname,
+		uname: data[0],
+		id: data[1],
+		nomor: data[2],
+		nama: data[3],
+		namaWakil: data[4],
+		nik: data[5],
+		nikWakil: data[6]
+	}, {
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	}).then(function(response) {
+		window.webContents.send('refresh:kandidat', response.data);
 	});
 });
 
 ipcMain.on('add:pemilih', function(event, data) {
-	let addPemilih = new TambahPemilih(userLoggedIn.cardname);
-	addPemilih.commitTransaction(data[0], data[1], data[2], data[3], data[4]).then(function() {
-		let tambahSuara = new TambahSuara(userLoggedIn.cardname);
-		tambahSuara.commitTransaction(data[1]);
-
-		let readPemilih = new ReadPemilih(userLoggedIn.cardname);
-		readPemilih.read().then(function(resources) {
-			window.webContents.send('refresh:pemilih', resources);
-		});
+	axios.post(localserver + '/pemilih/create', {
+		cardname: userLoggedIn.cardname,
+		uname: data[0],
+		nik: data[1],
+		nama: data[2],
+		tempatLahir: data[3],
+		tglLahir: data[4]
+	}, {
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	}).then(function(response) {
+		window.webContents.send('refresh:pemilih', response.data);
 	});
 });
