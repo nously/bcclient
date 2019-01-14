@@ -32,11 +32,11 @@ app.on('ready', function() {
 ipcMain.on('login', function(event, userIdentity) {
 	let username = userIdentity.username;
 	let password = userIdentity.password;
-	if (username === "bukanDyahAyu" && password === "pemilih") {
+	if (username === "pemilih1" && password === "pemilih") {
 		userLoggedIn = {
-			"username": "bukanDyahAyu",
+			"username": "pemilih1",
 			"role": "voter",
-			"cardname": "bukanDyahAyu@" + networkName
+			"cardname": "pemilih1@" + networkName
 		};
 	} else if (username === "bukanDyahAyu2" && password === "pemilih") {
 		userLoggedIn = {

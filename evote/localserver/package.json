@@ -1,0 +1,11 @@
+{
+  "name": "localserver",
+  "version": "0.0.1",
+  "description": "local server in TPS",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Dyah Ayu",
+  "license": "ISC"
+}

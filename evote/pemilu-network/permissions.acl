@@ -1,21 +1,3 @@
-rule GuestToGetBusinessCardName {
-  description: "Allow Guest to READ Account"
-  participant: "org.evote.pemilihan.Guest"
-  operation: CREATE
-  resource: "org.evote.pemilihan.GetBusinessCardName"
-  action: ALLOW
-}
-
-rule GuestToAccount {
-  description: "Allow Guest to READ Account"
-  participant: "org.evote.pemilihan.Guest"
-  operation: READ
-  resource: "org.evote.pemilihan.Account"
-  action: ALLOW
-}
-
-// =============================================================
-
 rule OperatorToSuara {
   description: "Allow Operator to READ Suara"
   participant(p): "org.evote.pemilihan.Operator"
@@ -116,22 +98,6 @@ rule AdminToTambahSuara {
   participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: CREATE
   resource: "org.evote.pemilihan.TambahSuara"
-  action: ALLOW
-}
-
-rule AdminToGuest {
-  description: "Grant VotingOrganizer CREATE permission to Suara"
-  participant: "org.hyperledger.composer.system.NetworkAdmin"
-  operation: CREATE
-  resource: "org.evote.pemilihan.Guest"
-  action: ALLOW
-}
-
-rule AdminToBuatGuest {
-  description: "Grant VotingOrganizer CREATE permission to Suara"
-  participant: "org.hyperledger.composer.system.NetworkAdmin"
-  operation: CREATE
-  resource: "org.evote.pemilihan.BuatGuest"
   action: ALLOW
 }
 

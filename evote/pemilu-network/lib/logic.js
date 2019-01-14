@@ -125,32 +125,6 @@ async function BuatOperator(tx) {
 
 /**
  * Handle a transaction that returns a string.
- * @param {org.evote.pemilihan.GetBusinessCardName} transaction
- * @transaction
- */
-async function GetBusinessCardName(transaction) {
-    return getAssetRegistry('org.evote.pemilihan.Account')
-        .then(function (accountRegistry) {
-            return accountRegistry.getAll().then(function (resourceCollection) {
-                for (let i = 0; i < resourceCollection.length; i++) {
-                    if (resourceCollection[i].username === transaction.username &&
-                        resourceCollection[i].password === transaction.password) {
-                        let factory = getFactory();
-                        let newEvent = factory.newEvent('org.evote.pemilihan', 'BusinessCardNameFound');
-                        newEvent.businessCardName = resourceCollection[i].cardName;
-                        emit(newEvent);
-                        break;
-                    }
-                }
-            });
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-}
-
-/**
- * Handle a transaction that returns a string.
  * @param {org.evote.pemilihan.BacaHasilPemilihan} transaction
  * @transaction
  */
@@ -197,24 +171,6 @@ async function BacaHasilPemilihan(transaction) {
             });
         });
     })
-        .catch(function (error) {
-            console.error(error);
-        });
-}
-
-/**
- * VotingOrganizer bisa membuat suara
- * @param {org.evote.pemilihan.BuatGuest} tx
- * @transaction
- */
-async function BuatGuest(tx) {
-    const factory = getFactory();
-    let newParticipant = factory.newResource('org.evote.pemilihan', 'Guest', tx.guestId);
-
-    return getParticipantRegistry('org.evote.pemilihan.Guest')
-        .then(function (guestRegistry) {
-            return guestRegistry.add(newParticipant);
-        })
         .catch(function (error) {
             console.error(error);
         });
