@@ -6,8 +6,6 @@ const axios = require('axios');
 const ReadKandidat = require('./lib/ReadKandidat.js');
 const GunakanSuara = require('./lib/GunakanSuara.js');
 
-
-
 const {
 	app,
 	BrowserWindow,
@@ -35,40 +33,26 @@ app.on('ready', function() {
 ipcMain.on('login', function(event, userIdentity) {
 	let username = userIdentity.username;
 	let password = userIdentity.password;
-	if (username === "pemilih1" && password === "pemilih") {
-		userLoggedIn = {
-			"username": "pemilih1",
-			"role": "voter",
-			"cardname": "pemilih1@" + networkName
-		};
-	} else if (username === "bukanDyahAyu2" && password === "pemilih") {
-		userLoggedIn = {
-			"username": "bukanDyahAyu2",
-			"role": "voter",
-			"cardname": "lkjijasd@" + networkName
-		};
-	} else {
-		userLoggedIn = null;
-	}
+	axios.post(localserver + '/login', {
+		username: userIdentity.username,
+		password: userIdentity.password
+	}, {
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	}).then(function(response) {
+		userLoggedIn = response.data.userData;
 
-	if (userLoggedIn !== null) {
-		window.loadURL(url.format({
-			pathname: path.join(__dirname, userLoggedIn.role, 'home.html'),
-			protocol: 'file:',
-			slashes: true
-		}));
-
-		window.webContents.once('dom-ready', () => {
-			window.webContents.send('login', userLoggedIn);
-
-			if (userLoggedIn.role === "voter") {
-				let readKandidat = new ReadKandidat(userLoggedIn.cardname);
-				readKandidat.read().then(function(resources) {
-					window.webContents.send('refresh:kandidat', resources);
-				});
-			}
-		});
-	}
+		if (userLoggedIn !== null) {
+			window.loadURL(url.format({
+				pathname: path.join(__dirname, userLoggedIn.role, 'home.html'),
+				protocol: 'file:',
+				slashes: true
+			}));
+	
+			window.webContents.once('dom-ready', () => {
+				window.webContents.send('refresh:kandidat', response.data.kandidatData);
+			});
+		}
+	});
 });
 
 ipcMain.on('logout', function(event, x) {

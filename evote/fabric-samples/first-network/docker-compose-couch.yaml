@@ -20,7 +20,7 @@ services:
     # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
     # for evote map it to utilize Fauxton User Interface in dev environments.
     ports:
-      - "5984:5984"
+      - "5983:5984"
     networks:
       - byfn
 

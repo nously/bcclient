@@ -39,48 +39,29 @@ app.on('ready', function() {
 ipcMain.on('login', function(event, userIdentity) {
 	let username = userIdentity.username;
 	let password = userIdentity.password;
-	if (username === "bob" && password === "admin") {
-		userLoggedIn = {
-			"username": "bob",
-			"role": "admin",
-			"cardname": "bob@" + networkName
-		};
-	} else if (username === "alice" && password === "admin") {
-		userLoggedIn = {
-			"username": "alice",
-			"role": "admin",
-			"cardname": "alice@" + networkName
-		};
-	} else {
-		userLoggedIn = null;
-	}
 
-	if (userLoggedIn !== null) {
-		window.loadURL(url.format({
-			pathname: path.join(__dirname, userLoggedIn.role, 'home.html'),
-			protocol: 'file:',
-			slashes: true
-		}));
+	axios.post(localserver + '/login', {
+		username: userIdentity.username,
+		password: userIdentity.password
+	}, {
+		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+	}).then(function(response) {
+		userLoggedIn = response.data.userData;
 
-		window.webContents.once('dom-ready', () => {
-			window.webContents.send('login', userLoggedIn);
-
-			if (userLoggedIn.role === "admin") {
-				let readMWS = new ReadMonitoringWebServer(userLoggedIn.cardname);
-				readMWS.read().then(function(resources) {
-					window.webContents.send('refresh:monitoringWebServer', resources);
-					let readPemilih = new ReadPemilih(userLoggedIn.cardname);
-					readPemilih.read().then(function(resources) {
-						window.webContents.send('refresh:pemilih', resources);
-						let readKandidat = new ReadKandidat(userLoggedIn.cardname);
-						readKandidat.read().then(function(resources) {
-							window.webContents.send('refresh:kandidat', resources);
-						});
-					});
-				});
-			}
-		});
-	}
+		if (userLoggedIn !== null) {
+			window.loadURL(url.format({
+				pathname: path.join(__dirname, userLoggedIn.role, 'home.html'),
+				protocol: 'file:',
+				slashes: true
+			}));
+	
+			window.webContents.once('dom-ready', () => {
+				window.webContents.send('refresh:kandidat', response.data.kandidatData);
+				window.webContents.send('refresh:pemilih', response.data.pemilihData);
+				window.webContents.send('refresh:monitoringWebServer', response.data.operatorData);
+			});
+		}
+	});
 });
 
 ipcMain.on('logout', function(event, x) {
@@ -126,6 +107,7 @@ ipcMain.on('add:pemilih', function(event, data) {
 	axios.post(localserver + '/pemilih/create', {
 		cardname: userLoggedIn.cardname,
 		uname: data[0],
+		password: data[5],
 		nik: data[1],
 		nama: data[2],
 		tempatLahir: data[3],

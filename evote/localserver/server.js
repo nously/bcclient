@@ -14,6 +14,7 @@ const ReadPemilih = require('./lib/ReadPemilih.js');
 const ReadKandidat = require('./lib/ReadKandidat.js');
 const ReadMonitoringWebServer = require('./lib/ReadMonitoringWebServer.js');
 
+const account = require('./lib/account.js');
 
 function collectRequestData(request, callback) {
     const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -31,7 +32,7 @@ function collectRequestData(request, callback) {
     }
 }
 
-
+console.log("listening on https://localhost:8001");
 http.createServer(function(request, response) {
 	var q = url.parse(request.url, true);
 	var path = q.pathname;
@@ -70,12 +71,14 @@ http.createServer(function(request, response) {
 							let tambahSuara = new TambahSuara(result.cardname);
 							tambahSuara.commitTransaction(result.nik);
 
-							let readPemilih = new ReadPemilih(result.cardname);
-							readPemilih.read().then(function(resources) {
-								response.setHeader('Content-Type', 'application/json');
-			    				response.write(JSON.stringify(resources));
-								response.end();
-							});
+                            account.add(result.uname, result.password, "pemilih").then(function(res){
+                                let readPemilih = new ReadPemilih(result.cardname);
+    							readPemilih.read().then(function(resources) {
+    								response.setHeader('Content-Type', 'application/json');
+    			    				response.write(JSON.stringify(resources));
+    								response.end();
+    							});
+                            });
 						});
 				});
 			}
@@ -126,9 +129,46 @@ http.createServer(function(request, response) {
 			}
 			break;
 		case '/login':
-			response.writeHead(200, {"Content-Type": "text/javascript"});
-			response.write(script);
-			response.end();
+            if (request.method === 'POST') {
+                collectRequestData(request, function(result) {
+                    result=JSON.parse(result);
+                    console.log(result);
+                    account.get(result.username, result.password)
+                    .then(function (user){
+                        if (user.role === "admin") {
+            				let readMWS = new ReadMonitoringWebServer(user.cardname);
+            				readMWS.read().then(function(operatorList) {
+            					let readPemilih = new ReadPemilih(user.cardname);
+            					readPemilih.read().then(function(pemilihList) {
+            						let readKandidat = new ReadKandidat(user.cardname);
+            						readKandidat.read().then(function(kandidatList) {
+                                        let resp = {
+                                            userData: user,
+                                            kandidatData: kandidatList,
+                                            operatorData: operatorList,
+                                            pemilihData: pemilihList
+                                        };
+                                        response.setHeader('Content-Type', 'application/json');
+                                        response.write(JSON.stringify(resp));
+                                        response.end();
+            						});
+            					});
+            				});
+            			} else if (user.role === "pemilih") {
+                            let readKandidat = new ReadKandidat(user.cardname);
+                            readKandidat.read().then(function(kandidatList) {
+                                let resp = {
+                                    userData: user,
+                                    kandidatData: kandidatList
+                                };
+                                response.setHeader('Content-Type', 'application/json');
+                                response.write(JSON.stringify(resp));
+                                response.end();
+                            });
+                        }
+                    });
+                });
+            }
 			break;
 		default:
 			response.write("404 Page Not Found");

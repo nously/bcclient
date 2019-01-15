@@ -35,7 +35,6 @@ btn.onclick = function() {
 }
 
 span.onclick = function() {
-	var addKddtForm = document.querySelector('#addKddt-modal form');
 	modal.style.display = "none";
 }
 
@@ -55,8 +54,11 @@ btnPemilih.onclick = function() {
 }
 
 spanMWS.onclick = function() {
-	var addMWSForm = document.querySelector('#addMWS-modal form');
 	modalMWS.style.display = "none";
+}
+
+spanPemilih.onclick = function() {
+	modalPemilih.style.display = "none";
 }
 
 addKddtForm.addEventListener('submit', function(event) {
@@ -81,8 +83,9 @@ addPemilihForm.addEventListener('submit', function(event) {
 	let nama = document.querySelector('#namaPemilih').value;
 	let tempatLahir = document.querySelector('#tempatLahirPemilih').value;
 	let tglLahir = document.querySelector('#tglLahirPemilih').value;
+	let passPemilih = document.querySelector('#passPemilih').value;
 
-	let data = [uname, nik, nama, tempatLahir, tglLahir];
+	let data = [uname, nik, nama, tempatLahir, tglLahir, passPemilih];
 	ipcRenderer.send('add:pemilih', data);
 	modalPemilih.style.display = "none";
 });
