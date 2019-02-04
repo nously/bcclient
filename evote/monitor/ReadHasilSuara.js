@@ -30,9 +30,9 @@ class ReadHasilSuara {
 		let bizNetworkConnection = this.bizNetworkConnection;
 		let cardname = this.cardname;
 
-		bizNetworkConnection.connect(cardname).then(function() {
+		return bizNetworkConnection.connect(cardname).then(function() {
 			console.log("LISTEEEN!");
-			bizNetworkConnection.on('event', (event) => {
+			return bizNetworkConnection.on('event', (event) => {
 				console.log(JSON.stringify(event));
 				var hasilSuara = "";
 				for (let i = 0; i < event.nomorUrut.length; i++) {

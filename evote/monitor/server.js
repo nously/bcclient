@@ -28,7 +28,6 @@ fs.readFile('./style.css', function(err, data) { css = data; });
 fs.readFile('./script.js', function(err, data) { script = data; });
 
 http.createServer(function(request, response) {
-	readHasilSuara.listen(response, top, bottom);
 	var q = url.parse(request.url, true);
 	var filename = '.' + q.pathname;
 	if (filename === './') {
@@ -37,7 +36,9 @@ http.createServer(function(request, response) {
 
 	switch (filename) {
 		case './index.html':
-			readHasilSuara.commitTransaction();
+			readHasilSuara.listen(response, top, bottom).then(function(){
+				readHasilSuara.commitTransaction();
+			});
 			break;
 		case './hasil.html':
 			response.writeHead(200, {"Content-Type": "text/css"});
