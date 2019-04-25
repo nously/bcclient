@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "composer-client": "^0.20.6",
+    "composer-client": "^0.20.8",
     "jsdom": "^13.2.0"
   }
 }
