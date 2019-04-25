@@ -16,7 +16,7 @@ const {
 let window;
 let userLoggedIn;
 let networkName = "evote-network";
-var localserver = "http://localhost:8001";
+var localserver = "http://localserver:8001";
 
 app.on('ready', function() {
 	window = new BrowserWindow({});
