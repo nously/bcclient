@@ -51,6 +51,11 @@ participant Operator identified by operatorId {
 }
 
 // transactions ============================================================================
+transaction GantiKandidatSuara {
+  --> Suara suara
+  --> Kandidat kandidatBaru
+}
+
 transaction GunakanSuara {
   --> Suara suara
   --> Kandidat kandidat

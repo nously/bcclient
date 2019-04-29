@@ -39,6 +39,24 @@ async function GunakanSuara(tx) {
 }
 
 /**
+ * Admin mengganti hak suara
+ * @param {org.evote.pemilihan.GantiKandidatSuara} tx
+ * @transaction
+ */
+async function GantiKandidatSuara(tx) {
+    tx.suara.owner = tx.kandidatBaru;
+
+    // javascript promise
+    return getAssetRegistry('org.evote.pemilihan.Suara')
+        .then(function (suaraRegistry) {
+            return suaraRegistry.update(tx.suara);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+
+/**
  * VotingOrganizer bisa menambah suara
  * @param {org.evote.pemilihan.TambahSuara} tx
  * @transaction

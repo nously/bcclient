@@ -88,7 +88,7 @@ rule AdminToTambahPemilih {
 rule AdminToSuara {
   description: "Grant VotingOrganizer CREATE permission to Suara"
   participant: "org.hyperledger.composer.system.NetworkAdmin"
-  operation: CREATE
+  operation: ALL
   resource: "org.evote.pemilihan.Suara"
   action: ALLOW
 }
